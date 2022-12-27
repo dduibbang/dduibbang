@@ -1,7 +1,61 @@
 body{
     transition :0.5s;
 }
+#navHeader {
+    /*상단에 고정*/
+    position: sticky;
+    top: 0;
 
+    display: inline;
+    background: #D9D9D9;
+    color: white;
+    padding-left: 300px;
+    padding-right: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 60px;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 39px;
+
+    color: #F8941D;
+    font-variation-settings: 'slnt' -10;
+}
+header {
+    /*상단에 고정*/
+    position: sticky;
+    top: 0;
+
+    background: #D9D9D9;
+    color: white;
+    padding-left: 100px;
+    padding-right: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 100px;
+}
+
+header>h1{
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 39px;
+
+    color: #F8941D;
+    font-variation-settings: 'slnt' -10;
+}
+.formBtn{
+    width: fit-content;
+    height: fit-content;
+    font-size: 25px;
+    background: #F8941D;
+    /* border: 3px solid #F9FCF3; */
+    border-radius: 18px;
+    font-family: 'Fredoka One', cursive;
+}
 
 .sidenav{
     height: 100%;
@@ -32,6 +86,7 @@ body{
 }
 
 div#main{
+    display: inline;
     padding: 16px;
     transition :0.5s;
 }
