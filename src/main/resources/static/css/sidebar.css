@@ -1,0 +1,124 @@
+input[id="menuicon"] {
+
+    display: none;  /* 요소 안보에게 설정 */
+
+}
+
+input[id="menuicon"] + label {
+
+    display: block; /* 라벨을 블록으로 선언 */
+
+    width: 60px;    /* 라벨크기 */
+
+    height: 50px;
+
+    cursor: pointer;    /* 마우스를 올리면 커서 모양 변경 */
+
+    position: relative; /* 내용물을 위한 선언 */
+
+    background-color: white;
+
+}
+
+/* 아이콘에 3개의 span을 선택 */
+
+input[id="menuicon"] + label span {
+
+    display: block; /* span을 블록으로 선언 */
+
+    position: absolute; /* 부모속성과 같은 값 받음 */
+
+    width: 100%;    /* span의 크기 */
+
+    height: 5px;
+
+    border-radius: 30px;    /* 둥근 테두리 */
+
+    background-color: black;
+
+    transition: all .35s;   /* 모션(애니메이션효과) */
+
+    z-index: 3;         /* 레이아웃의 우선순위 */
+
+}
+
+/* span의 요소를 하나씩 선택 */
+
+input[id="menuicon"] + label span:nth-child(1) {
+
+    top: 0;     /* 위치 */
+
+}
+
+input[id="menuicon"] + label span:nth-child(2) {
+
+    top: 50%;   /* 위치 */
+
+    transform: translateY(-50%);    /* 위치를 정확히 가운데로 놓기 */
+
+}
+
+input[id="menuicon"] + label span:nth-child(3) {
+
+    bottom: 0;  /* 위치 */
+
+}
+
+/* 아이콘을 클릭했을 때 span의 변화 */
+
+input[id="menuicon"]:checked + label span:nth-child(1) {
+
+    top: 50%;       /* 위치를 옮김 */
+
+    transform: translateY(-50%) rotate(45deg);  /* span의 회전 */
+
+    background-color: black;
+
+}
+
+input[id="menuicon"]:checked + label span:nth-child(2) {
+
+    opacity: 0;     /* 투명해짐  */
+
+    background-color: black;
+
+}
+
+input[id="menuicon"]:checked + label span:nth-child(3) {
+
+    bottom: 50%;    /* 위치를 옮김 */
+
+    transform: translatey(50%) rotate(-45deg);  /* span의 회전 */
+
+    background-color: black;
+
+}
+
+/* 사이드바 */
+
+div[class="sidebar"] {
+
+    width: 300px;   /* 사이드바 크기 */
+
+    height: 100%;
+
+    background: white;
+
+    position: fixed;    /* 드래그해서 내려도 고정화면 */
+
+    top: 0;             /* 고정위치 */
+
+    left: -300px;       /* 화면에 안보이게 왼쪽에 숨어있음 */
+
+    z-index: 2;         /* 레이아웃의 우선순위 */
+
+    transition: all .35s;   /* 자연스럽게 나오는 애니메이션 */
+
+}
+
+/* 아이콘 클릭했을 때 사이드바 모션 */
+
+input[id="menuicon"]:checked + label + div {
+
+    left: 0;
+}

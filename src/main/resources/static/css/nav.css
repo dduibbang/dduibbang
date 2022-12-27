@@ -1,0 +1,80 @@
+@charset "utf-8";
+CSS Document
+
+*{
+    margin: 0;
+    /*padding: 0;*/
+    text-align:center;
+}
+ul, li, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* 부메뉴가 있는 네비게이션바
+2depth 네비게이션바 */
+
+#navi {
+    position: relative;
+    z-index: 1;
+}
+
+#navi>ul{
+    display:flex;
+    width:56%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#navi>ul>li{
+    display: inline-block;
+    width:30%;
+    /* 말줄임표 공식 */
+    text-align: center;
+    padding:15px;
+    background:#393E46;
+    color: white;
+    /*border-left:1px solid white;*/
+    position:relative;
+}
+
+#navi>ul>li:hover{
+    background:#222831;
+    color:white;
+}
+
+#navi>ul>li:hover ul{
+    height: auto;
+    left:0px;
+    right:4px;
+    top:54px;
+    /*border:3px solid lightblue;*/
+}
+
+#navi>ul>li:hover>ul li{
+    visibility:visible;
+    opacity:1;
+}
+
+#navi>ul>li>ul{
+    height: 0;
+    transition:1s;
+    overflow:hidden;
+    background:#C9D6DF;
+    width:100%;
+    color: black;
+    position:absolute;
+    left:0px;
+    top:54px;
+    z-index : 1;
+}
+
+#navi>ul>li>ul>li{
+    width: 100%;
+    padding:10px;
+    visibility:hidden;
+    opacity:0;
+    transition:0.3s;
+}
