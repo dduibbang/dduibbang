@@ -6,17 +6,14 @@
 <html lang="ko">
 <head>
     <%@include file="header/header.jsp"%>
-
     <link href="css/nav.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
     <link href="css/font.css" rel="stylesheet">
 </head>
 
 <body>
-<div class="left" style="position: absolute; left: 0px; width: 22%; height: 100%; bottom: -353.2px; background:whitesmoke;">
-</div>
-<div class="right" style="position: absolute; right: 0px; width: 22%; height: 100%; bottom: -353.2px; background: whitesmoke;">
-</div>
+
+
 <div id='navi'>
     <ul>
         <input type="checkbox" id="menuicon">

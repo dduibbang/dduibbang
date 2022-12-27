@@ -6,8 +6,99 @@
     <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign Up</title>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        body{
+            transition :0.5s;
+        }
+
+
+        .sidenav{
+            height: 100%;
+            position: fixed;
+            left:0;
+            top:0;
+            z-index:1;
+            background: #111;
+            padding-top: 60px;
+            overflow-x: hidden;
+
+
+            width: 0;
+
+            transition :0.5s;
+        }
+        .sidenav a{
+            color: #818181;
+            text-decoration: none;
+            font-size: 25px;
+            display: block;
+            padding: 8px 8px 8px 32px;
+
+            transition :0.3s;
+        }
+        .sidenav a:hover{
+            color: #f1f1f1;
+        }
+
+        div#main{
+            padding: 16px;
+            transition :0.5s;
+        }
+
+
+    </style>
+
+
+
 </head>
 <body>
+
+
+
+    <div id="mySidenav" class="sidenav">
+        <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <!-- #main>h2>lorem3^p>lorem20^span -->
+    <div id="main">
+        <h2>사이드바 테스트</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem rem cupiditate distinctio adipisci quam quasi culpa doloribus error ad sit.</p>
+        <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
+    </div>
+
+    <script>
+        function openNav(){
+            //sidenav 클래스를 가진 div 요소 : width:0 숨기기
+            document.getElementById("mySidenav").style.width="250px";
+            //css margin-left : 250px -> js로 고칠때는 marginLeft (-나오면 무조건 지우고 대문자)
+            document.getElementById("main").style.marginLeft="250px";
+            document.body.style.backgroundColor="rgba(0,0,0,0.4)";
+        }
+        function closeNav(){
+            //sidenav 클래스를 가진 div 요소 : width:0 숨기기
+            document.getElementById("mySidenav").style.width="0px";
+            document.getElementById("main").style.marginLeft="0px";
+            document.body.style.backgroundColor="white";
+        }
+    </script>
+
+
+
+
+
+
+
 
 <form action="/signup" method="post">
 
