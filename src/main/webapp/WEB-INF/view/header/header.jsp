@@ -11,63 +11,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Sell me</title>
+        <title>N BBANG</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/home.css" rel="stylesheet" />
-
+        <link href="css/header.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-        <style>
-            body{
-                transition :0.5s;
-            }
-
-
-            .sidenav{
-                height: 100%;
-                position: fixed;
-                left:0;
-                top:0;
-                z-index:1;
-                background: #111;
-                padding-top: 60px;
-                overflow-x: hidden;
-
-
-                width: 0;
-
-                transition :0.5s;
-            }
-            .sidenav a{
-                color: #818181;
-                text-decoration: none;
-                font-size: 25px;
-                display: block;
-                padding: 8px 8px 8px 32px;
-
-                transition :0.3s;
-            }
-            .sidenav a:hover{
-                color: #f1f1f1;
-            }
-
-            div#main{
-                padding: 16px;
-                transition :0.5s;
-            }
-
-
-        </style>
 
     </head>
     <body>
     <c:set var="id" value="<%=id%>"></c:set>
     <c:set var="state" value="<%=state%>"></c:set>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
         <div class="container px-4 px-lg-5">
 
             <div id="mySidenav" class="sidenav">
@@ -81,6 +40,7 @@
                 <a href="#">마이페이지</a>
                 <a href="#">주문현황</a>
             </div>
+
             <!-- #main>h2>lorem3^p>lorem20^span -->
             <div id="main">
 
@@ -108,7 +68,6 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" href="/home" >Home</a></li>
                     <c:if test="${state != null}">
                         <li class="nav-item"><a class="nav-link" href="#!"><%=id%>님</a></li>
                     </c:if>
@@ -116,34 +75,22 @@
                         <li class="nav-item"><a class="nav-link" href="/myinfo">마이페이지</a></li>
                         <li class="nav-item"><a class="nav-link" href="/mylist">이력서</a></li>
                     </c:if>
-                    <c:if test="${state eq 'company'}">
-                        <li class="nav-item"><a class="nav-link" href="/cominfo">마이페이지</a></li>
-                    </c:if>
                 </ul>
                 <form class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
                         <c:if test="${state != null}">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">로그아웃</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
                         </c:if>
                         <c:if test="${state eq null}">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">개인로그인</a></li>
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/loginhr">기업로그인</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
                         </c:if>
                     </ul>
                 </form>
             </div>
         </div>
-    </nav>
 
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">N BBANG</h1>
-                <p class="lead fw-normal text-white-50 mb-0">나를 사가시오!</p>
-            </div>
-        </div>
-    </header>
+    </nav>
     </body>
 </div1>
 
