@@ -14,7 +14,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Fredoka One', cursive;
+
     margin-bottom: 60px;
     font-weight: 900;
     font-size: 40px;
@@ -35,7 +35,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Fredoka One', cursive;
+
     margin-bottom: 100px;
 }
 
@@ -43,7 +43,7 @@ header>h1{
     font-weight: 900;
     font-size: 40px;
     line-height: 39px;
-
+    font-family: 'Fredoka One', cursive;
     color: #F8941D;
     font-variation-settings: 'slnt' -10;
 }

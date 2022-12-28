@@ -7,6 +7,8 @@
 
 <div1>
     <head>
+<%--        <%@import url'https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'%>--%>
+
         <title>N BBANG</title>
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -18,6 +20,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -30,7 +33,7 @@
         <div id="main">
             <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
         </div>
-        <h1><a href="/home">N BBANG</a></h1></div>
+        <h1 style="font-family: 'Fredoka One', cursive;"><a href="/home">N BBANG</a></h1></div>
         <div>
             <ul>
                 <c:if test="${state != null}">
@@ -57,7 +60,7 @@
     </header>
     <nav id="navHeader">
         <div  style="display: flex">
-            <div id="mySidenav" class="sidenav">
+            <div id="mySidenav" class="sidenav" style="font-family: 'Nanum Gothic', sans-serif;">
                 <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="#">가게 모아보기</a>
