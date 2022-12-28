@@ -39,3 +39,23 @@ select {
 select::-ms-expand {
     display: none;
 }
+
+.str {
+    float: right;
+    margin-top: 9px;
+    margin-right: 15px;
+    padding: 10px;
+    background-color: #f8941d;
+    border-radius: 18px;
+    font-family: inherit;
+    border: none;
+}
+
+button:hover {
+     opacity: 0.8;
+    }
+
+button:active {
+     background-color: #F8941D;
+     opacity: 1;
+    }

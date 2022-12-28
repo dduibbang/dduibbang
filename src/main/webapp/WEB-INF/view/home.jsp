@@ -16,6 +16,8 @@
     <input class=input id="tab2" type="radio" name="tabs">
     <label for="tab2">안심거래</label>
 
+    <button class="str" onclick="location.href='#'">모집 시작하기</button>
+
     <section class=tabContents id="content1">
         <div align="center" style="position: relative;">
 
