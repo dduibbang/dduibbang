@@ -20,7 +20,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/font.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -66,7 +66,7 @@
                 <a href="#">가게 모아보기</a>
                 <a href="#">게시글 보기</a>
                 <a href="#">그룹 엔빵</a>
-                <a href="#">주소 설정</a>
+                <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
                 <a href="#">커뮤니티</a>
                 <a href="#">마이페이지</a>
                 <a href="#">주문현황</a>
