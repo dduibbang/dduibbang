@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <%@include file="header/header.jsp"%>
     <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign Up</title>
@@ -62,44 +63,6 @@
 
 
 
-    <div id="mySidenav" class="sidenav">
-        <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
-    <!-- #main>h2>lorem3^p>lorem20^span -->
-    <div id="main">
-        <h2>사이드바 테스트</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem rem cupiditate distinctio adipisci quam quasi culpa doloribus error ad sit.</p>
-        <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
-    </div>
-
-    <script>
-        function openNav(){
-            //sidenav 클래스를 가진 div 요소 : width:0 숨기기
-            document.getElementById("mySidenav").style.width="250px";
-            //css margin-left : 250px -> js로 고칠때는 marginLeft (-나오면 무조건 지우고 대문자)
-            document.getElementById("main").style.marginLeft="250px";
-            document.body.style.backgroundColor="rgba(0,0,0,0.4)";
-        }
-        function closeNav(){
-            //sidenav 클래스를 가진 div 요소 : width:0 숨기기
-            document.getElementById("mySidenav").style.width="0px";
-            document.getElementById("main").style.marginLeft="0px";
-            document.body.style.backgroundColor="white";
-        }
-    </script>
-
-
-
-
-
-
-
-
 <form action="/signup" method="post">
 
 
@@ -151,11 +114,11 @@
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                     <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                        인재들과 함께하세요 <br />
-                        <span style="color: hsl(218, 81%, 75%)">지금 Sell Me로 가입하세요</span>
+                        맛있는 음식과 함께하세요 <br />
+                        <span style="color: hsl(218, 81%, 75%)">지금 n bbang로 가입하세요</span>
                     </h1>
                     <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                        우리를 지금 데려가라, 그렇지않다면, 너의 미래는..
+                        오늘 점심 뭐먹지
                     </p>
                 </div>
 
@@ -171,13 +134,13 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="userId">아이디</label>
-                                            <input type="text" id="userId" name="userId" placeholder="id" required class="form-control" />
+                                            <input type="text" id="userId" name="mbr_id" placeholder="id" required class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="userName">이름</label>
-                                            <input type="text" id="userName" name="userName" placeholder="name" required  class="form-control" />
+                                            <input type="text" id="userName" name="mbr_nm" placeholder="name" required  class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -189,14 +152,14 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="userPw">비밀번호</label>
-                                            <input type="password" id="userPw" name="userPw" placeholder="pw"required class="form-control" />
+                                            <input type="password" id="userPw" name="mbr_pwd" placeholder="pw"required class="form-control" />
 
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
-                                            <label class="form-label" for="userPurpose">비밀번호 확인</label>
-                                            <input type="password" id="user123" name="user123" placeholder="p123" required class="form-control" />
+                                            <label class="form-label" >비밀번호 확인</label>
+                                            <input type="password" id="user123" name="user123" placeholder="pw again" required class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -204,8 +167,8 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
-                                            <label class="form-label" for="userBirth">생년월일</label>
-                                            <input type="date" id="userBirth" name="userBirth" placeholder="birthday" required  class="form-control" />
+                                            <label class="form-label" for="usertel">전화번호</label>
+                                            <input type="text" id="usertel" name="mbr_tel" placeholder="phonenumber" required  class="form-control" />
 
 
                                         </div>
@@ -213,45 +176,26 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="userEmail">Email</label>
-                                            <input type="text" id="userEmail"  name="userEmail" placeholder="email" required  class="form-control" />
+                                            <input type="text" id="userEmail"  name="mbr_email" placeholder="email" required  class="form-control" />
 
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <label class="form-label" for="userPhNum">핸드폰 번호</label>
-                                            <input type="text" id="userPhNum" name="userPhNum" placeholder="phone number" required  class="form-control" />
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <label class="form-label" for="userPurpose">가입 목적</label>
-                                            <input type="text" id="userPurpose" name="userPurpose" placeholder="purpose" required class="form-control" />
-
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="mbr_se">이용 목적 : </label>
 
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <label class="form-label">주소</label>
-                                            <input class="form-control" type="text" id="sample6_postcode" placeholder="우편번호">
-                                            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-block mb-4 display-center" style="margin-bottom: -20px !important;"><br>
-                                            <input class="form-control"type="text" id="sample6_address" name="userAddress" placeholder="주소" style="margin-top: 25px !important;"><br>
-                                            <input class="form-control"type="text" id="sample6_detailAddress" placeholder="상세주소" style="margin-bottom: 5px; margin-top: -20px">
-                                            <input class="form-control"type="text" id="sample6_extraAddress" placeholder="참고항목" >
-                                            <input type="hidden" id="sample6_city" name="userCity" placeholder="도시">
+                                    <input class="form-check-input" type="radio" id = "mbr_se" name="mbr_se" value="02" checked>
+                                    <label class="form-check-label" for="mbr_se">
+                                        사용자&nbsp;
+                                    </label>
 
-                                        </div>
-                                    </div>
+
+                                    <input class="form-check-input" type="radio" name="mbr_se" value="01">가게 사장님
 
                                 </div>
+
 
 
                                 <%--                                <div class="row">--%>
@@ -265,23 +209,6 @@
 
                                 <%--                                </div>--%>
 
-
-
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="userGender">성별 : </label>
-
-
-                                    <input class="form-check-input" type="radio" id = "userGender" name="userGender" value="남" checked>
-                                    <label class="form-check-label" for="userGender">
-                                        남자&nbsp;
-                                    </label>
-
-
-                                    <input class="form-check-input" type="radio" name="userGender" value="여">여자
-
-                                </div>
 
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-primary btn-block mb-4 display-center" >

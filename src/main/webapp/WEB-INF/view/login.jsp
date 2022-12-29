@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!DOCTYPE html>
 <html lang="ko">
 <%--<script>--%>
@@ -27,69 +31,70 @@
 <%--    });--%>
 <%--</script>--%>
 <head>
+    <%@include file="header/header.jsp"%>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/login.css">
+
 </head>
 <body>
 <form action="/login" method="post">
-    <section class=" text-center text-lg-start">
 
-        <style>
-            .rounded-t-5 {
-                border-top-left-radius: 0.5rem;
-                border-top-right-radius: 0.5rem;
-            }
 
-            @media (min-width: 992px) {
-                .rounded-tr-lg-0 {
-                    border-top-right-radius: 0;
-                }
-
-                .rounded-bl-lg-5 {
-                    border-bottom-left-radius: 0.5rem;
-                }
-            }
-        </style>
-        <div class="card mb-3 align-items-center">
-            <div class="col-lg-5 align-items-center">
-                <div class="card-body py-5 px-md-5">
-                    <h2 class="nanum" style="font-size:1.5em; text-align: center">개인로그인</h2>
-                    <br>
-                    <br>
+    <div class="container">
+        <div class="d-flex justify-content-center h-70">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-body ">
                     <form>
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="mbr_id">Id</label>
-                            <input type="text" id="mbr_id" name = "mbr_id" class="form-control" placeholder="Id" />
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="mbr_pwd">Password</label>
-                            <input type="password" id="mbr_pwd" name = "mbr_pwd" class="form-control" placeholder="password" />
-                        </div>
-
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                            <div class="col d-flex ">
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" unchecked />
-                                    <label class="form-check-label" for="form2Example31"> 아이디 저장 </label>
-                                </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
+                            <input type="text" name="mbr_id" id="mbr_id" class="form-control" placeholder="Id">
 
                         </div>
-
-                        <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">로그인</button>
-                        <button type="button" class="btn btn-primary btn-block mb-4" onclick="location.href='signup'">회원가입</button>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="mbr_pwd" id="mbr_pwd" class="form-control" placeholder="password">
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox">Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
                     </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="signup">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#">Forgot your password?</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+
+
+
+
+
+</div>
 </form>
+
+
 </body>
 <footer>
     <%@include file="header/footer.jsp"%>

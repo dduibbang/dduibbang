@@ -63,9 +63,10 @@ public class userController {
     public String login(String mbr_id, String mbr_pwd, HttpSession session,Model model) { // 로그인
         System.out.println("user id: " + mbr_id);
         System.out.println("user pw: " + mbr_pwd);
-//        String id = userService.login(userId, userPw);
+
         userVO userVo = userService.getUserById(mbr_id);
         model.addAttribute("userInfo", userVo);
+        System.out.println(userVo);
         String resultmsg = "";
         if (userVo != null && userVo.getMbr_pwd().equals(mbr_pwd)) {
             String name = userVo.getMbr_nm();
@@ -73,7 +74,6 @@ public class userController {
             session.setAttribute("state","user");
             return resultmsg = "<script>location.href='/home'</script>";
         } else{//로그인 실패시
-
             return resultmsg = "<script>alert('로그인 실패');location.href='/login'</script>";
         }
 

@@ -5,23 +5,19 @@
     <select id="getUserById" resultType="com.example.dduiddui.vo.userVO">
         SELECT *
         FROM `tb_mbr`
-        WHERE mbr_id = #{mbr_id}
+        WHERE mbr_id = #{mbrId}
     </select>
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="com.example.dduiddui.vo.userVO">
-        INSERT INTO `user`
+        INSERT INTO `tb_mbr`(mbr_id,mbr_pwd,mbr_nm,mbr_tel,mbr_email,mbr_se)
         VALUES
             (
-                #{userId},
-                #{userPw},
-                #{userName},
-                #{userEmail},
-                #{userPhNum},
-                #{userBirth},
-                #{userGender},
-                #{userAddress},
-                #{userPurpose},
-                #{userCity}
+                #{mbr_id},
+                #{mbr_pwd},
+                #{mbr_nm},
+                #{mbr_tel},
+                #{mbr_email},
+                #{mbr_se}
             )
     </insert>
 

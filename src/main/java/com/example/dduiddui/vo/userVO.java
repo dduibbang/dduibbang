@@ -4,7 +4,8 @@ import lombok.Data;
 @Data
 public class userVO {
 
-    //자동으로 맴버 번호 매길 vo
+
+    private int mbr_sn; //자동으로 맴버 번호 매길 vo
     private String mbr_id;
     private String mbr_pwd;
     private String mbr_nm;

@@ -13,8 +13,8 @@ public class userService {
     @Autowired
     private userMapper userMapper;
 
-    public userVO getUserById(String id) {
-        return userMapper.getUserById(id);
+    public userVO getUserById(String mbrId) {
+        return userMapper.getUserById(mbrId);
     }
 
     public void signup(userVO userVo) {
