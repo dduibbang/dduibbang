@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -40,7 +37,10 @@ public class userController {
         return resultmsg="<script>alert('접근제한');location.href='/home'</script>";
     }
 
-
+    @RequestMapping("/map")
+    public String toMapPage() {  //회원가입 페이지
+        return "map";
+    }
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지
@@ -83,6 +83,7 @@ public class userController {
     public String toSignupPage() {  //회원가입 페이지
         return "signup";
     }
+
 
     @PostMapping("/signup")
     public String signup(userVO userVo) { // 회원가입

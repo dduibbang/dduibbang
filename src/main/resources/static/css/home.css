@@ -47,7 +47,6 @@ select::-ms-expand {
     padding: 10px;
     background-color: #f8941d;
     border-radius: 18px;
-    font-family: inherit;
     border: none;
 }
 

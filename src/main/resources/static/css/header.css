@@ -48,6 +48,7 @@ header>h1{
     font-variation-settings: 'slnt' -10;
 }
 .formBtn{
+    padding: 5px;
     width: fit-content;
     height: fit-content;
     font-size: 25px;
