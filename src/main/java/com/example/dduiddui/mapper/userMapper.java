@@ -7,8 +7,9 @@ import java.util.List;
 @Mapper
 public interface userMapper {
     userVO getUserById(String mbrId);
-    userVO getUserByVO(userVO userVo);    // 회원 정보 가져오기
-    void updateUser(userVO userVo); // 회원 정보 수정
+    userVO getUserByVO(userVO userVo);    // 회원 정보 가져오기(mbr_sn 받기 위해 필요)
+
+    userVO getUserBySn(Integer mbrSn);
     void insertUser(userVO userVo); // 회원가입
 
 }

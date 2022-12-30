@@ -14,6 +14,12 @@
         FROM tb_mbr
         WHERE mbr_id = #{mbr_id}
     </select>
+
+    <select id="getUserBySn" resultType="com.example.dduiddui.vo.userVO">
+        SELECT *
+        FROM tb_mbr
+        WHERE mbr_sn = #{mbr_sn}
+    </select>
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="com.example.dduiddui.vo.userVO">
         INSERT INTO `tb_mbr`(mbr_id,mbr_pwd,mbr_nm,mbr_tel,mbr_email,mbr_se)
@@ -27,14 +33,5 @@
                 #{mbr_se}
             )
     </insert>
-    <!-- 회원정보 수정 -->
-<!--    <update id="updateUser" parameterType="com.example.dduiddui.vo.userVO">-->
-<!--        UPDATE tb_mbr-->
-<!--        SET mbr_nick = #{mbr_nick},-->
-<!--            password = #{password},-->
-<!--            mbr_tel = #{mbr_tel},-->
-<!--            mbr_email = #{mbr_email}-->
-<!--        WHERE mbr_sn = #{mbr_sn}-->
-<!--    </update>-->
 
 </mapper>

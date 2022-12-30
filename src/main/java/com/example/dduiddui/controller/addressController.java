@@ -32,9 +32,6 @@ public class addressController {
     }
 
 
-
-
-
     // /map에서 즐겨찾기 장소 추가하기
     @PostMapping("/insertMap")
     public String insertMap( addressVO addressVO, HttpSession session){
@@ -42,9 +39,11 @@ public class addressController {
         try {
             addressService.uploadLike(addressVO);
             System.out.println("즐겨찾기 추가");
+        } catch (DuplicateKeyException e) {
+            return "redirect:/signup?error_code=-1";
         } catch (Exception e) {
             e.printStackTrace();
-            return resultmsg = "<script>alert('로그인이 필요합니다.');location.href='/login'</script>";
+            return "redirect:/signup?error_code=-99";
         }
         return "redirect:/map";
     }

@@ -1,5 +1,5 @@
 package com.example.dduiddui.controller;
-import com.example.dduiddui.service.addressService;
+
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +20,16 @@ public class userController {
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
         String id = (String) session.getAttribute("id");
-
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        System.out.println("home");
+        System.out.println("user sn: " + sn);
+        System.out.println("user id: " + id);
 
 
         if (id != null) { // 로그인된 상태
             userVO userVo = userService.getUserById(id);
             model.addAttribute("userInfo", userVo);
+            model.addAttribute("sn", sn);
         }
         return "home";
     }
@@ -37,16 +41,17 @@ public class userController {
         return resultmsg="<script>alert('접근제한');location.href='/home'</script>";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/map")
     public String toMapPage() {  //회원가입 페이지
-        return "login";
+        return "map";
     }
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지
-        String id = (String) session.getAttribute("id");
-
-        if (id != null) { // 로그인된 상태
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        System.out.println("user sn: " + sn);
+        //String id = (String) session.getAttribute("id");
+        if (sn != null) { // 로그인된 상태
             return "redirect:/";
         }
 //        ModelAndView mv=new ModelAndView("login");
@@ -62,6 +67,7 @@ public class userController {
     @ResponseBody
     @PostMapping("/login")
     public String login(String mbr_id, String mbr_pwd, HttpSession session,Model model) { // 로그인
+        System.out.println("login");
         System.out.println("user id: " + mbr_id);
         System.out.println("user pw: " + mbr_pwd);
 
@@ -70,8 +76,10 @@ public class userController {
         System.out.println(userVo);
         String resultmsg = "";
         if (userVo != null && userVo.getMbr_pwd().equals(mbr_pwd)) {
+
             String name = userVo.getMbr_nm();
             session.setAttribute("id",mbr_id);
+            session.setAttribute("state","user");
 
             Integer mbrSn = userService.getMbrSn(mbr_id,mbr_pwd);
             session.setAttribute("mbr_sn",mbrSn);
@@ -104,6 +112,7 @@ public class userController {
 
     @GetMapping("/logout")
     public String logout(HttpSession session) { // 로그아웃
+
         session.invalidate();
         System.out.println("logout");
         return "redirect:/home";

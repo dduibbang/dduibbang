@@ -23,23 +23,23 @@
 
     <link rel="stylesheet" type="text/css" href="../css/map.css?ver1" />
     <link rel="stylesheet" type="text/css" href="/css/font.css">
-    <script src="../js/map.js?ver0"></script>
+    <script src="../js/map.js?ver1"></script>
 </head>
 
 <body>
 <div style="display: flex">
     <nav id="sub-bar" style="order: 1">
-        <div class="basicBtn" style="font-size: small"><a href="home.jsp">홈 화면으로</a></div>
+        <div class="basicBtn" style="font-size: small"><a href="/home">홈 화면으로</a></div>
         <h1>위치 설정</h1>
         <br>
         <div >
             <form class="LeftForm" id="sendAddressForm"  method="POST">
-                <p><input type="hidden" name="mbr_sn" id="mbr_sn" value=""></p>
+                <p><input type="hidden" name="mbr_sn"   value="<%=mbr_sn%>"></p>
 
                 <p>도로명 주소 :</p>
-                <p><input class="input-box" type="String" name="adr_cn" id="adr_cn" value="<%=mbr_sn%>"></p>
+                <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
                 <p>상세 주소 :</p>
-                <p><input class="input-box" type="String" name="adr_st" id="adr_st" value=" 상세주소를 입력해주세요."></p>
+                <p><input class="input-box" type="String" name="adr_st" value=" 상세주소를 입력해주세요."></p>
                 <div style="display: flex">
                 <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="saveLocation" type="submit" value="이 위치로 주소 설정">
 
@@ -48,11 +48,14 @@
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
 
             <h1 style="margin-top: 50px;" >즐겨찾기</h1>
-            <form class="LeftForm" id="storyForm" action="" method="GET" style="overflow: auto">
+            <form class="LeftForm" id="storyForm" action="insertMap" method="post" style="overflow: auto">
                 <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">
-                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" ></p>
-                    <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="insertMap" type="submit" value="즐겨찾기 추가">
+                    <p><input type="hidden" name="mbr_sn"  value="<%=mbr_sn%>"></p>
+                    <p><input class="input-box" type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
+                    <p><input class="input-box" type="hidden" name="adr_st"   value=" 상세주소를 입력해주세요."></p>
+                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value=""></p>
+                    <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>
 
 <%--                <c:forEach items="${postlist}" var="p">--%>

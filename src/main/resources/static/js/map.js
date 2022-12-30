@@ -212,7 +212,8 @@ function searchCoordinateToAddress(latlng) {
         ].join('\n'));
         infoWindow.open(map, latlng);
 
-        $("#adr_cn").val(address);
+        $("#adr_cn_open").val(address);
+        $("#adr_cn_close").val(address);
 
 
     });

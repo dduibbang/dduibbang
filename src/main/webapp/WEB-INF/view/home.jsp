@@ -6,6 +6,12 @@
 <head>
     <%@include file="header/header.jsp"%>
     <link rel="stylesheet" type="text/css" href="css/tab.css">
+    <script>
+        $(document).ready(function(){
+            console.log(<%= request.getParameter("userInfo")%>);
+
+        });
+    </script>
 </head>
 <body>
 <br>
