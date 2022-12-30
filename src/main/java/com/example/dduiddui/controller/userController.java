@@ -1,5 +1,5 @@
 package com.example.dduiddui.controller;
-
+import com.example.dduiddui.service.addressService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +37,15 @@ public class userController {
         return resultmsg="<script>alert('접근제한');location.href='/home'</script>";
     }
 
-    @RequestMapping("/map")
+    @RequestMapping("/login")
     public String toMapPage() {  //회원가입 페이지
-        return "map";
+        return "login";
     }
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지
         String id = (String) session.getAttribute("id");
+
         if (id != null) { // 로그인된 상태
             return "redirect:/";
         }
@@ -71,7 +72,10 @@ public class userController {
         if (userVo != null && userVo.getMbr_pwd().equals(mbr_pwd)) {
             String name = userVo.getMbr_nm();
             session.setAttribute("id",mbr_id);
-            session.setAttribute("state","user");
+
+            Integer mbrSn = userService.getMbrSn(mbr_id,mbr_pwd);
+            session.setAttribute("mbr_sn",mbrSn);
+            System.out.println("user sn: " + mbrSn);
             return resultmsg = "<script>location.href='/home'</script>";
         } else{//로그인 실패시
             return resultmsg = "<script>alert('로그인 실패');location.href='/login'</script>";

@@ -212,7 +212,7 @@ function searchCoordinateToAddress(latlng) {
         ].join('\n'));
         infoWindow.open(map, latlng);
 
-        $("#street-location").val(address);
+        $("#adr_cn").val(address);
 
 
     });

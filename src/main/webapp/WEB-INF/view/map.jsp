@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+    int mbr_sn = (int)session.getAttribute("mbr_sn");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,21 +33,28 @@
         <h1>위치 설정</h1>
         <br>
         <div >
-            <form class="LeftForm" id="send"  method="GET">
+            <form class="LeftForm" id="sendAddressForm"  method="POST">
+                <p><input type="hidden" name="mbr_sn" id="mbr_sn" value=""></p>
 
                 <p>도로명 주소 :</p>
-                <p><input class="input-box" type="String" name="street-location" id="street-location" value=""></p>
+                <p><input class="input-box" type="String" name="adr_cn" id="adr_cn" value="<%=mbr_sn%>"></p>
                 <p>상세 주소 :</p>
-                <p><input class="input-box" type="String" name="detail-location" id="detail-location" value=" 상세주소를 입력해주세요."></p>
+                <p><input class="input-box" type="String" name="adr_st" id="adr_st" value=" 상세주소를 입력해주세요."></p>
                 <div style="display: flex">
                 <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="saveLocation" type="submit" value="이 위치로 주소 설정">
-                    <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="sendLocation" type="submit" value="즐겨찾기 추가">
+
                 </div>
             </form>
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
 
             <h1 style="margin-top: 50px;" >즐겨찾기</h1>
             <form class="LeftForm" id="storyForm" action="" method="GET" style="overflow: auto">
+                <p>즐겨찾기 이름 :</p>
+                <div style="display: flex">
+                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" ></p>
+                    <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="insertMap" type="submit" value="즐겨찾기 추가">
+                </div>
+
 <%--                <c:forEach items="${postlist}" var="p">--%>
 <%--                    <ol class="story-ul">--%>
 <%--                        <label class="story-label">${p.txt_nm}</label>--%>

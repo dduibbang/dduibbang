@@ -66,13 +66,13 @@
             <div id="mySidenav" class="sidenav" style="font-family: 'Nanum Gothic', sans-serif;">
                 <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">가게 모아보기</a>
-                <a href="#">게시글 보기</a>
-                <a href="#">그룹 엔빵</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">가게 모아보기</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">게시글 보기</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
-                <a href="#">커뮤니티</a>
-                <a href="#">마이페이지</a>
-                <a href="#">주문현황</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">커뮤니티</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</a>
             </div>
             <script>
                 function openNav(){
