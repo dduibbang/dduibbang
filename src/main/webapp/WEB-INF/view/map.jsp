@@ -11,6 +11,7 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=35o7z9sq66&submodules=geocoder"></script>
     <link rel="stylesheet" type="text/css" href="../../docs/css/examples-base.css" />
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,10 +21,12 @@
     <link rel="stylesheet" type="text/css" href="../css/map.css?ver1" />
     <link rel="stylesheet" type="text/css" href="/css/font.css">
     <script src="../js/map.js?ver1"></script>
+
 </head>
 
 <body>
 <div style="display: flex">
+    <input type="hidden" id="contextPath" value="<%=request.getContextPath()%>">
     <nav id="sub-bar" style="order: 1">
         <div class="basicBtn" style="font-size: small"><a href="/home">홈 화면으로</a></div>
         <h1>위치 설정</h1>
@@ -31,11 +34,13 @@
         <div >
             <form class="LeftForm" id="sendAddressForm"  method="POST">
                 <p><input type="hidden" name="mbr_sn"   value="${sn}"></p>
+                <p><input type="hidden" name="latiVal"  id="latiVal_"  value=""></p>
+                <p><input type="hidden" name="longiVal"  id="longiVal_"  value=""></p>
 
                 <p>도로명 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
                 <p>상세 주소 :</p>
-                <p><input class="input-box" type="String" name="adr_st" value=" 상세주소를 입력해주세요."></p>
+                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value=" 상세주소를 입력해주세요."></p>
                 <div style="display: flex">
                 <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="saveLocation" type="submit" value="이 위치로 주소 설정">
 
@@ -48,8 +53,10 @@
                 <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">
                     <p><input type="hidden" name="mbr_sn"  value="${sn}"></p>
-                    <p><input class="input-box" type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
-                    <p><input class="input-box" type="hidden" name="adr_st"   value=" 상세주소를 입력해주세요."></p>
+                    <p><input type="hidden" name="latiVal"  id="latiVal"  value=""></p>
+                    <p><input type="hidden" name="longiVal"  id="longiVal"  value=""></p>
+                    <p><input type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
+                    <p><input type="hidden" name="adr_st"   value=" 상세주소를 입력해주세요."></p>
                     <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value=""></p>
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>

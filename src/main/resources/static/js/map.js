@@ -21,16 +21,15 @@ $(document).ready(function(){
 });
 function getMyData(){
     $.ajax({
-        async:true,
-        type : "POST",
-        url : "/getLikeList",
+        type : "GET",
+        url: ($("#contextPath").val() + "/getLikeList"),
+        // url : "getLikeList",
         dataType:"json",
-        contentType : 'application/json; charset=UTF-8',
         success: function(data) {
             console.log(data);
             //setData(data.searchList);
         },
-        error : function(xhr, status, error) {
+        error : function() {
             alert('error');
         }
     });
@@ -38,9 +37,9 @@ function getMyData(){
 
 }
 
-function myFunction() {
-    getData($("#searchInput").val());
-}
+// function myFunction() {
+//     getData($("#searchInput").val());
+// }
 
 function setMyMap() {
 
@@ -106,8 +105,7 @@ function setData(MyList){
             icon:{
                 content:[
                     '<div class=infoWin style="background-color:#FF9F9F;font-family: \'TmoneyRoundWindExtraBold\';">' +
-                    '<div style ="font-weight: bold;font-size:18px">'+item.txt_nm+'</div>'+ // 제목
-                    '<div style ="font-weight: normal;font-size:14px">'+item.txt_date+'</div>'+
+                    '<div style ="font-weight: bold;font-size:18px">'+item.adr_ttl+'</div>'+ // 제목
                     '</div>'
 
                 ].join('')
@@ -128,8 +126,7 @@ function setData(MyList){
 
         infowindow.setContent([
             '<div class=infoWin style="background-color: #808080">' +
-            '<div style ="font-weight: bold;font-size:17px">'+item.txt_nm+'</div>'+ // 제목
-            '<div style ="font-weight: normal;font-size:13px">'+item.txt_date+'</div>'+
+            '<div style ="font-weight: bold;font-size:17px">'+item.adr_ttl+'</div>'+ // 제목
             '</div>'
 
         ].join(''));
@@ -144,19 +141,10 @@ function setData(MyList){
             $("#storyForm").hide();
             // $("#sub").css("background-color", "yellow");
 
-            //$("#txtPic").val(item.txt_pic);  // 사진 첨부방법?
-            $("#latiVal2").val(item.txt_loc_lat);
-            $("#longiVal2").val(item.txt_loc_lng);
-            $("#txt_sn").val(item.txt_sn);
-            $("#txtTitle").html(" <strong>" + item.txt_nm + "</strong>");
-            $("#txtContent").html(item.txt_cn);
-            $("#txtDate").html(item.txt_date);
-
-            // // 클릭한 곳으로 센터&줌
-            // map.setZoom(16);
-            // map.setCenter(new naver.maps.LatLng(e.latitude, e.longitude));
-
-            //infowindow.open(map, marker);
+            $("#latiVal_").val(item.txt_loc_lat);
+            $("#longiVal_").val(item.txt_loc_lng);
+            $("#adr_cn_open").val(item.adr_cn);
+            $("#adr_st_open").html(item.adr_st);
         });
         naver.maps.Event.addListener(marker, 'mouseover', function(e) {
             infoWindow.close();
@@ -251,16 +239,7 @@ function getData(target){
                         $("#send").show();
                         $("#storyForm").hide();
 
-                        $("#category_name").show();
-                        $("#place_url").show();
-                        $("#phone").show();
-                        $("#distance").show();
-
                         $("#locationTitle").html(" <strong>" + item.place_name + "</strong>");
-                        $("#category_name").val(item.category_name);
-                        $("#place_url").val(item.place_url);
-                        $("#distance").html("현위치로 부터 " + item.distance + "m 거리에 있습니다." );
-                        $("#phone").val(item.phone);
                     });
 
                     SearchMarkerList.push(marker);
@@ -269,11 +248,9 @@ function getData(target){
                 // 인포창 표시
                 $("#latiVal").val(msg.documents[0].y);
                 $("#longiVal").val(msg.documents[0].x);
+                $("#latiVal_").val(msg.documents[0].y);
+                $("#longiVal_").val(msg.documents[0].x);
                 $("#locationTitle").html(" <strong>" + msg.documents[0].place_name + "</strong>");
-                $("#category_name").html("<li>" + "category: " + msg.documents[0].category_name + "</li>");
-                $("#place_url").html("<li>" + "url: " + msg.documents[0].place_url + "</li>");
-                $("#phone").html("<li>" + "phone: " + msg.documents[0].phone + "</li>");
-                $("#distance").html("<li>" + "현위치로 부터 " + msg.documents[0].distance + "m 거리에 있습니다." + "</li>");
 
                 //화면크기에서 벗어난 장소일 때만 이동됨
                 var moveLatLon = new naver.maps.LatLng(msg.documents[0].y, msg.documents[0].x);
@@ -282,10 +259,6 @@ function getData(target){
 
             } catch (error) {
                 $("#locationTitle").html(" <strong>정보가 없습니다.</strong>");
-                $("#category_name").html("<li></li>");
-                $("#place_url").html("<li></li>");
-                $("#phone").html("<li></li>");
-                $("#distance").html("<li></li>");
             }
         });
 }

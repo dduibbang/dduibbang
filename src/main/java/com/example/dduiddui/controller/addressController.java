@@ -27,20 +27,23 @@ public class addressController {
 
     // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(지도에)
     @ResponseBody
-    @RequestMapping(value = "/getLikeList",method = RequestMethod.POST)
-    private byte[] getLikeList(HttpSession session,Model model,addressVO addressVO) throws Exception{
+    @RequestMapping(value = "/getLikeList",method = RequestMethod.GET)
+    public List<addressVO> getLikeList(HttpSession session){
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         Map<String, Object> res = new HashMap<>();
         res.put("success", Boolean.FALSE);
+        res.put("searchList", null);
 
         if (sn != null) { // 로그인된 상태
             List<addressVO> likeList = addressService.getAddressList(sn);
-            res.put("success", Boolean.TRUE);
-            res.put("searchList", likeList);
+//            res.put("success", Boolean.TRUE);
+//            res.put("searchList", likeList);
 
             System.out.println(likeList);
+            return likeList;
         }
-        return new Gson().toJson(res).getBytes("UTF-8");
+//        return new Gson().toJson(res).getBytes("UTF-8");
+        return null;
     }
 
     // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(목록에)
