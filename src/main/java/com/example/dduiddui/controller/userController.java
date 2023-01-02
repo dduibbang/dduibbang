@@ -1,5 +1,6 @@
 package com.example.dduiddui.controller;
 
+import com.example.dduiddui.service.boardService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,17 @@ public class userController {
     @Autowired
     private userService userService;
 
+    @Autowired
+    private boardService boardService;
+
+
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
         String id = (String) session.getAttribute("id");
+        System.out.println(id);
 
-
+        List<boardVO> boardList = boardService.getBoardList();
+        model.addAttribute("boardList", boardList);
 
         if (id != null) { // 로그인된 상태
             userVO userVo = userService.getUserById(id);
