@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-    int mbr_sn = (int)session.getAttribute("mbr_sn");
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +30,7 @@
         <br>
         <div >
             <form class="LeftForm" id="sendAddressForm"  method="POST">
-                <p><input type="hidden" name="mbr_sn"   value="<%=mbr_sn%>"></p>
+                <p><input type="hidden" name="mbr_sn"   value="${sn}"></p>
 
                 <p>도로명 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
@@ -51,22 +47,25 @@
             <form class="LeftForm" id="storyForm" action="insertMap" method="post" style="overflow: auto">
                 <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">
-                    <p><input type="hidden" name="mbr_sn"  value="<%=mbr_sn%>"></p>
+                    <p><input type="hidden" name="mbr_sn"  value="${sn}"></p>
                     <p><input class="input-box" type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
                     <p><input class="input-box" type="hidden" name="adr_st"   value=" 상세주소를 입력해주세요."></p>
                     <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value=""></p>
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>
 
-<%--                <c:forEach items="${postlist}" var="p">--%>
-<%--                    <ol class="story-ul">--%>
-<%--                        <label class="story-label">${p.txt_nm}</label>--%>
-<%--                        <div class="story-div">내용: ${p.txt_cn}</div>--%>
-<%--                            &lt;%&ndash;                        <div>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                            <a href="/postList">상세 보기</a>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                        </div>&ndash;%&gt;--%>
-<%--                    </ol>--%>
-<%--                </c:forEach>--%>
+                <c:forEach items="${likeAdrList}" var="likeAdrlist">
+                    <ol id="like-address-list">
+                        <div id="like-address">
+                            <li>
+                                <h3>${likeAdrlist.adr_ttl}</h3>
+                                <div class="story-div">주소: ${likeAdrlist.adr_cn}</div>
+                                <div class="story-div">상세주소: ${likeAdrlist.adr_st}</div>
+                                <button style="margin-top: 10px">기본주소 설정</button>
+                            </li>
+                        </div>
+                    </ol>
+                </c:forEach>
             </form>
         </div>
 

@@ -29,6 +29,12 @@
     /*font-family: 'Fredoka One', cursive; 영어 폰트*/
     font-family: 'TmoneyRoundWindExtraBold';
 }
+#like-address-list{
+    background-color: #FEF1C6;
+    border-radius: 18px;
+    padding: 7px;
+
+}
 input#adr_ttl {
     width: auto;
 }
