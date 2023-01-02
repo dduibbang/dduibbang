@@ -1,15 +1,13 @@
 package com.example.dduiddui.controller;
 import com.example.dduiddui.vo.*;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import com.example.dduiddui.service.addressService;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import com.example.dduiddui.service.userService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -28,18 +26,22 @@ public class addressController {
     // /home에서 로그인한 사용자가 등록한 기본주소 가져오기
 
     // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(지도에)
-//    @ResponseBody
-//    @GetMapping("/getLikeList")
-//    private byte[] getLikeList(HttpSession session,addressVO addressVO) throws Exception{
-//
-//        Map<String, Object> res = new HashMap<>();
-//        res.put("success", Boolean.FALSE);
-//        Character sd = 'Y';
-//        addressVO.setUse_yn(sd);//(Character(session.getAttribute("intteSeq").toString()));
-//        List<addressVO> searchList = freeServiceImpl.choiceFree(addressVO);
-//        res.put("searchList", searchList);
-//        return new Gson().toJson(res).getBytes("UTF-8");
-//    }
+    @ResponseBody
+    @RequestMapping(value = "/getLikeList",method = RequestMethod.POST)
+    private byte[] getLikeList(HttpSession session,Model model,addressVO addressVO) throws Exception{
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        Map<String, Object> res = new HashMap<>();
+        res.put("success", Boolean.FALSE);
+
+        if (sn != null) { // 로그인된 상태
+            List<addressVO> likeList = addressService.getAddressList(sn);
+            res.put("success", Boolean.TRUE);
+            res.put("searchList", likeList);
+
+            System.out.println(likeList);
+        }
+        return new Gson().toJson(res).getBytes("UTF-8");
+    }
 
     // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(목록에)
     @GetMapping("/map")

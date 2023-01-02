@@ -23,18 +23,15 @@ function getMyData(){
     $.ajax({
         async:true,
         type : "POST",
-        url : "test",
+        url : "/getLikeList",
         dataType:"json",
         contentType : 'application/json; charset=UTF-8',
-        // data:{
-        //   mbr_sn:124
-        // },
-        success : function(data) {
+        success: function(data) {
             console.log(data);
-            setData(data)
+            //setData(data.searchList);
         },
         error : function(xhr, status, error) {
-            //alert('error');
+            alert('error');
         }
     });
 
