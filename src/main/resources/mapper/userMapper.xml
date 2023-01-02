@@ -5,7 +5,20 @@
     <select id="getUserById" resultType="com.example.dduiddui.vo.userVO">
         SELECT *
         FROM `tb_mbr`
-        WHERE mbr_id = #{mbrId}
+        WHERE mbr_id = #{mbr_id}
+    </select>
+
+    <!-- 회원 정보 가져오기 -->
+    <select id="getUserByVO" resultType="com.example.dduiddui.vo.userVO">
+        SELECT *
+        FROM tb_mbr
+        WHERE mbr_id = #{mbr_id}
+    </select>
+
+    <select id="getUserBySn" resultType="com.example.dduiddui.vo.userVO">
+        SELECT *
+        FROM tb_mbr
+        WHERE mbr_sn = #{mbr_sn}
     </select>
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="com.example.dduiddui.vo.userVO">
@@ -20,6 +33,5 @@
                 #{mbr_se}
             )
     </insert>
-
 
 </mapper>

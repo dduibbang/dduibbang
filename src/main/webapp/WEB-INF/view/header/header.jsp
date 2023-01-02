@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-    String id=(String)session.getAttribute("id");
-    String state=(String)session.getAttribute("state");
-%>
-
 <div1>
     <head>
-<%--        <%@import url'https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'%>--%>
+        <%--        <%@import url'https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'%>--%>
 
         <title>N BBANG</title>
         <!-- Bootstrap icons-->
@@ -24,25 +19,21 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     </head>
     <body>
-    <c:set var="id" value="<%=id%>"></c:set>
-    <c:set var="state" value="<%=state%>"></c:set>
     <header>
         <div style="display: flex;position: sticky">
-        <div id="main">
-            <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
-        </div>
-        <h1 style="font-family: 'Fredoka One', cursive;"><a href="/home">N BBANG</a></h1></div>
+            <div id="main">
+                <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
+            </div>
+            <h1 style="font-family: 'Fredoka One', cursive;"><a href="/home">N BBANG</a></h1></div>
         <div>
             <ul>
-                <c:if test="${state != null}">
-                    <li class="nav-item"><a class="nav-link" href="#!"><%=id%>님</a></li>
-                </c:if>
-                <c:if test="${state eq 'user'}">
+                <c:if test="${sn != null}">
+                    <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/myinfo">마이페이지</a></li>
                 </c:if>
             </ul>
@@ -50,11 +41,10 @@
         <nav>
             <form class="formBtn">
                 <ul>
-
-                    <c:if test="${state != null}">
+                    <c:if test="${sn != null}">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
                     </c:if>
-                    <c:if test="${state eq null}">
+                    <c:if test="${sn eq null}">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
                     </c:if>
                 </ul>
@@ -66,13 +56,13 @@
             <div id="mySidenav" class="sidenav" style="font-family: 'Nanum Gothic', sans-serif;">
                 <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">가게 모아보기</a>
-                <a href="#">게시글 보기</a>
-                <a href="#">그룹 엔빵</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">가게 모아보기</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">게시글 보기</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
-                <a href="#">커뮤니티</a>
-                <a href="#">마이페이지</a>
-                <a href="#">주문현황</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">커뮤니티</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
+                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</a>
             </div>
             <script>
                 function openNav(){

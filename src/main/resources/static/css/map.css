@@ -29,6 +29,13 @@
     /*font-family: 'Fredoka One', cursive; 영어 폰트*/
     font-family: 'TmoneyRoundWindExtraBold';
 }
+input#adr_ttl {
+    width: auto;
+}
+input.basicBtn {
+    width: fit-content;
+    margin-top: 20px;
+}
 #sub-bar h1{
     display: flex;
     justify-content: center;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dduiddui.mapper.userMapper">
+
+    <!-- 즐겨찾기 목록 가져오기 -->
+    <select id="getAddressList" resultType="com.example.dduiddui.vo.addressVO">
+        SELECT *
+        FROM tb_adr
+        WHERE mbr_sn = #{mbr_sn}
+        ORDER BY rgtr_dt DESC;
+    </select>
+
+    <!-- 즐겨찾기 추가하기 -->
+    <insert id="insertLike" parameterType="com.example.dduiddui.vo.addressVO">
+        INSERT INTO tb_adr
+        VALUES
+            (
+                #{mbr_sn},
+                #{adr_ttl}, // 주소명(집,회사)
+                #{adr_cn}, // 주소
+                #{adr_st}, // 상세주소
+                #{dft_yn}, // 기본주소 설정여부
+                #{like_yn}, // 즐겨찾기 설정여부
+                #{rgtr_id}, // 등록자
+                #{rgtr_dt}, // 등록일시
+                #{mdfr_dt} // 등록일시
+            )
+    </insert>
+
+    <insert id ="insertAddr" parameterType = "com.example.dduiddui.vo.addressVO">
+        INSERT INTO tb_adr
+            (mbr_sn, adr_ttl, adr_cn, adr_st,rgtr_dt)
+        VALUES
+            (
+                #{mbr_sn},
+                #{adr_ttl},
+                #{adr_cn},
+                #{adr_st},
+                #{rgtr_dt}
+            )
+    </insert>
+</mapper>

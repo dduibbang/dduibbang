@@ -30,9 +30,16 @@ public class userController {
         List<boardVO> boardList = boardService.getBoardList();
         model.addAttribute("boardList", boardList);
 
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        System.out.println("home");
+        System.out.println("user sn: " + sn);
+        System.out.println("user id: " + id);
+
+
         if (id != null) { // 로그인된 상태
             userVO userVo = userService.getUserById(id);
             model.addAttribute("userInfo", userVo);
+            model.addAttribute("sn", sn);
         }
         return "home";
     }
@@ -51,8 +58,10 @@ public class userController {
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지
-        String id = (String) session.getAttribute("id");
-        if (id != null) { // 로그인된 상태
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        System.out.println("user sn: " + sn);
+        //String id = (String) session.getAttribute("id");
+        if (sn != null) { // 로그인된 상태
             return "redirect:/";
         }
 //        ModelAndView mv=new ModelAndView("login");
@@ -68,6 +77,7 @@ public class userController {
     @ResponseBody
     @PostMapping("/login")
     public String login(String mbr_id, String mbr_pwd, HttpSession session,Model model) { // 로그인
+        System.out.println("login");
         System.out.println("user id: " + mbr_id);
         System.out.println("user pw: " + mbr_pwd);
 
@@ -76,9 +86,14 @@ public class userController {
         System.out.println(userVo);
         String resultmsg = "";
         if (userVo != null && userVo.getMbr_pwd().equals(mbr_pwd)) {
+
             String name = userVo.getMbr_nm();
             session.setAttribute("id",mbr_id);
             session.setAttribute("state","user");
+
+            Integer mbrSn = userService.getMbrSn(mbr_id,mbr_pwd);
+            session.setAttribute("mbr_sn",mbrSn);
+            System.out.println("user sn: " + mbrSn);
             return resultmsg = "<script>location.href='/home'</script>";
         } else{//로그인 실패시
             return resultmsg = "<script>alert('로그인 실패');location.href='/login'</script>";
@@ -107,6 +122,7 @@ public class userController {
 
     @GetMapping("/logout")
     public String logout(HttpSession session) { // 로그아웃
+
         session.invalidate();
         System.out.println("logout");
         return "redirect:/home";
