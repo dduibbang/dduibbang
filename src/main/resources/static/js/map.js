@@ -15,7 +15,7 @@ $(document).ready(function(){
 
     $("#nowLo").click(function (){
         map.setCenter(new naver.maps.LatLng(lati, longi));
-        map.setZoom(15);
+        map.setZoom(12);
     });
 
 });
@@ -50,7 +50,7 @@ function setMyMap() {
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new naver.maps.LatLng(lati, longi), // 지도의 중심좌표
-            zoom: 15, // 지도의 확대 레벨
+            zoom: 12, // 지도의 확대 레벨
             mapTypeControl: true,
 
         };
@@ -98,16 +98,6 @@ function setMyMap() {
     naver.maps.Event.addListener(map, 'mousedown', function(e) {
         menuLayer.hide();
     });
-
-    // function setMarkerAndInfo(e){
-    //     var coordHtml = 'Point: ' + readlist[0].txt_cn + '<br />';
-    //
-    //     menuLayer.show().css({
-    //         left: e.offset.x-22,
-    //         top: e.offset.y-90,
-    //         borderRadius:20
-    //     }).html(coordHtml);
-    // };
 }
 function setData(MyList){
 

@@ -22,11 +22,11 @@ public class addressService {
     }
 
     public void uploadLike(addressVO addressVO) {
-        System.out.println("uploadLike");
-//        System.out.println("user id: " + mbr_id);
-//        System.out.println("user pw: " + mbr_pwd);
-
+        //System.out.println(addressVO);
         addressVO.setRgtr_dt(LocalDateTime.now());
+        if(addressVO.getAdr_st().equals("상세주소를 입력해주세요."))
+            addressVO.setAdr_st(null);
+
         addressMapper.insertAddr(addressVO);
     }
 

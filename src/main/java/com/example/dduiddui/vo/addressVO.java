@@ -18,8 +18,6 @@ public class addressVO {
     private String adr_cn; // 주소
     private String adr_st; // 상세주소
     private String dft_yn; // 기본주소 설정여부
-    private String like_yn; // 즐겨찾기 설정여부
-    private String rgtr_id; // 등록자(sn을 파라미터로 받기위해 int)
     private LocalDateTime rgtr_dt; // 등록일시
-    private LocalDateTime mdfr_dt; // 등록일시
+
 }
