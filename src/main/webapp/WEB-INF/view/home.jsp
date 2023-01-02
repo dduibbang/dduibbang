@@ -5,6 +5,7 @@
 <html lang="ko">
 <head>
     <%@include file="header/header.jsp"%>
+    <link rel="icon" type="image/png" sizes="16x16" href="photo/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/tab.css">
     <link rel="stylesheet" type="text/css" href="css/write.css">

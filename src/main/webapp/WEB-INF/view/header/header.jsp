@@ -22,6 +22,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
+
+
     </head>
     <body>
     <header>
@@ -29,7 +31,7 @@
             <div id="main">
                 <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
             </div>
-            <h1 style="font-family: 'Fredoka One', cursive;"><a href="/home">N BBANG</a></h1></div>
+            <h1 style="font-family: 'Fredoka One', cursive;"><a class="nav-link" href="/home">N BBANG</a></h1></div>
         <div>
             <ul>
                 <c:if test="${sn != null}">
