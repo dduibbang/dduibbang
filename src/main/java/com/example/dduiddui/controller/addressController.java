@@ -64,7 +64,7 @@ public class addressController {
             res.put("success", Boolean.TRUE);
             res.put("searchList", likeList);
 
-            System.out.println(likeList);
+            //System.out.println(likeList);
             return likeList;
         }
 //        return new Gson().toJson(res).getBytes("UTF-8");
@@ -84,19 +84,16 @@ public class addressController {
             // 즐찾목록
             List<addressVO> likeList = addressService.getAddressList(sn);
             model.addAttribute("likeAdrList",likeList);
-            System.out.println(likeList);
+            //System.out.println(likeList);
         }
         return "map";
     }
 
     // /map에서 즐겨찾기 장소 추가하기
     @PostMapping("/insertMap")
-    public String insertMap( addressVO addressVO, HttpSession session){
+    public String insertMap( addressVO addressVO){
         try {
-            if(addressVO.getAdr_st().equals("상세주소를 입력해주세요."))
-                addressVO.setAdr_st(null);
-
-            System.out.println(addressVO);
+            //System.out.println(addressVO);
             addressService.uploadLike(addressVO);
         } catch (DuplicateKeyException e) {
             return "redirect:/signup?error_code=-1";
