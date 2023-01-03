@@ -1,6 +1,6 @@
 var HOME_PATH = window.HOME_PATH || '.';
 var map;
-var lati,longi;
+var crd,lati,longi;
 var infoWindow;
 var SearchMarkerList=[];
 var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
@@ -22,12 +22,12 @@ $(document).ready(function(){
 function getMyData(){
     $.ajax({
         type : "GET",
-        url: ($("#contextPath").val() + "/getLikeList"),
-        // url : "getLikeList",
+        // url: ($("#contextPath").val() + "/getLikeList"),
+        url: "/getLikeList",
         dataType:"json",
         success: function(data) {
             console.log(data);
-            //setData(data.searchList);
+            setData(data);
         },
         error : function() {
             alert('error');
@@ -46,7 +46,7 @@ function setMyMap() {
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new naver.maps.LatLng(lati, longi), // 지도의 중심좌표
-            zoom: 12, // 지도의 확대 레벨
+            zoom: 16, // 지도의 확대 레벨
             mapTypeControl: true,
 
         };
@@ -58,28 +58,27 @@ function setMyMap() {
     var marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(lati, longi),
         map: map,
-        // icon:{
-        //     content: '<img src="resources/img/me.png"   width="100" height="50" alt="이미지" onerror="this.style.display=\'none\'" />',
-        // }
         icon:{
-            content:['<div class=infoWin style="background-color:#005cbf">' +
-            '<div style ="font-weight: bold;font-size:17px;color: #FFFFFF">현재 위치</div>'+
-            '</div>'
-
-            ].join('')
+            content: '<div class=infoWin>'+'<img src="/img/me.png"   width="55" height="55" onerror="this.style.display=\'none\'" />'+'</div>',
         }
+        // icon:{
+        //     content:['<div class=infoWin>' +
+        //     '<div style ="font-size:34px;">⬇</div>'+
+        //     '</div>'
+        //
+        //     ].join('')
+        // }
     });
-
     // 현재위치 인포창
     infoWindow = new naver.maps.InfoWindow({
         anchorSkew: true
     });
-    infoWindow.setContent([
-        '<div class=infoWin style="background-color: #005cbf">' +
-        '<div style ="font-weight: bold;font-size:17px">'+'현재 위치'+'</div>'+ // 제목
-        '</div>'
 
-    ].join(''));
+    // 현재위치의 주소얻기
+    naver.maps.Event.addListener(marker, "click", function(e) {
+        // $("#sub").css("background-color", "yellow");
+        searchMyCoordToAddress(e.coord);
+    });
 
 
     map.setCursor('pointer');
@@ -98,58 +97,62 @@ function setMyMap() {
 function setData(MyList){
 
     MyList.forEach(function (item){
-        let itLocation = new naver.maps.LatLng(item.txt_loc_lat,item.txt_loc_lng);
+        let itLocation = new naver.maps.LatLng(item.adr_lat,item.adr_lon);
         var marker = new naver.maps.Marker({
             map: map,
             position: itLocation,
             icon:{
                 content:[
-                    '<div class=infoWin style="background-color:#FF9F9F;font-family: \'TmoneyRoundWindExtraBold\';">' +
+                    '<div class=infoWin style="background-color:#F8941D;font-family: \'TmoneyRoundWindExtraBold\';">' +
                     '<div style ="font-weight: bold;font-size:18px">'+item.adr_ttl+'</div>'+ // 제목
                     '</div>'
 
                 ].join('')
             }
         });
-        // 게시글 정보창 띄우기
-        var infowindow = new naver.maps.InfoWindow({
-            maxWidth: 500,
-            backgroundColor: "#eee",
-            borderColor: "#FFFFFF",
-            borderWidth: 5,
-            anchorSize: new naver.maps.Size(30, 30),
-            anchorSkew: true,
-            anchorColor: "#eee",
-            pixelOffset: new naver.maps.Point(0, -10)
-        });
-
-
-        infowindow.setContent([
-            '<div class=infoWin style="background-color: #808080">' +
-            '<div style ="font-weight: bold;font-size:17px">'+item.adr_ttl+'</div>'+ // 제목
-            '</div>'
-
-        ].join(''));
 
         // 게시글 네비바에 띄우기
         naver.maps.Event.addListener(marker, "click", function(e) {
 
             infoWindow.close();
-
-            $("#send").hide();
-            $("#infoForm").show();
-            $("#storyForm").hide();
             // $("#sub").css("background-color", "yellow");
 
-            $("#latiVal_").val(item.txt_loc_lat);
-            $("#longiVal_").val(item.txt_loc_lng);
+            $("#latiVal_").val(item.adr_lat);
+            $("#longiVal_").val(item.adr_lon);
             $("#adr_cn_open").val(item.adr_cn);
             $("#adr_st_open").html(item.adr_st);
         });
-        naver.maps.Event.addListener(marker, 'mouseover', function(e) {
-            infoWindow.close();
-            infowindow.open(map, marker);
-        });
+    });
+}
+function searchMyCoordToAddress(latlng) {
+
+    naver.maps.Service.reverseGeocode({
+        coords: latlng,
+        orders: [
+            naver.maps.Service.OrderType.ADDR,
+            naver.maps.Service.OrderType.ROAD_ADDR
+        ].join(',')
+    }, function(status, response) {
+        if (status === naver.maps.Service.Status.ERROR) {
+            return alert('Something Wrong!');
+        }
+
+        var items = response.v2.results,
+
+            htmlAddresses = [];
+
+        for (var i=0, ii=items.length, item, addrType; i<ii; i++) {
+            item = items[i];
+            address = makeAddress(item) || '';
+            addrType = item.name === 'roadaddr' ? '[도로명 주소]' : '[지번 주소]';
+
+            htmlAddresses.push(addrType +' '+ address);
+        }
+
+        $("#adr_cn_open").val(address);
+        $("#adr_cn_close").val(address);
+        $("#latiVal_").val(lati);
+        $("#longiVal_").val(longi);
     });
 }
 function searchCoordinateToAddress(latlng) {
@@ -176,12 +179,11 @@ function searchCoordinateToAddress(latlng) {
             address = makeAddress(item) || '';
             addrType = item.name === 'roadaddr' ? '[도로명 주소]' : '[지번 주소]';
 
-            htmlAddresses.push((i+1) +'. '+ addrType +' '+ address);
+            htmlAddresses.push(addrType +' '+ address);
         }
 
         infoWindow.setContent([
-            '<div class=infoWin style="background-color:#808080" >',
-            '<h4 style="margin-top:5px;">검색 좌표</h4>',
+            '<div class=infoWin style="background-color:#F8941D; border-radius: 10px" >',
             htmlAddresses.join('<br />'),
             '</div>'
         ].join('\n'));
@@ -190,7 +192,7 @@ function searchCoordinateToAddress(latlng) {
         $("#adr_cn_open").val(address);
         $("#adr_cn_close").val(address);
 
-
+        getData(address);
     });
 }
 
@@ -222,43 +224,42 @@ function getData(target){
                     });
 
                     infowindow.setContent([
-                        '<div class=infoWin style="background-color: #808080">' +
+                        '<div class=infoWin style="background-color: #F8941D">' +
                         '<div style ="font-weight: bold;font-size:17px">'+item.place_name+'</div>'+
                         '</div>'
 
                     ].join(''));
+
+                    naver.maps.Event.addListener(marker, "click", function(e) {
+
+                        $("#latiVal_").val(item.y);
+                        $("#longiVal_").val(item.x);
+                        $("#latiVal").val(item.y);
+                        $("#longiVal").val(item.x);
+                        $("#adr_cn_open").val(item.address_name);
+                        $("#adr_st_open").html(item.address_name);
+
+                    });
 
                     naver.maps.Event.addListener(marker, 'mouseover', function(e) {
                         infoWindow.close();
                         infowindow.open(map, marker);
                     });
 
-                    naver.maps.Event.addListener(marker, "click", function(e) {
-
-                        $("#infoForm").hide();
-                        $("#send").show();
-                        $("#storyForm").hide();
-
-                        $("#locationTitle").html(" <strong>" + item.place_name + "</strong>");
-                    });
-
                     SearchMarkerList.push(marker);
                 });
 
-                // 인포창 표시
                 $("#latiVal").val(msg.documents[0].y);
                 $("#longiVal").val(msg.documents[0].x);
                 $("#latiVal_").val(msg.documents[0].y);
                 $("#longiVal_").val(msg.documents[0].x);
-                $("#locationTitle").html(" <strong>" + msg.documents[0].place_name + "</strong>");
 
-                //화면크기에서 벗어난 장소일 때만 이동됨
+                // 화면 이동
                 var moveLatLon = new naver.maps.LatLng(msg.documents[0].y, msg.documents[0].x);
                 map.panTo(moveLatLon);
-                map.setZoom(16);
 
             } catch (error) {
-                $("#locationTitle").html(" <strong>정보가 없습니다.</strong>");
+                $("#adr_cn_open").val("정보가 없습니다.");
             }
         });
 }

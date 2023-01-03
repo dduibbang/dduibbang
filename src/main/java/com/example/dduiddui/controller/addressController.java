@@ -36,8 +36,8 @@ public class addressController {
 
         if (sn != null) { // 로그인된 상태
             List<addressVO> likeList = addressService.getAddressList(sn);
-//            res.put("success", Boolean.TRUE);
-//            res.put("searchList", likeList);
+            res.put("success", Boolean.TRUE);
+            res.put("searchList", likeList);
 
             System.out.println(likeList);
             return likeList;
