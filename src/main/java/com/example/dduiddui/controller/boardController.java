@@ -22,7 +22,7 @@ public class boardController {
 
 
     @GetMapping("/board")
-    public String toWritePage() {  //회원가입 페이지
+    public String toWritePage() {
 
 
         return "board";

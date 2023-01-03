@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div1>
     <head>
         <%--        <%@import url'https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'%>--%>
@@ -59,7 +60,7 @@
                 <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">가게 모아보기</a>
-                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">게시글 보기</a>
+                <a href="/home" style="font-family: 'TmoneyRoundWindExtraBold';">게시글 보기</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">커뮤니티</a>
