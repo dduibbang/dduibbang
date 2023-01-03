@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dduiddui.mapper.bossMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+
+    <select id="getBossById" resultType="com.example.dduiddui.vo.userVO">
+        SELECT *
+        FROM `tb_mbr`
+        WHERE mbr_id = #{mbr_id} and mbr_se = "01"
+    </select>
+
+    <select id="getStoreById" resultType="com.example.dduiddui.vo.bossVO">
+        SELECT *
+        FROM `tb_str`
+        WHERE mbr_sn = #{mbr_sn}
+    </select>
+
+    <select id="getMenuBySn" resultType="com.example.dduiddui.vo.menuVO">
+        SELECT *
+        FROM `tb_menu`
+        WHERE str_sn = #{str_sn}
+    </select>
+    
+    <insert id="insertStore" parameterType="com.example.dduiddui.vo.bossVO">
+    INSERT INTO 'tb_str'(str_nm,str_tel,str_bin,str_ctgr_str_min,str_adr)
+    VALUES
+        (
+        #{str_nm},
+        #{str_tel},
+        #{str_bin},
+        #{str_ctgr},
+        #{str_min},
+        #{str_adr}
+        )
+    </insert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
