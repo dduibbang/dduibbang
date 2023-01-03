@@ -102,7 +102,7 @@
                     <!--사진-->
                     <div style="width: 200px; height: 200px; background-color: white; margin-right: auto; margin-left: auto"></div>
                     <br>
-                    <input type="text" class="form-control" style="width:300px; margin-right: auto; margin-left: auto; margin-bottom: 10px" id="strName" name="strName" required="required" readonly>
+                    <input type="text" class="form-control" style="width:200px; text-align: center; margin-right: auto; margin-left: auto; margin-bottom: 10px" id="strName" name="strName" required="required" readonly>
                     <input type="button" class="btn-upload" value="매장선택" onclick="openSelect()">
                 </div>
 
