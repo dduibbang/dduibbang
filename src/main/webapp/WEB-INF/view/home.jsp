@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/tab.css">
     <link rel="stylesheet" type="text/css" href="css/board.css">
+    <script src="../js/home.js"></script>
     <script>
         $(document).ready(function(){
             console.log(<%= request.getParameter("userInfo")%>);
-
+            getMyAdr();
         });
     </script>
 </head>
