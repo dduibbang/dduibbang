@@ -11,10 +11,16 @@
     <!-- 작성 -->
     <insert id="insertBoard" parameterType="com.example.dduiddui.vo.boardVO">
 
-        INSERT INTO `tb_brd`(brd_ctgr,str_sn, safe_yn, brd_ttl, brd_cn, brd_nn, brd_pri, brd_adr, brd_end_dt, rgtr_id, rgtr_dt)
+        <selectKey keyProperty="str_sn" resultType="java.lang.Integer" order="BEFORE">
+            SELECT str_sn
+            FROM `tb_str`
+            WHERE str_nm = #{strName}
+        </selectKey>
+        INSERT INTO `tb_brd`(brd_ctgr, str_sn, safe_yn, brd_ttl, brd_cn, brd_nn, brd_pri, brd_adr, brd_end_dt, rgtr_id, rgtr_dt)
         VALUES
             (
                 #{brd_ctgr},
+                #{str_sn},
                 #{safe_yn},
                 #{brd_ttl},
                 #{brd_cn},

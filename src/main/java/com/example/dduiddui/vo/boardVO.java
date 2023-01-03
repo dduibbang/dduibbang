@@ -7,7 +7,8 @@ package com.example.dduiddui.vo;
 @Data
 public class boardVO {
     private int brd_sn;
-    //private int str_sn;
+    private int str_sn;
+    private String strName;
     private String brd_ctgr;
     private String safe_yn;
     private String brd_ttl;
