@@ -23,7 +23,32 @@ public class addressController {
     @Autowired
     private userService userService;
 
+    @PostMapping("/setAddress")
+    public void setAddress(HttpSession session,addressVO addressVO){
+        // 사용자의 기본주소 등록하기
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        if(sn != null){
+            //addressVO
+        }
+
+    }
     // /home에서 로그인한 사용자가 등록한 기본주소 가져오기
+    @ResponseBody
+    @RequestMapping(value = "/getMyAddress",method = RequestMethod.GET)
+    public String getMyAddress(HttpSession session, Model model) {
+
+        String userAdr = "주소를 설정해주세요.";
+        String id = (String) session.getAttribute("id");
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+
+        if (id != null) { // 로그인된 상태
+            userAdr = addressService.getAddress(sn);
+            model.addAttribute("userAdr",userAdr);
+            System.out.println("adr:" + userAdr);
+        }
+        return userAdr;
+    }
+
 
     // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(지도에)
     @ResponseBody
@@ -36,19 +61,19 @@ public class addressController {
 
         if (sn != null) { // 로그인된 상태
             List<addressVO> likeList = addressService.getAddressList(sn);
-//            res.put("success", Boolean.TRUE);
-//            res.put("searchList", likeList);
+            res.put("success", Boolean.TRUE);
+            res.put("searchList", likeList);
 
-            System.out.println(likeList);
+            //System.out.println(likeList);
             return likeList;
         }
 //        return new Gson().toJson(res).getBytes("UTF-8");
         return null;
     }
 
-    // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(목록에)
+    // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들(목록에)
     @GetMapping("/map")
-    public String toMapPage(Model model, HttpSession session, RedirectAttributes redirect) { // 로그인 페이지
+    public String toMapPage(Model model, HttpSession session) { // 로그인 페이지
         String id = (String) session.getAttribute("id");
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         if (id != null) { // 로그인된 상태
@@ -56,21 +81,19 @@ public class addressController {
             model.addAttribute("userInfo", userVo);
             model.addAttribute("sn", sn);
 
+            // 즐찾목록
             List<addressVO> likeList = addressService.getAddressList(sn);
             model.addAttribute("likeAdrList",likeList);
-            System.out.println(likeList);
+            //System.out.println(likeList);
         }
         return "map";
     }
 
     // /map에서 즐겨찾기 장소 추가하기
     @PostMapping("/insertMap")
-    public String insertMap( addressVO addressVO, HttpSession session){
+    public String insertMap( addressVO addressVO){
         try {
-            if(addressVO.getAdr_st().equals("상세주소를 입력해주세요."))
-                addressVO.setAdr_st(null);
-
-            System.out.println(addressVO);
+            //System.out.println(addressVO);
             addressService.uploadLike(addressVO);
         } catch (DuplicateKeyException e) {
             return "redirect:/signup?error_code=-1";

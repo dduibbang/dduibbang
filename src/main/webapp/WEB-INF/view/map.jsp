@@ -26,21 +26,21 @@
 
 <body>
 <div style="display: flex">
-    <input type="hidden" id="contextPath" value="<%=request.getContextPath()%>">
+<%--    <input type="hidden" id="contextPath" value="<%=request.getContextPath()%>">--%>
     <nav id="sub-bar" style="order: 1">
-        <div class="basicBtn" style="font-size: small"><a href="/home">홈 화면으로</a></div>
-        <h1>위치 설정</h1>
+        <div class="basicBtn" style="font-size: 30px;margin: 0px;padding: 0px" ><a href="/home">🏠</a></div>
+        <h1 style="margin-top:0px">위치 설정</h1>
         <br>
         <div >
             <form class="LeftForm" id="sendAddressForm"  method="POST">
                 <p><input type="hidden" name="mbr_sn"   value="${sn}"></p>
-                <p><input type="hidden" name="latiVal"  id="latiVal_"  value=""></p>
-                <p><input type="hidden" name="longiVal"  id="longiVal_"  value=""></p>
+                <p><input type="hidden" name="adr_lat"  id="latiVal_"  value=""></p>
+                <p><input type="hidden" name="adr_lon"  id="longiVal_"  value=""></p>
 
                 <p>도로명 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
                 <p>상세 주소 :</p>
-                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value=" 상세주소를 입력해주세요."></p>
+                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value=""></p>
                 <div style="display: flex">
                 <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="saveLocation" type="submit" value="이 위치로 주소 설정">
 
@@ -48,15 +48,15 @@
             </form>
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
 
-            <h1 style="margin-top: 50px;" >즐겨찾기</h1>
-            <form class="LeftForm" id="storyForm" action="insertMap" method="post" style="overflow: auto">
+            <h1 style="margin-top: 50px;" >🔍즐겨찾기</h1>
+            <form class="LeftForm" action="insertMap" method="post" style="overflow: auto">
                 <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">
                     <p><input type="hidden" name="mbr_sn"  value="${sn}"></p>
-                    <p><input type="hidden" name="latiVal"  id="latiVal"  value=""></p>
-                    <p><input type="hidden" name="longiVal"  id="longiVal"  value=""></p>
+                    <p><input type="hidden" name="adr_lat"  id="latiVal"  value=""></p>
+                    <p><input type="hidden" name="adr_lon"  id="longiVal"  value=""></p>
                     <p><input type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
-                    <p><input type="hidden" name="adr_st"   value=" 상세주소를 입력해주세요."></p>
+                    <p><input type="hidden" name="adr_st"  id="adr_st_close" value=""></p>
                     <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value=""></p>
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>
@@ -68,7 +68,7 @@
                                 <h3>${likeAdrlist.adr_ttl}</h3>
                                 <div class="story-div">주소: ${likeAdrlist.adr_cn}</div>
                                 <div class="story-div">상세주소: ${likeAdrlist.adr_st}</div>
-                                <button style="margin-top: 10px">기본주소 설정</button>
+                                <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>
                             </li>
                         </div>
                     </ol>

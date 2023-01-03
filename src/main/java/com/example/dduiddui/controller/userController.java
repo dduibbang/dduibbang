@@ -2,6 +2,7 @@ package com.example.dduiddui.controller;
 
 import com.example.dduiddui.service.boardService;
 import com.example.dduiddui.service.userService;
+import com.example.dduiddui.service.addressService;
 import com.example.dduiddui.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;

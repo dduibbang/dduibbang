@@ -20,4 +20,7 @@ public class addressVO {
     private String dft_yn; // 기본주소 설정여부
     private LocalDateTime rgtr_dt; // 등록일시
 
+    private String adr_lat;
+    private String adr_lon;
+
 }

@@ -8,11 +8,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="photo/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/tab.css">
-    <link rel="stylesheet" type="text/css" href="css/write.css">
+    <link rel="stylesheet" type="text/css" href="css/board.css">
+    <script src="../js/home.js"></script>
     <script>
         $(document).ready(function(){
             console.log(<%= request.getParameter("userInfo")%>);
-
+            getMyAdr();
         });
     </script>
 </head>
@@ -72,13 +73,13 @@
                                 </table>
                                 <div class="clearfix">
                                     <ul class="pagination justify-content-center">
-                                        <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
-                                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                        <li class="page-item disabled"><a href="" class="page-link">Previous</a></li>
+                                        <li class="page-item active"><a href="" class="page-link">1</a></li>
+                                        <li class="page-item"><a href="" class="page-link">2</a></li>
+                                        <li class="page-item"><a href="" class="page-link">3</a></li>
+                                        <li class="page-item"><a href="" class="page-link">4</a></li>
+                                        <li class="page-item"><a href="" class="page-link">5</a></li>
+                                        <li class="page-item"><a href="" class="page-link">Next</a></li>
                                     </ul>
                                 </div>
                             </div>
