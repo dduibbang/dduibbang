@@ -61,7 +61,7 @@
                 </div>
 
                 <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                    <ol id="like-address-list">
+                    <ol id="like-address-list" style="overflow: scroll">
                         <div id="like-address">
                             <li>
                                 <h3>${likeAdrlist.adr_ttl}</h3>
