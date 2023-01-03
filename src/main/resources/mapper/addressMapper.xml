@@ -13,14 +13,16 @@
     <!-- 즐겨찾기 추가하기 -->
     <insert id ="insertAddr" parameterType = "com.example.dduiddui.vo.addressVO">
         INSERT INTO tb_adr
-            (mbr_sn, adr_ttl, adr_cn, adr_st,rgtr_dt)
+            (mbr_sn, adr_ttl, adr_cn, adr_st,rgtr_dt,adr_lat,adr_lon)
         VALUES
             (
                 #{mbr_sn},
                 #{adr_ttl},
                 #{adr_cn},
                 #{adr_st},
-                #{rgtr_dt}
+                #{rgtr_dt},
+                #{adr_lat},
+                #{adr_lon}
             )
     </insert>
 </mapper>
