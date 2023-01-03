@@ -25,4 +25,12 @@
                 #{adr_lon}
             )
     </insert>
+
+    <!-- 기본주소 가져오기 -->
+    <select id="getAddress" resultType="com.example.dduiddui.vo.addressVO">
+        SELECT A.mbr_sn,B.adr_cn,B.adr_st
+        FROM tb_mbr AS A LEFT JOIN tb_adr AS B
+                                   ON A.mbr_sn = B.mbr_sn
+        WHERE B.dft_yn = 'Y'
+    </select>
 </mapper>

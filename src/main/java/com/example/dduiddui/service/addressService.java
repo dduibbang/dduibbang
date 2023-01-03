@@ -29,5 +29,12 @@ public class addressService {
 
         addressMapper.insertAddr(addressVO);
     }
+    public String getAddress(Integer mbrSn) {
+        String address = "";
 
+        address = addressMapper.getAddress(mbrSn).getAdr_cn() + " " + addressMapper.getAddress(mbrSn).getAdr_st();
+        System.out.println("address" + address);
+
+        return address;
+    }
 }

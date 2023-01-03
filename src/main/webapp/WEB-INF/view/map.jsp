@@ -68,7 +68,7 @@
                                 <h3>${likeAdrlist.adr_ttl}</h3>
                                 <div class="story-div">주소: ${likeAdrlist.adr_cn}</div>
                                 <div class="story-div">상세주소: ${likeAdrlist.adr_st}</div>
-                                <button style="margin-top: 10px">기본주소 설정</button>
+                                <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>
                             </li>
                         </div>
                     </ol>
