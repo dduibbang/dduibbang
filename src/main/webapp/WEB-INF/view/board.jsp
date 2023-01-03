@@ -5,13 +5,15 @@
 <html lang="ko">
 <head>
     <%@include file="header/header.jsp"%>
-    <link rel="stylesheet" type="text/css" href="css/write.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/tap.css">
+    <link rel="stylesheet" type="text/css" href="css/board.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #F7C123;">
     <div class="tab">
         <br>
         <br>
@@ -21,8 +23,12 @@
                 <div class="left">
                     <div class="form-group">
                         <label class="safe" ><input type="radio" value="N"  name="safe_yn" checked /><span>일반거래</span></label>
-                        <label class="safe" ><input type="radio" value="Y"  name="safe_yn" /><span>안심거래</span></label>
+                        <label class="safe" style="margin-left: 5%"><input type="radio" value="Y"  name="safe_yn" /><span>안심거래</span></label>
+                        <label style="margin-left: 43%">작성자 <input type="text" id="rgtr_id"
+                                         name="rgtr_id"
+                                         maxlength="30" required="required"></label>
                     </div>
+
                     <div class="form-group">
                         <label>제목</label>
                         <!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
@@ -88,17 +94,6 @@
                                maxlength="2" required="required">
                     </div>
 
-
-                    <div class="form-group">
-                        <label>작성자</label>
-                        <!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
-                        <!-- required 속성을 설정하면 필수입력 사항이된다. -->
-                        <!-- pattern 속성을 이용한 정규표현식으로 데이터의 유효성 검사를 할 수 있다. -->
-                        <input type="text" class="form-control" id="rgtr_id"
-                               name="rgtr_id"
-                               maxlength="30" required="required">
-                    </div>
-
                 </div>
 
 
@@ -107,7 +102,8 @@
                     <!--사진-->
                     <div style="width: 200px; height: 200px; background-color: white; margin-right: auto; margin-left: auto"></div>
                     <br>
-                    <button class="btn-upload">매장선택</button>
+                    <input type="text" class="form-control" style="width:300px; margin-right: auto; margin-left: auto; margin-bottom: 10px" id="strName" name="strName" required="required" readonly>
+                    <input type="button" class="btn-upload" value="매장선택" onclick="openSelect()">
                 </div>
 
                 <div class="form-group">
@@ -123,6 +119,19 @@
             </form>
         </div>
     </div>
+
+    <script type="text/javascript">
+        /*let openWin;*/
+        var openWin;
+
+        function openSelect() {
+            // window.name = "부모창 이름";
+            window.name = "boardForm";
+
+            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+            openWin = window.open("select", "selectForm", "width=570, height=350, resizable = no, scrollbars = no");
+        }
+    </script>
 
 </body>
 </html>
