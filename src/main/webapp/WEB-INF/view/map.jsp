@@ -28,8 +28,8 @@
 <div style="display: flex">
 <%--    <input type="hidden" id="contextPath" value="<%=request.getContextPath()%>">--%>
     <nav id="sub-bar" style="order: 1">
-        <div class="basicBtn" style="font-size: small"><a href="/home">홈 화면으로</a></div>
-        <h1>위치 설정</h1>
+        <div class="basicBtn" style="font-size: 30px;margin: 0px;padding: 0px" ><a href="/home">🏠</a></div>
+        <h1 style="margin-top:0px">위치 설정</h1>
         <br>
         <div >
             <form class="LeftForm" id="sendAddressForm"  method="POST">
@@ -48,7 +48,7 @@
             </form>
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
 
-            <h1 style="margin-top: 50px;" >즐겨찾기</h1>
+            <h1 style="margin-top: 50px;" >🔍즐겨찾기</h1>
             <form class="LeftForm" action="insertMap" method="post" style="overflow: auto">
                 <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">

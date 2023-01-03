@@ -58,16 +58,16 @@ function setMyMap() {
     var marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(lati, longi),
         map: map,
-        // icon:{
-        //     content: '<img src="resources/img/me.png"   width="100" height="50" alt="이미지" onerror="this.style.display=\'none\'" />',
-        // }
         icon:{
-            content:['<div class=infoWin style="background-color:#005cbf">' +
-            '<div style ="font-weight: bold;font-size:17px;color: #FFFFFF">현재 위치</div>'+
-            '</div>'
-
-            ].join('')
+            content: '<div class=infoWin>'+'<img src="/img/me.png"   width="55" height="55" onerror="this.style.display=\'none\'" />'+'</div>',
         }
+        // icon:{
+        //     content:['<div class=infoWin>' +
+        //     '<div style ="font-size:34px;">⬇</div>'+
+        //     '</div>'
+        //
+        //     ].join('')
+        // }
     });
     // 현재위치 인포창
     infoWindow = new naver.maps.InfoWindow({
