@@ -31,12 +31,19 @@ public class userService {
         return userVo.getMbr_sn();
     }
 
+//    public userVO getAddress(Integer mbrSn) {
+//        System.out.println("test:"+userMapper.getAddress(mbrSn));
+//        return userMapper.getAddress(mbrSn);
+//    }
+
     public userVO getUserBySn(Integer mbr_sn) {
         return userMapper.getUserBySn(mbr_sn);
     }
     public void signup(userVO userVo) {
         userMapper.insertUser(userVo);
     }
+
+
 
 
 }

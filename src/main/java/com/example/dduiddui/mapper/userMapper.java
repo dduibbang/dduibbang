@@ -12,4 +12,6 @@ public interface userMapper {
     userVO getUserBySn(Integer mbrSn);
     void insertUser(userVO userVo); // 회원가입
 
+//    userVO getAddress(Integer mbrSn); // 즐찾 불러오기
+
 }

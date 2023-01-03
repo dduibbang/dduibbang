@@ -120,7 +120,9 @@ function setData(MyList){
             $("#latiVal_").val(item.adr_lat);
             $("#longiVal_").val(item.adr_lon);
             $("#adr_cn_open").val(item.adr_cn);
+            $("#adr_cn_close").val(item.adr_cn);
             $("#adr_st_open").html(item.adr_st);
+            $("#adr_st_close").html(item.adr_st);
         });
     });
 }
