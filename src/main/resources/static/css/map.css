@@ -32,8 +32,9 @@
 #like-address-list{
     background-color: #FEF1C6;
     border-radius: 18px;
-    padding: 7px;
-
+    padding: 4px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 input#adr_ttl {
     width: auto;

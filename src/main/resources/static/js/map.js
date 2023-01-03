@@ -12,12 +12,6 @@ $(document).ready(function(){
     //alert(crd.latitude+","+crd.longitude);
 
     getMyData();
-
-    $("#nowLo").click(function (){
-        map.setCenter(new naver.maps.LatLng(lati, longi));
-        map.setZoom(12);
-    });
-
 });
 function getMyData(){
     $.ajax({
@@ -37,10 +31,6 @@ function getMyData(){
 
 }
 
-// function myFunction() {
-//     getData($("#searchInput").val());
-// }
-
 function setMyMap() {
 
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -51,7 +41,7 @@ function setMyMap() {
 
         };
 
-    // 지도를 생성합니다
+    // 지도 생성
     map = new naver.maps.Map(mapContainer, mapOption);
 
     // 내 위치에 마커 띄우기
@@ -61,13 +51,6 @@ function setMyMap() {
         icon:{
             content: '<div class=infoWin>'+'<img src="/img/me.png"   width="55" height="55" onerror="this.style.display=\'none\'" />'+'</div>',
         }
-        // icon:{
-        //     content:['<div class=infoWin>' +
-        //     '<div style ="font-size:34px;">⬇</div>'+
-        //     '</div>'
-        //
-        //     ].join('')
-        // }
     });
     // 현재위치 인포창
     infoWindow = new naver.maps.InfoWindow({
@@ -76,10 +59,8 @@ function setMyMap() {
 
     // 현재위치의 주소얻기
     naver.maps.Event.addListener(marker, "click", function(e) {
-        // $("#sub").css("background-color", "yellow");
         searchMyCoordToAddress(e.coord);
     });
-
 
     map.setCursor('pointer');
     map.getPanes().floatPane.appendChild(menuLayer[0]);
@@ -87,7 +68,6 @@ function setMyMap() {
     // 마우스 클릭이벤트
     map.addListener('click', function(e) {
         searchCoordinateToAddress(e.coord);
-        // setMarkerAndInfo(e);
     });
 
     naver.maps.Event.addListener(map, 'mousedown', function(e) {
@@ -120,12 +100,12 @@ function setData(MyList){
             $("#latiVal_").val(item.adr_lat);
             $("#longiVal_").val(item.adr_lon);
             $("#adr_cn_open").val(item.adr_cn);
-            $("#adr_cn_close").val(item.adr_cn);
-            $("#adr_st_open").html(item.adr_st);
-            $("#adr_st_close").html(item.adr_st);
+            $("#adr_st_open").val(item.adr_st);
         });
     });
 }
+
+// 현재위치의 좌표를 주소로 도출
 function searchMyCoordToAddress(latlng) {
 
     naver.maps.Service.reverseGeocode({
@@ -155,8 +135,12 @@ function searchMyCoordToAddress(latlng) {
         $("#adr_cn_close").val(address);
         $("#latiVal_").val(lati);
         $("#longiVal_").val(longi);
+        $("#latiVal").val(lati);
+        $("#longiVal").val(longi);
     });
 }
+
+// 지도 아무곳이나 클릭했을 때
 function searchCoordinateToAddress(latlng) {
 
     infoWindow.close();
@@ -239,8 +223,7 @@ function getData(target){
                         $("#latiVal").val(item.y);
                         $("#longiVal").val(item.x);
                         $("#adr_cn_open").val(item.address_name);
-                        $("#adr_st_open").html(item.address_name);
-
+                        $("#adr_cn_close").val(item.address_name);
                     });
 
                     naver.maps.Event.addListener(marker, 'mouseover', function(e) {
@@ -261,7 +244,7 @@ function getData(target){
                 map.panTo(moveLatLon);
 
             } catch (error) {
-                $("#adr_cn_open").val("정보가 없습니다.");
+                $("#adr_cn_open").val("데이터가 없습니다.");
             }
         });
 }
