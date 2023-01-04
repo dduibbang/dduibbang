@@ -24,13 +24,12 @@ public class boardController {
     @GetMapping("/board")
     public String toWritePage() {
 
-
         return "board";
     }
 
 
     @PostMapping("/board")
-    public String write(HttpSession session,  boardVO boardVo){
+    public String write(HttpSession session,  boardVO boardVo, Model model){
         try {
             String id = (String) session.getAttribute("id");
             boardService.boardWrite(boardVo);
@@ -40,6 +39,7 @@ public class boardController {
             e.printStackTrace();
             return "redirect:/boardWrite?error_code=-99";
         }
+
         return "redirect:/home";
     }
 

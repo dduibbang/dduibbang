@@ -60,6 +60,14 @@ public class userController {
         return "map";
     }
 
+
+    @GetMapping("/memberInfo")
+    public String mbrInfoPage() {
+
+        return "memberInfo";
+    }
+
+
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지
         Integer sn = (Integer) session.getAttribute("mbr_sn");
