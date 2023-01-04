@@ -1,3 +1,4 @@
+<%@ page import="lombok.var" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -23,7 +24,6 @@
     <script src="../js/map.js?ver1"></script>
 
 </head>
-
 <body>
 <div style="display: flex">
 <%--    <input type="hidden" id="contextPath" value="<%=request.getContextPath()%>">--%>
@@ -40,7 +40,7 @@
                 <p>도로명 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
                 <p>상세 주소 :</p>
-                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value="상세주소!!!"></p>
+                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value="상세주소를 입력해주세요."></p>
                 <div style="display: flex">
                 <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="이 위치로 주소 설정">
                 </div>
@@ -48,7 +48,7 @@
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
 
             <h1 style="margin-top: 50px;" >🔍즐겨찾기</h1>
-            <form class="LeftForm" action="insertMap" method="post" style="overflow: auto">
+            <form class="LeftForm" action="insertMap" method="post">
                 <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">
                     <p><input type="hidden" name="mbr_sn"  value="${sn}"></p>
@@ -56,22 +56,22 @@
                     <p><input type="hidden" name="adr_lon"  id="longiVal"  value=""></p>
                     <p><input type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
                     <p><input type="hidden" name="adr_st"  id="adr_st_close" value=""></p>
-                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value=""></p>
+                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value="" onkeyup="printAdrSt()"></p>
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>
-
+                <div style="overflow: auto;height: 610px;margin-top: 20px">
                 <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                    <ol id="like-address-list" style="overflow: scroll">
-                        <div id="like-address">
+                    <ul id="like-address-list" >
+                        <div id="like-address" style="overflow-wrap: normal">
                             <li>
-                                <h3>${likeAdrlist.adr_ttl}</h3>
-                                <div class="story-div">주소: ${likeAdrlist.adr_cn}</div>
-                                <div class="story-div">상세주소: ${likeAdrlist.adr_st}</div>
+                                <h3>🔸${likeAdrlist.adr_ttl}</h3>
+                                <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>
                                 <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>
                             </li>
                         </div>
-                    </ol>
+                    </ul>
                 </c:forEach>
+                </div>
             </form>
         </div>
 

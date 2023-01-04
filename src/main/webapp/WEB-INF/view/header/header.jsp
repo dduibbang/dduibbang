@@ -33,26 +33,28 @@
                 <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
             </div>
             <h1 style="font-family: 'Fredoka One', cursive;"><a class="nav-link" href="/home">N BBANG</a></h1></div>
-        <div>
-            <ul>
-                <c:if test="${sn != null}">
-                    <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/myinfo">마이페이지</a></li>
-                </c:if>
-            </ul>
+        <div style="display: flex; align-items: baseline;" >
+            <div style="margin-right: 20px;">
+                    <ul>
+                        <c:if test="${sn != null}">
+                            <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/memberInfo">마이페이지</a></li>
+                        </c:if>
+                    </ul>
+            </div>
+            <div>
+                <form class="formBtn">
+                    <ul>
+                        <c:if test="${sn != null}">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
+                        </c:if>
+                        <c:if test="${sn eq null}">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
+                        </c:if>
+                    </ul>
+                </form>
+            </div>
         </div>
-        <nav>
-            <form class="formBtn">
-                <ul>
-                    <c:if test="${sn != null}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
-                    </c:if>
-                    <c:if test="${sn eq null}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
-                    </c:if>
-                </ul>
-            </form>
-        </nav>
     </header>
     <nav id="navHeader">
         <div  style="display: flex">
@@ -64,7 +66,7 @@
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">커뮤니티</a>
-                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
+                <a href="/memberInfo" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</a>
             </div>
             <script>
@@ -79,7 +81,7 @@
                     //sidenav 클래스를 가진 div 요소 : width:0 숨기기
                     document.getElementById("mySidenav").style.width="0px";
                     document.getElementById("main").style.marginLeft="0px";
-                    document.body.style.backgroundColor="white";
+                    document.body.style.backgroundColor="#f7c123";
                 }
             </script>
         </div>

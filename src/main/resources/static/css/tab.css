@@ -5,6 +5,8 @@
     background: #f9fcf3;
     border-radius: 20px;
     padding: 20px;
+    padding-top: 0px;
+    box-shadow: 5px 5px darkgrey;
 }
 .tabContents{
 

@@ -28,8 +28,11 @@ public class userController {
         String id = (String) session.getAttribute("id");
         System.out.println(id);
 
-        List<boardVO> boardList = boardService.getBoardList();
-        model.addAttribute("boardList", boardList);
+        List<boardVO> NboardList = boardService.getNBoardList();
+        model.addAttribute("NboardList", NboardList);
+
+        List<boardVO> YboardList = boardService.getYBoardList();
+        model.addAttribute("YboardList", YboardList);
 
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         System.out.println("home");
@@ -56,6 +59,14 @@ public class userController {
     public String toMapPage() {  //회원가입 페이지
         return "map";
     }
+
+
+    @GetMapping("/memberInfo")
+    public String mbrInfoPage() {
+
+        return "memberInfo";
+    }
+
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지

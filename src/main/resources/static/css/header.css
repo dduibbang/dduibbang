@@ -48,7 +48,7 @@ header>h1{
     font-variation-settings: 'slnt' -10;
 }
 .formBtn{
-    padding: 5px;
+    padding: 6px 10px;
     width: fit-content;
     height: fit-content;
     font-size: 25px;
@@ -56,6 +56,7 @@ header>h1{
     /* border: 3px solid #F9FCF3; */
     border-radius: 18px;
     font-family: 'Fredoka One', cursive;
+    text-align: center;
 }
 
 .sidenav{
@@ -64,7 +65,7 @@ header>h1{
     left:0;
     top:0;
     z-index:1;
-    background: #111;
+    background: #b5e2ef;
     padding-top: 60px;
     overflow-x: hidden;
 
@@ -74,7 +75,7 @@ header>h1{
     transition :0.5s;
 }
 .sidenav a{
-    color: #818181;
+    color: #111;
     text-decoration: none;
     font-size: 25px;
     display: block;
@@ -83,7 +84,7 @@ header>h1{
     transition :0.3s;
 }
 .sidenav a:hover{
-    color: #f1f1f1;
+    color: lightslategray;
 }
 
 div#main{
