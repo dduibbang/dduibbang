@@ -20,6 +20,16 @@
         FROM `tb_menu`
         WHERE str_sn = #{str_sn}
     </select>
+
+
+    <select id="getMenuListBySn" resultType="com.example.dduiddui.vo.menuVO">
+        SELECT *
+        FROM `tb_menu`
+        WHERE str_sn = #{str_sn}
+    </select>
+
+
+
     
     <insert id="insertStore" parameterType="com.example.dduiddui.vo.bossVO">
     INSERT INTO 'tb_str'(str_nm,str_tel,str_bin,str_ctgr_str_min,str_adr)

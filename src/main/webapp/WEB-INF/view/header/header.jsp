@@ -38,7 +38,7 @@
                     <ul>
                         <c:if test="${sn != null}">
                             <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/myinfo">마이페이지</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/memberInfo">마이페이지</a></li>
                         </c:if>
                     </ul>
             </div>
@@ -66,7 +66,7 @@
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">커뮤니티</a>
-                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
+                <a href="/memberInfo" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</a>
             </div>
             <script>

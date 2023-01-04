@@ -112,15 +112,26 @@
                                         <tr>
 
                                             <th style = "width : 12%">메뉴 카테고리</th>
-                                            <th style = "width : 10%">메뉴 이름</th>
-                                            <th style = "width : 10%">메뉴 설명</th>
-                                            <th style = "width : 50%">메뉴 가격</th>
+                                            <th style = "width : 20%">메뉴 이름</th>
+                                            <th style = "width : 50%">메뉴 설명</th>
+                                            <th style = "width : 10%">메뉴 가격</th>
                                             <th style = "width : 3%">메뉴 옵션</th>
                                             <th style = "width : 5%">삭제</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                        <c:forEach items="${menu}" var="m">
+                                            <tr>
+                                                <td>${m.menu_ctgr}</td>
+                                                <td>${m.menu_nm}</td>
+                                                <td>${m.menu_cn}</td>
+                                                <td>${m.menu_pr}</td>
+                                                <td>${m.menu_op}</td>
+                                                <td>
+                                                    <button  style="top:680px" class = "btn btn-primary btn-block" onclick="location.href=''">삭제</button>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                     <div class="clearfix">

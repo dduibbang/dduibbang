@@ -121,14 +121,9 @@
                                         </thead>
                                         <tbody>
                                         <c:forEach items="${storeList}" var="s">
+                                            <tr>
 
-                                            <tr onClick="location.href='menu'">
-
-                                                <form action="/bossmenu.jsp">
-                                                        ${s.str_sn}
-                                                </form>
-
-                                                <td>${s.str_nm}</td>
+                                                <td><a href='menu?num=${s.str_sn}'>${s.str_nm}</a></td>
                                                 <td>${s.str_tel}</td>
                                                 <td>${s.str_bin}</td>
                                                 <td>${s.str_ctgr}</td>
