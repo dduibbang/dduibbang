@@ -251,7 +251,7 @@ function getData(target){
                 map.panTo(moveLatLon);
 
             } catch (error) {
-                $("#adr_cn_open").val("데이터가 없습니다.");
+                //$("#adr_cn_open").val("데이터가 없습니다.");
             }
         });
 }
