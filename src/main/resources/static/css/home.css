@@ -2,6 +2,37 @@
 body{
     background-color: #F7C123;
 }
+#adrBar{
+    display: flex;
+    background-color: #F7C123;
+    padding: 10px;
+    border-radius: 7px;
+    padding-top: 2px;
+    align-items: center;
+}
+a:hover{
+    color:whitesmoke;
+    text-decoration-line: none;
+}
+/*a:visited{*/
+/*    color:black;*/
+/*    text-decoration-line: none;*/
+/*}*/
+.basicBtn{
+    padding: 7px;
+    margin-left: 7px;
+    width:fit-content;
+    height: fit-content;
+    border-width: 0px;
+
+    background: #F8941D;
+    border-radius: 18px;
+    text-decoration-line: none;
+    text-decoration: black;
+    color: inherit;
+    /*font-family: 'Fredoka One', cursive; 영어 폰트*/
+    font-family: 'TmoneyRoundWindExtraBold';
+}
 ul {
     list-style-type: none;
     padding: 0;
@@ -42,6 +73,7 @@ select::-ms-expand {
 }
 
 .str {
+    font-family: 'TmoneyRoundWindExtraBold';
     float: right;
     margin-top: 9px;
     margin-right: 15px;

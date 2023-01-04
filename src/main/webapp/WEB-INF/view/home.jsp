@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/tab.css">
     <link rel="stylesheet" type="text/css" href="css/board.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
 
     <script src="../js/home.js"></script>
     <script>
@@ -23,7 +24,14 @@
 <body>
 <br>
 
+
 <div class="tab">
+    <div style="display: flex;justify-content: center;margin-bottom: 20px">
+    <div id="adrBar">
+        <div id="adr" style="font-family: 'TmoneyRoundWindExtraBold';"></div>
+        <a href="/map" class="basicBtn"> 주소 변경 </a>
+    </div>
+    </div>
     <input  class=input id="tab1" type="radio" name="tabs" checked> <!--디폴트 메뉴-->
     <label for="tab1">일반거래</label>
 

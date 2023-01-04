@@ -33,25 +33,27 @@
                 <span style="cursor: pointer; font-size: 30px" onclick="openNav();">&#9776;</span>
             </div>
             <h1 style="font-family: 'Fredoka One', cursive;"><a class="nav-link" href="/home">N BBANG</a></h1></div>
-        <div>
-            <ul>
-                <c:if test="${sn != null}">
-                    <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/myinfo">마이페이지</a></li>
-                </c:if>
-            </ul>
-        </div>
-        <div>
-            <form class="formBtn">
-                <ul>
-                    <c:if test="${sn != null}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
-                    </c:if>
-                    <c:if test="${sn eq null}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
-                    </c:if>
-                </ul>
-            </form>
+        <div style="display: flex; align-items: baseline;" >
+            <div style="margin-right: 20px;">
+                    <ul>
+                        <c:if test="${sn != null}">
+                            <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/myinfo">마이페이지</a></li>
+                        </c:if>
+                    </ul>
+            </div>
+            <div>
+                <form class="formBtn">
+                    <ul>
+                        <c:if test="${sn != null}">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
+                        </c:if>
+                        <c:if test="${sn eq null}">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
+                        </c:if>
+                    </ul>
+                </form>
+            </div>
         </div>
     </header>
     <nav id="navHeader">
