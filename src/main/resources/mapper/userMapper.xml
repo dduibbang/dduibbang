@@ -8,12 +8,12 @@
         WHERE mbr_id = #{mbr_id}
     </select>
 
-    <!-- 회원 정보 가져오기 -->
-    <select id="getUserByVO" resultType="com.example.dduiddui.vo.userVO">
-        SELECT *
-        FROM tb_mbr
-        WHERE mbr_id = #{mbr_id}
-    </select>
+<!--    &lt;!&ndash; 회원 정보 가져오기 &ndash;&gt;-->
+<!--    <select id="getUserByVO" resultType="com.example.dduiddui.vo.userVO">-->
+<!--        SELECT *-->
+<!--        FROM tb_mbr-->
+<!--        WHERE mbr_id = #{mbr_id}-->
+<!--    </select>-->
 
     <select id="getUserBySn" resultType="com.example.dduiddui.vo.userVO">
         SELECT *
@@ -33,23 +33,5 @@
                 #{mbr_se}
             )
     </insert>
-
-<!--    <resultMap type="com.example.dduiddui.vo.userVO" id="userVO">-->
-<!--        <result column="mbr_sn" property="mbr_sn"/>-->
-<!--    </resultMap>-->
-<!--    <resultMap type="com.example.dduiddui.vo.addressVO" id="addressVO">-->
-<!--        <result column="mbr_sn" property="mbr_sn"/>-->
-<!--        <result column="dft_yn" property="dft_yn"/>-->
-<!--        <result column="adr_cn" property="adr_cn"/>-->
-<!--        <collection property="addressVO" resultMap="addressVO"/>-->
-<!--    </resultMap>-->
-
-<!--    &lt;!&ndash; 기본주소 가져오기 &ndash;&gt;-->
-<!--    <select id="getAddress" resultMap="userVO">-->
-<!--        SELECT A.mbr_sn,B.adr_cn-->
-<!--        FROM tb_mbr AS A LEFT JOIN tb_adr AS B-->
-<!--                                   ON A.mbr_sn = B.mbr_sn-->
-<!--        WHERE B.dft_yn = 'Y'-->
-<!--    </select>-->
 
 </mapper>

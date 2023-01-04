@@ -103,7 +103,7 @@ public class userController {
             session.setAttribute("id",mbr_id);
             session.setAttribute("state","user");
 
-            Integer mbrSn = userService.getMbrSn(mbr_id,mbr_pwd);
+            Integer mbrSn = userService.getMbrSn(mbr_id);
             session.setAttribute("mbr_sn",mbrSn);
             System.out.println("user sn: " + mbrSn);
             return resultmsg = "<script>location.href='/home'</script>";

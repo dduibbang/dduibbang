@@ -44,6 +44,7 @@ public class addressService {
         System.out.println("update");
     }
 
+    // 사용자의 기본주소 등록하기 + 즐찾목록에 추가
     public void uploadAdr(addressVO addressVO) {
 
         addressVO.setRgtr_dt(LocalDateTime.now());
@@ -53,5 +54,17 @@ public class addressService {
         addressVO.setAdr_ttl(getTime.substring(0,10) + "의 주소 이력");
         addressMapper.insertAddr(addressVO);
         System.out.println("insert : " + addressVO.getDft_yn());
+
+    }
+
+    // 즐찾이름으로 adrVO 받기
+    public addressVO getAdrByTtl(String adrTtl) {
+        return addressMapper.getAdrByTtl(adrTtl);
+    }
+
+    // 즐찾이름으로 adr_sn받기
+    public Integer getAdrSn(String adrTtl) {
+        addressVO addressVO = addressMapper.getAdrByTtl(adrTtl);
+        return addressVO.getAdr_sn();
     }
 }

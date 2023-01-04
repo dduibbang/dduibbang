@@ -21,7 +21,28 @@ public class addressController {
     @Autowired // 전역변수 선언
     private addressService addressService;
 
-    // 사용자의 기본주소 등록하기 + 즐찾목록에 추가
+    // 즐찾목록의 기본주소 설정 버튼
+    @PostMapping("/setAddressBtn")
+    public String setAddressBtn(String adrttl, HttpSession session){
+
+        // 해당주소의 sn 얻기
+       Integer adrSn = addressService.getAdrSn(adrttl);
+       //session.setAttribute("adr_sn",adrSn);
+       System.out.println("adrSn : " + adrSn);
+
+       // 기존의 기본주소 설정 체크해제
+       Integer sn = (Integer) session.getAttribute("mbr_sn");
+       addressService.updateAdr(sn);
+
+       // adrvo 얻어와서 기본주소 설정
+        addressVO addressVO = addressService.getAdrByTtl(adrttl);
+        addressVO.setDft_yn('Y');
+        System.out.println("adrVO : " + addressVO);
+
+       return "redirect:/map";
+    }
+
+    // 이 주소로 기본주소 등록하기 버튼
     @PostMapping("/setAddress")
     public String setAddress(HttpSession session,addressVO addressVO){
 
@@ -31,6 +52,7 @@ public class addressController {
 
             addressService.updateAdr(sn);
             addressService.uploadAdr(addressVO);
+
             return "redirect:/map";
         }
         return resultmsg = "<script>alert('로그인이 필요합니다.')</script>";

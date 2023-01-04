@@ -60,17 +60,31 @@
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>
                 <div style="overflow: auto;height: 610px;margin-top: 20px">
-                <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                    <ul id="like-address-list" style="padding-top: 1px;" >
-                        <div id="like-address" style="overflow-wrap: normal">
-                            <li>
-                                <h3>🔸${likeAdrlist.adr_ttl}</h3>
-                                <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>
-                                <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>
-                            </li>
-                        </div>
-                    </ul>
-                </c:forEach>
+                    <form action="setAddressBtn" method="post" style="overflow: auto">
+                        <c:forEach items="${likeAdrList}" var="likeAdrlist">
+                            <ul id="like-address-list" style="padding-top: 1px;" >
+                                <div id="like-address" style="overflow-wrap: normal">
+                                    <li>
+                                        <h3><input type="String" name="adr_ttl" value="🔸${likeAdrlist.adr_ttl}"></h3>
+                                        <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>
+                                        <input class="basicBtn" style="margin-top: 10px;width: -webkit-fill-available;text-align: center;" type="submit" value="기본주소 설정">
+                                    </li>
+                                </div>
+                            </ul>
+                        </c:forEach>
+                    </form>
+<%--                    <c:forEach items="${likeAdrList}" var="likeAdrlist">--%>
+<%--                        &lt;%&ndash;                    <p><input type="hidden" name="adr_ttl"   value="${sn}"></p>&ndash;%&gt;--%>
+<%--                        <ul id="like-address-list" style="padding-top: 1px;" >--%>
+<%--                            <div id="like-address" style="overflow-wrap: normal">--%>
+<%--                                <li>--%>
+<%--                                    <h3>🔸${likeAdrlist.adr_ttl}</h3>--%>
+<%--                                    <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>--%>
+<%--                                    <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>--%>
+<%--                                </li>--%>
+<%--                            </div>--%>
+<%--                        </ul>--%>
+<%--                    </c:forEach>--%>
                 </div>
             </form>
         </div>

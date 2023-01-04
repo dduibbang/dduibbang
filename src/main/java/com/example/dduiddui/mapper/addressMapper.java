@@ -16,4 +16,6 @@ public interface addressMapper {
 
     void updateAdr(Integer mbrSn);
 
+    addressVO getAdrByTtl(String adrTtl);
+
 }
