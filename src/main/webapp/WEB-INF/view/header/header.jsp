@@ -41,7 +41,7 @@
                 </c:if>
             </ul>
         </div>
-        <nav>
+        <div>
             <form class="formBtn">
                 <ul>
                     <c:if test="${sn != null}">
@@ -52,7 +52,7 @@
                     </c:if>
                 </ul>
             </form>
-        </nav>
+        </div>
     </header>
     <nav id="navHeader">
         <div  style="display: flex">
@@ -79,7 +79,7 @@
                     //sidenav 클래스를 가진 div 요소 : width:0 숨기기
                     document.getElementById("mySidenav").style.width="0px";
                     document.getElementById("main").style.marginLeft="0px";
-                    document.body.style.backgroundColor="white";
+                    document.body.style.backgroundColor="#f7c123";
                 }
             </script>
         </div>

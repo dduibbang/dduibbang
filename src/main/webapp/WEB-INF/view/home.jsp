@@ -6,9 +6,12 @@
 <head>
     <%@include file="header/header.jsp"%>
     <link rel="icon" type="image/png" sizes="16x16" href="photo/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/tab.css">
     <link rel="stylesheet" type="text/css" href="css/board.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+
     <script src="../js/home.js"></script>
     <script>
         $(document).ready(function(){
@@ -19,6 +22,7 @@
 </head>
 <body>
 <br>
+
 <div class="tab">
     <input  class=input id="tab1" type="radio" name="tabs" checked> <!--디폴트 메뉴-->
     <label for="tab1">일반거래</label>

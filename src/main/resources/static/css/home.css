@@ -9,7 +9,8 @@ ul {
 
 li {
     display: inline-block;
-    margin-left: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
     font-size: 18px;
     font-weight: bold;
 }
