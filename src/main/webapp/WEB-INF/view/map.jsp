@@ -32,7 +32,7 @@
         <h1 style="margin-top:0px">위치 설정</h1>
         <br>
         <div >
-            <form class="LeftForm" id="sendAddressForm"  method="POST">
+            <form class="LeftForm" id="setAddress"  method="POST">
                 <p><input type="hidden" name="mbr_sn"   value="${sn}"></p>
                 <p><input type="hidden" name="adr_lat"  id="latiVal_"  value=""></p>
                 <p><input type="hidden" name="adr_lon"  id="longiVal_"  value=""></p>
@@ -40,10 +40,9 @@
                 <p>도로명 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
                 <p>상세 주소 :</p>
-                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value=""></p>
+                <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value="상세주소!!!"></p>
                 <div style="display: flex">
-                <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" action="saveLocation" type="submit" value="이 위치로 주소 설정">
-
+                <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="이 위치로 주소 설정">
                 </div>
             </form>
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
@@ -62,7 +61,7 @@
                 </div>
 
                 <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                    <ol id="like-address-list">
+                    <ol id="like-address-list" style="overflow: scroll">
                         <div id="like-address">
                             <li>
                                 <h3>${likeAdrlist.adr_ttl}</h3>

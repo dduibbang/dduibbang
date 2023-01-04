@@ -18,20 +18,18 @@ import java.util.Map;
 @Controller
 public class addressController {
 
-    @Autowired
+    @Autowired // 전역변수 선언
     private addressService addressService;
-    @Autowired
-    private userService userService;
 
+    // 사용자의 기본주소 등록하기
     @PostMapping("/setAddress")
     public void setAddress(HttpSession session,addressVO addressVO){
-        // 사용자의 기본주소 등록하기
         Integer sn = (Integer) session.getAttribute("mbr_sn");
-        if(sn != null){
+        if(sn != null) {
             //addressVO
         }
-
     }
+
     // /home에서 로그인한 사용자가 등록한 기본주소 가져오기
     @ResponseBody
     @RequestMapping(value = "/getMyAddress",method = RequestMethod.GET)
@@ -77,8 +75,6 @@ public class addressController {
         String id = (String) session.getAttribute("id");
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         if (id != null) { // 로그인된 상태
-            userVO userVo = userService.getUserById(id);
-            model.addAttribute("userInfo", userVo);
             model.addAttribute("sn", sn);
 
             // 즐찾목록
@@ -103,20 +99,4 @@ public class addressController {
         }
         return "redirect:/map";
     }
-
-//    @GetMapping("/sendLocation")
-//    public String sendLocation(HttpSession session, String location,String detailLocation, Model model) {
-//        model.addAttribute("location",location);
-//        model.addAttribute("detailLocation",detailLocation);
-//        String userId = (String) session.getAttribute("id");
-//        userVO userVo = userService.getUserById(userId);
-//        model.addAttribute("user",userVo);
-//        return "post";
-//    }
-//
-//    @PostMapping(value="/sendLocation")
-//    public String tosendLocation(mapVO mapVO) {
-//        postServiceImpl.upload(postVo);
-//        return "redirect:/main";
-//    }
 }
