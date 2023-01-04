@@ -31,7 +31,7 @@ function getMyData(){
             setData(data);
         },
         error : function() {
-            alert('error');
+            alert('사용자의 데이터 없음');
         }
     });
 

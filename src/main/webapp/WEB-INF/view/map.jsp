@@ -32,7 +32,7 @@
         <h1 style="margin-top:0px">위치 설정</h1>
         <br>
         <div >
-            <form class="LeftForm" id="setAddress"  method="POST">
+            <form class="LeftForm" action="setAddress"  method="POST">
                 <p><input type="hidden" name="mbr_sn"   value="${sn}"></p>
                 <p><input type="hidden" name="adr_lat"  id="latiVal_"  value=""></p>
                 <p><input type="hidden" name="adr_lon"  id="longiVal_"  value=""></p>
@@ -61,7 +61,7 @@
                 </div>
                 <div style="overflow: auto;height: 610px;margin-top: 20px">
                 <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                    <ul id="like-address-list" >
+                    <ul id="like-address-list" style="padding-top: 1px;" >
                         <div id="like-address" style="overflow-wrap: normal">
                             <li>
                                 <h3>🔸${likeAdrlist.adr_ttl}</h3>

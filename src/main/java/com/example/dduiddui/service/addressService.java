@@ -31,9 +31,27 @@ public class addressService {
     public String getAddress(Integer mbrSn) {
         String address = "";
 
-        address = addressMapper.getAddress(mbrSn).getAdr_cn() + " " + addressMapper.getAddress(mbrSn).getAdr_st();
+        address = addressMapper.getAddress(mbrSn).getAdr_cn() +
+                " " + addressMapper.getAddress(mbrSn).getAdr_st();
         System.out.println("address" + address);
 
         return address;
+    }
+
+    public void updateAdr(Integer mbrSn){
+
+        addressMapper.updateAdr(mbrSn); // 이미 기존의 기본주소가 있다면 체크해제
+        System.out.println("update");
+    }
+
+    public void uploadAdr(addressVO addressVO) {
+
+        addressVO.setRgtr_dt(LocalDateTime.now());
+        String getTime = String.valueOf(LocalDateTime.now());
+
+        addressVO.setDft_yn('Y');
+        addressVO.setAdr_ttl(getTime.substring(0,10) + "의 주소 이력");
+        addressMapper.insertAddr(addressVO);
+        System.out.println("insert : " + addressVO.getDft_yn());
     }
 }

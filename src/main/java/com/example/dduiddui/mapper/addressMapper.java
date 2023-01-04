@@ -12,6 +12,8 @@ public interface addressMapper {
 
     void insertAddr(addressVO addressVO); // 즐찾 추가
 
-    addressVO getAddress(Integer mbrSn); // 즐찾 불러오기
+    addressVO getAddress(Integer mbrSn); // 기본주소 불러오기
+
+    void updateAdr(Integer mbrSn);
 
 }

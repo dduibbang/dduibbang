@@ -21,13 +21,19 @@ public class addressController {
     @Autowired // 전역변수 선언
     private addressService addressService;
 
-    // 사용자의 기본주소 등록하기
+    // 사용자의 기본주소 등록하기 + 즐찾목록에 추가
     @PostMapping("/setAddress")
-    public void setAddress(HttpSession session,addressVO addressVO){
+    public String setAddress(HttpSession session,addressVO addressVO){
+
+        String resultmsg = "";
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         if(sn != null) {
-            //addressVO
+
+            addressService.updateAdr(sn);
+            addressService.uploadAdr(addressVO);
+            return "redirect:/map";
         }
+        return resultmsg = "<script>alert('로그인이 필요합니다.')</script>";
     }
 
     // /home에서 로그인한 사용자가 등록한 기본주소 가져오기
