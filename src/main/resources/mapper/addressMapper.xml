@@ -41,4 +41,11 @@
         WHERE mbr_sn = #{mbr_sn} AND `dft_yn`='Y'
     </update>
 
+    <!-- 기본주소 설정하기(해당주소를 기본주소로 변경) -->
+    <update id="updateAdr" parameterType="com.example.dduiddui.vo.addressVO">
+        UPDATE tb_adr
+        SET `dft_yn`='Y'
+        WHERE adr_sn = #{adr_sn}
+    </update>
+
 </mapper>
