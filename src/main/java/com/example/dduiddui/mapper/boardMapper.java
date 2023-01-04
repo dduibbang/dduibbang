@@ -9,7 +9,9 @@ import java.util.List;
 public interface boardMapper {
 
 
-    List<boardVO> getBoardList();
+    List<boardVO> getNBoardList();
+
+    List<boardVO> getYBoardList();
 
     void insertBoard(boardVO boardVo);
 

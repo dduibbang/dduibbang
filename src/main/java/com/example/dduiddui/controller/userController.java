@@ -28,8 +28,11 @@ public class userController {
         String id = (String) session.getAttribute("id");
         System.out.println(id);
 
-        List<boardVO> boardList = boardService.getBoardList();
-        model.addAttribute("boardList", boardList);
+        List<boardVO> NboardList = boardService.getNBoardList();
+        model.addAttribute("NboardList", NboardList);
+
+        List<boardVO> YboardList = boardService.getYBoardList();
+        model.addAttribute("YboardList", YboardList);
 
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         System.out.println("home");

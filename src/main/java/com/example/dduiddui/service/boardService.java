@@ -15,7 +15,10 @@ public class boardService {
 
 
 
-    public List<boardVO> getBoardList(){return boardMapper.getBoardList();}
+    public List<boardVO> getNBoardList(){return boardMapper.getNBoardList();}
+
+    public List<boardVO> getYBoardList(){return boardMapper.getYBoardList();}
+
 
     public void boardWrite(boardVO boardVo) {
 
