@@ -13,7 +13,9 @@ public interface bossMapper {
 
     userVO getBossById(String mbr_id);
     List<bossVO> getStoreById(int mbr_sn);
-    List<menuVO> getMenuBySn(int str_sn);
+    menuVO getMenuBySn(int str_sn);
+
+    List<menuVO> getMenuListBySn(int str_sn);
     void insertStore(bossVO bossVo);
 
 
