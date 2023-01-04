@@ -9,6 +9,7 @@ body{
     border-radius: 7px;
     padding-top: 2px;
     align-items: center;
+    box-shadow: 3px 3px darkgrey;
 }
 a:hover{
     color:whitesmoke;
