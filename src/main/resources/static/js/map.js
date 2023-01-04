@@ -13,6 +13,13 @@ $(document).ready(function(){
 
     getMyData();
 });
+
+// insertMap폼의 상세주소 인풋값을 즐찾인풋값에도 동일하게 주기
+function printAdrSt(){
+    const adr_st = document.getElementById('adr_st_open').value;
+    $("#adr_st_close").val(adr_st);
+}
+
 function getMyData(){
     $.ajax({
         type : "GET",
