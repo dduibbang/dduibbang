@@ -59,34 +59,27 @@
                     <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value="" onkeyup="printAdrSt()"></p>
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
                 </div>
+            </form>
                 <div style="overflow: auto;height: 610px;margin-top: 20px">
-                    <form action="setAddressBtn" method="post" style="overflow: auto">
                         <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                            <ul id="like-address-list" style="padding-top: 1px;" >
+                            <ul id="like-address-list" style="padding-top: 20px;" >
                                 <div id="like-address" style="overflow-wrap: normal">
-                                    <li>
-                                        <h3><input type="String" name="adr_ttl" value="🔸${likeAdrlist.adr_ttl}"></h3>
+                                    <li style="font-family: 'TmoneyRoundWindExtraBold';">
+                                        <form action="setAddressBtn" method="get" style="overflow: auto">
+                                        <label for="adr_ttl"><input style="margin-bottom:20px;font-size:inherit;font-family:inherit;background-color: revert;border: slategrey;"type="text" name="adr_ttl" value="${likeAdrlist.adr_ttl}"></label>
                                         <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>
-                                        <input class="basicBtn" style="margin-top: 10px;width: -webkit-fill-available;text-align: center;" type="submit" value="기본주소 설정">
+                                            <c:if test="${likeAdrlist.dft_yn eq 'N'.charAt(0)}">
+                                                <input class="basicBtn" style="margin-top: 10px;width: fit-content;text-align: center;" type="submit" value="기본주소 설정">
+                                            </c:if>
+                                            <c:if test="${likeAdrlist.dft_yn eq 'Y'.charAt(0)}">
+                                                <input class="basicBtn" style="background-color:#b5e2ef;margin-top: 10px;width: fit-content;text-align: center;" type="submit" value="현재주소✅">
+                                            </c:if>
+                                        </form>
                                     </li>
                                 </div>
                             </ul>
                         </c:forEach>
-                    </form>
-<%--                    <c:forEach items="${likeAdrList}" var="likeAdrlist">--%>
-<%--                        &lt;%&ndash;                    <p><input type="hidden" name="adr_ttl"   value="${sn}"></p>&ndash;%&gt;--%>
-<%--                        <ul id="like-address-list" style="padding-top: 1px;" >--%>
-<%--                            <div id="like-address" style="overflow-wrap: normal">--%>
-<%--                                <li>--%>
-<%--                                    <h3>🔸${likeAdrlist.adr_ttl}</h3>--%>
-<%--                                    <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>--%>
-<%--                                    <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>--%>
-<%--                                </li>--%>
-<%--                            </div>--%>
-<%--                        </ul>--%>
-<%--                    </c:forEach>--%>
                 </div>
-            </form>
         </div>
 
     </nav>

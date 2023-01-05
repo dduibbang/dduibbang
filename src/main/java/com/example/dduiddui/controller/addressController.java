@@ -11,6 +11,7 @@ import com.example.dduiddui.service.userService;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,12 +23,12 @@ public class addressController {
     private addressService addressService;
 
     // 즐찾목록의 기본주소 설정 버튼
-    @PostMapping("/setAddressBtn")
-    public String setAddressBtn(String adrttl, HttpSession session){
+    @RequestMapping(value = "/setAddressBtn",method = RequestMethod.GET)
+    public String setAddressBtn(String adr_ttl, HttpSession session){
 
         // 해당주소의 sn 얻기
-       Integer adrSn = addressService.getAdrSn(adrttl);
-       //session.setAttribute("adr_sn",adrSn);
+       Integer adrSn = addressService.getAdrSn(adr_ttl);
+       session.setAttribute("main_adr_sn",adrSn);
        System.out.println("adrSn : " + adrSn);
 
        // 기존의 기본주소 설정 체크해제
@@ -35,9 +36,7 @@ public class addressController {
        addressService.updateAdr(sn);
 
        // adrvo 얻어와서 기본주소 설정
-        addressVO addressVO = addressService.getAdrByTtl(adrttl);
-        addressVO.setDft_yn('Y');
-        System.out.println("adrVO : " + addressVO);
+        addressService.updateMainAdr(adrSn);
 
        return "redirect:/map";
     }
@@ -50,8 +49,20 @@ public class addressController {
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         if(sn != null) {
 
+            // 일단 주소목록 추가
+            addressVO.setRgtr_dt(LocalDateTime.now());
+            addressVO.setDft_yn('Y');
+            String getTime = String.valueOf(LocalDateTime.now());
+            addressVO.setAdr_ttl(getTime.substring(0,10) + "의 주소 이력");
+            addressService.uploadLike(addressVO);
+
+            // 기존의 기본주소 리셋 후 해당주소 기본주소 설정
             addressService.updateAdr(sn);
-            addressService.uploadAdr(addressVO);
+
+//            Integer adrSn = addressService.getAdrSn(adr_ttl);
+//            session.setAttribute("main_adr_sn",adrSn);
+//            System.out.println("adrSn : " + adrSn);
+//            addressService.updateMainAdr(adrSn);
 
             return "redirect:/map";
         }

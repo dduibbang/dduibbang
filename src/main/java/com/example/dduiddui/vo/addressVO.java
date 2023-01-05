@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @Setter
 public class addressVO {
 
-    private int adr_sn;
-    private int mbr_sn;
+    private Integer adr_sn;
+    private Integer mbr_sn;
     private String adr_ttl; // 주소명(집,회사)
     private String adr_cn; // 주소
     private String adr_st; // 상세주소

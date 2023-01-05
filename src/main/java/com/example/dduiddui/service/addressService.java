@@ -44,18 +44,26 @@ public class addressService {
         System.out.println("update");
     }
 
-    // 사용자의 기본주소 등록하기 + 즐찾목록에 추가
-    public void uploadAdr(addressVO addressVO) {
+    public void updateMainAdr(Integer adrSn){
 
-        addressVO.setRgtr_dt(LocalDateTime.now());
-        String getTime = String.valueOf(LocalDateTime.now());
-
-        addressVO.setDft_yn('Y');
-        addressVO.setAdr_ttl(getTime.substring(0,10) + "의 주소 이력");
-        addressMapper.insertAddr(addressVO);
-        System.out.println("insert : " + addressVO.getDft_yn());
-
+        addressMapper.updateMainAdr(adrSn); // 해당adrSn을 기본주소로 변경
+        System.out.println("updateMain");
     }
+
+
+    // 사용자의 기본주소 등록하기 + 즐찾목록에 추가
+//    public void uploadAdr(addressVO addressVO) {
+//
+//        addressVO.setRgtr_dt(LocalDateTime.now());
+//        String getTime = String.valueOf(LocalDateTime.now());
+//
+//        addressVO.setDft_yn('Y');
+//        addressVO.setAdr_ttl(getTime.substring(0,10) + "의 주소 이력");
+//        addressMapper.insertAddr(addressVO);
+//        System.out.println("insert : " + addressVO.getDft_yn());
+//
+//    }
+
 
     // 즐찾이름으로 adrVO 받기
     public addressVO getAdrByTtl(String adrTtl) {
