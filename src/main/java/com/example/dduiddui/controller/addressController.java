@@ -45,7 +45,6 @@ public class addressController {
     @PostMapping("/setAddress")
     public String setAddress(HttpSession session,addressVO addressVO,Model model){
 
-        String resultmsg = "";
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         if(sn != null) {
 
@@ -66,7 +65,7 @@ public class addressController {
 
             return "redirect:/map";
         }
-        return resultmsg = "<script>alert('로그인이 필요합니다.')</script>";
+        return "redirect:/login";
     }
 
     // /home에서 로그인한 사용자가 등록한 기본주소 가져오기
@@ -131,10 +130,10 @@ public class addressController {
             //System.out.println(addressVO);
             addressService.uploadLike(addressVO);
         } catch (DuplicateKeyException e) {
-            return "redirect:/signup?error_code=-1";
+            return "redirect:/login";
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/signup?error_code=-99";
+            return "redirect:/login";
         }
         return "redirect:/map";
     }
