@@ -14,7 +14,7 @@
     <title>Login</title>
 </head>
 <body>
-<form action="/bosslogin" method="post" class="uf-form-signin h-75">
+    <form action="/bosslogin" method="post" class="uf-form-signin h-75">
     <div class="text-center ">
         <img src="photo/logo.png" alt="" width="300" height="300"></a>
 
@@ -40,6 +40,7 @@
 
 
 
+    </form>
     </form>
     <!-- Separate Popper and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

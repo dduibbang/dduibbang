@@ -75,7 +75,7 @@
         </nav>
     </div>
     <body>
-    <div id="layoutSidenav_content">
+    <nav id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">가게현황 </h1>
@@ -102,7 +102,7 @@
                                     <div class="table-title">
                                         <div class="row">
                                             <div class="col-xs-7">
-                                                <a href="#" class="btn btn-primary btn-block mb-4"> <span>가게 등록</span></a>
+                                                <input type ="button"class="btn btn-primary btn-block mb-4" value = "매장 등록" onclick ="openCreate()">
                                             </div>
                                         </div>
                                     </div>
@@ -152,16 +152,27 @@
                                 </div>
                             </div>
                         </div>
-
+                    </div>
                 </section>
             </div>
-
+        </main>
     </div>
 </div>
 
 
 
+<script type="text/javascript">
+    /*let openWin;*/
+    var openWin;
 
+    function openCreate() {
+        // window.name = "부모창 이름";
+        window.name = "storeForm";
+
+        // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+        openWin = window.open("regStore", "createForm", "width=570, height=350, resizable = no, scrollbars = no");
+    }
+</script>
 
 
 

@@ -5,8 +5,10 @@ import com.example.dduiddui.service.bossService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.bossVO;
 import com.example.dduiddui.vo.menuVO;
+import com.example.dduiddui.vo.selectVO;
 import com.example.dduiddui.vo.userVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,12 +85,21 @@ public class bossController {
     public String getStore(Model model,HttpSession session,RedirectAttributes redirect){
 
 
+        try {
+            Integer sn = (Integer) session.getAttribute("mbr_sn");
+            System.out.println("store user sn: " + sn);
+            int mbr_sn = (int)sn;
+            List<bossVO> storeList = bossService.getStoreById(mbr_sn);
+            model.addAttribute("storeList", storeList);
 
-        Integer sn = (Integer) session.getAttribute("mbr_sn");
-        System.out.println("store user sn: " + sn);
-        int mbr_sn = (int)sn;
-        List<bossVO> storeList = bossService.getStoreById(mbr_sn);
-        model.addAttribute("storeList", storeList);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return "boss/bosslogin";
+        }
+
+
+
+
 
 
 
@@ -101,13 +112,28 @@ public class bossController {
     @GetMapping("/menu")
     public String toMenuPage(@RequestParam("num") int num, HttpSession session, Model model) { // 회원 정보 수정 페이지
 
-        menuVO menuVo = bossService.getMenuBySn(num);
-
 
         List<menuVO> menuList = bossService.getMenuListBySn(num);
         model.addAttribute("menu",menuList);
 
         return "boss/bossmenu";
+    }
+
+
+
+    @GetMapping("/regStore")
+    public String toRegStorePage() {  //회원가입 페이지
+        return "boss/popup";
+    }
+    @PostMapping("/regStore")
+    public String toRegStore(bossVO bossVo ,HttpSession session){
+       int sn = (int) session.getAttribute("mbr_sn");
+       bossService.insertStore(bossVo);
+
+
+
+
+        return "boss/popup";
     }
 
 }

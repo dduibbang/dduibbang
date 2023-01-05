@@ -25,16 +25,15 @@ public class bossService {
         return bossMapper.getStoreById(mbr_sn);
     }
 
-    public menuVO getMenuBySn(int str_sn){
 
-
-        return bossMapper.getMenuBySn(str_sn);
-    }
 
     public List<menuVO> getMenuListBySn(int str_sn){
 
         return bossMapper.getMenuListBySn(str_sn);
     }
 
+    public void insertStore(bossVO bossvo){bossMapper.insertStore(bossvo);}
+
+    public void insertMenu(menuVO menuVo){bossMapper.insertMenu(menuVo);}
 
 }

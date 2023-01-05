@@ -18,5 +18,6 @@ public interface bossMapper {
     List<menuVO> getMenuListBySn(int str_sn);
     void insertStore(bossVO bossVo);
 
+    void insertMenu(menuVO menuVo);
 
 }
