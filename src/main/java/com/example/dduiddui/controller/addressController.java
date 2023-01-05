@@ -43,7 +43,7 @@ public class addressController {
 
     // 이 주소로 기본주소 등록하기 버튼
     @PostMapping("/setAddress")
-    public String setAddress(HttpSession session,addressVO addressVO){
+    public String setAddress(HttpSession session,addressVO addressVO,Model model){
 
         String resultmsg = "";
         Integer sn = (Integer) session.getAttribute("mbr_sn");
@@ -51,18 +51,18 @@ public class addressController {
 
             // 일단 주소목록 추가
             addressVO.setRgtr_dt(LocalDateTime.now());
-            addressVO.setDft_yn('Y');
             String getTime = String.valueOf(LocalDateTime.now());
-            addressVO.setAdr_ttl(getTime.substring(0,10) + "의 주소 이력");
+            Integer num = (Integer) session.getAttribute("adrListLength");
+            num+=1;
+            addressVO.setAdr_ttl(getTime.substring(5,7) +"월"+ getTime.substring(8,10) + "일 [" + num+"]");
             addressService.uploadLike(addressVO);
 
             // 기존의 기본주소 리셋 후 해당주소 기본주소 설정
             addressService.updateAdr(sn);
-
-//            Integer adrSn = addressService.getAdrSn(adr_ttl);
-//            session.setAttribute("main_adr_sn",adrSn);
-//            System.out.println("adrSn : " + adrSn);
-//            addressService.updateMainAdr(adrSn);
+            Integer adrSn = addressService.getAdrSn(addressVO.getAdr_ttl());
+            session.setAttribute("main_adr_sn",adrSn);
+            //System.out.println("adrSn : " + adrSn);
+            addressService.updateMainAdr(adrSn);
 
             return "redirect:/map";
         }
@@ -90,7 +90,7 @@ public class addressController {
     // /map에서 로그인한 사용자가 등록한 즐겨찾기목록들 가져오기(지도에)
     @ResponseBody
     @RequestMapping(value = "/getLikeList",method = RequestMethod.GET)
-    public List<addressVO> getLikeList(HttpSession session){
+    public List<addressVO> getLikeList(HttpSession session,Model model){
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         Map<String, Object> res = new HashMap<>();
         res.put("success", Boolean.FALSE);
@@ -100,7 +100,7 @@ public class addressController {
             List<addressVO> likeList = addressService.getAddressList(sn);
             res.put("success", Boolean.TRUE);
             res.put("searchList", likeList);
-
+            session.setAttribute("adrListLength",likeList.size());
             //System.out.println(likeList);
             return likeList;
         }
@@ -118,7 +118,7 @@ public class addressController {
 
             // 즐찾목록
             List<addressVO> likeList = addressService.getAddressList(sn);
-            model.addAttribute("likeAdrList",likeList);
+            session.setAttribute("likeAdrList",likeList);
             //System.out.println(likeList);
         }
         return "map";

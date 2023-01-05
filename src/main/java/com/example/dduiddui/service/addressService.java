@@ -72,7 +72,9 @@ public class addressService {
 
     // 즐찾이름으로 adr_sn받기
     public Integer getAdrSn(String adrTtl) {
+
         addressVO addressVO = addressMapper.getAdrByTtl(adrTtl);
+
         return addressVO.getAdr_sn();
     }
 }
