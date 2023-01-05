@@ -31,7 +31,7 @@ function getMyData(){
             setData(data);
         },
         error : function() {
-            alert('error');
+            console.log('사용자의 데이터 없음');
         }
     });
 
@@ -251,7 +251,7 @@ function getData(target){
                 map.panTo(moveLatLon);
 
             } catch (error) {
-                $("#adr_cn_open").val("데이터가 없습니다.");
+                //$("#adr_cn_open").val("데이터가 없습니다.");
             }
         });
 }

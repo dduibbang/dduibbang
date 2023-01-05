@@ -33,4 +33,24 @@
                                    ON A.mbr_sn = B.mbr_sn
         WHERE B.dft_yn = 'Y'
     </select>
+
+    <!-- 기본주소 설정하기(기존의 기본주소를 일반주소로 변경) -->
+    <update id="updateAdr" parameterType="com.example.dduiddui.vo.addressVO">
+        UPDATE tb_adr
+        SET `dft_yn`='N'
+        WHERE mbr_sn = #{mbr_sn} AND `dft_yn`='Y'
+    </update>
+
+    <!-- 기본주소 설정하기(해당주소를 기본주소로 변경)-->
+    <update id="updateMainAdr" parameterType="com.example.dduiddui.vo.addressVO">
+        UPDATE tb_adr
+        SET `dft_yn`='Y'
+        WHERE adr_sn = #{adr_sn}
+    </update>
+
+    <select id="getAdrByTtl" resultType="com.example.dduiddui.vo.addressVO">
+        SELECT *
+        FROM tb_adr
+        WHERE adr_ttl = #{adr_ttl}
+    </select>
 </mapper>

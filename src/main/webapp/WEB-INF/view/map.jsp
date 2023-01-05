@@ -32,12 +32,12 @@
         <h1 style="margin-top:0px">위치 설정</h1>
         <br>
         <div >
-            <form class="LeftForm" id="setAddress"  method="POST">
+            <form class="LeftForm" action="setAddress"  method="POST">
                 <p><input type="hidden" name="mbr_sn"   value="${sn}"></p>
                 <p><input type="hidden" name="adr_lat"  id="latiVal_"  value=""></p>
                 <p><input type="hidden" name="adr_lon"  id="longiVal_"  value=""></p>
 
-                <p>도로명 주소 :</p>
+                <p>지번 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_cn" id="adr_cn_open" value=""></p>
                 <p>상세 주소 :</p>
                 <p><input class="input-box" type="String" name="adr_st" id="adr_st_open" value="상세주소를 입력해주세요."></p>
@@ -47,9 +47,8 @@
             </form>
             <div style="background-color: #FFFFFF; margin: 20px;margin-top: 50px;margin-bottom: 40px"></div>
 
-            <h1 style="margin-top: 50px;" >🔍즐겨찾기</h1>
+            <h1 style="margin-top: 50px;" >🔍주소 목록</h1>
             <form class="LeftForm" action="insertMap" method="post">
-                <p>즐겨찾기 이름 :</p>
                 <div style="display: flex">
                     <p><input type="hidden" name="mbr_sn"  value="${sn}"></p>
                     <p><input type="hidden" name="adr_lat"  id="latiVal"  value=""></p>
@@ -57,22 +56,29 @@
                     <p><input type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
                     <p><input type="hidden" name="adr_st"  id="adr_st_close" value=""></p>
                     <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value="" onkeyup="printAdrSt()"></p>
-                    <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 추가">
-                </div>
-                <div style="overflow: auto;height: 610px;margin-top: 20px">
-                <c:forEach items="${likeAdrList}" var="likeAdrlist">
-                    <ul id="like-address-list" >
-                        <div id="like-address" style="overflow-wrap: normal">
-                            <li>
-                                <h3>🔸${likeAdrlist.adr_ttl}</h3>
-                                <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>
-                                <button class="basicBtn" style="margin-top: 10px">기본주소 설정</button>
-                            </li>
-                        </div>
-                    </ul>
-                </c:forEach>
+                    <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 이름 지정">
                 </div>
             </form>
+                <div style="overflow: auto;height: 610px;margin-top: 20px">
+                        <c:forEach items="${likeAdrList}" var="likeAdrlist">
+                            <ul id="like-address-list" style="padding-top: 20px;" >
+                                <div id="like-address" style="overflow-wrap: normal">
+                                    <li style="font-family: 'TmoneyRoundWindExtraBold';">
+                                        <form action="setAddressBtn" method="get" style="overflow: auto">
+                                        <label for="adr_ttl"><input style="margin-bottom:20px;font-size:inherit;font-family:inherit;background-color: revert;border: slategrey;"type="text" name="adr_ttl" value="${likeAdrlist.adr_ttl}"></label>
+                                        <div class="story-div"> ${likeAdrlist.adr_cn} ${likeAdrlist.adr_st}</div>
+                                            <c:if test="${likeAdrlist.dft_yn eq 'N'.charAt(0)}">
+                                                <input class="basicBtn" style="margin-top: 10px;width: fit-content;text-align: center;" type="submit" value="기본주소 설정">
+                                            </c:if>
+                                            <c:if test="${likeAdrlist.dft_yn eq 'Y'.charAt(0)}">
+                                                <input class="basicBtn" style="background-color:#b5e2ef;margin-top: 10px;width: fit-content;text-align: center;" type="submit" value="기본주소✅">
+                                            </c:if>
+                                        </form>
+                                    </li>
+                                </div>
+                            </ul>
+                        </c:forEach>
+                </div>
         </div>
 
     </nav>

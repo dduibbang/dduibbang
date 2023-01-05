@@ -5,7 +5,7 @@
     <head>
         <%--        <%@import url'https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'%>--%>
 
-        <title>N BBANG</title>
+        <title>🍩N BBANG</title>
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -60,7 +60,10 @@
         <div  style="display: flex">
             <div id="mySidenav" class="sidenav" style="font-family: 'Nanum Gothic', sans-serif;">
                 <!-- <a href="javascript:closeNav()" class="closebtn" >&times;</a> -->
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="margin-bottom: 100px">&times;</a>
+                <c:if test="${userInfo.mbr_se eq '01'}">
+                    <a href="/bosslogin" style="font-family: 'TmoneyRoundWindExtraBold';">가게 관리하기</a>
+                </c:if>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">가게 모아보기</a>
                 <a href="/home" style="font-family: 'TmoneyRoundWindExtraBold';">게시글 보기</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>

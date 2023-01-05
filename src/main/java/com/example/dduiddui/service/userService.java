@@ -16,24 +16,24 @@ public class userService {
     public userVO getUserById(String mbrId) {
         return userMapper.getUserById(mbrId);
     }
-    public Integer getMbrSn(String mbr_id, String password) {
+
+    public Integer getMbrSn(String mbr_id) {
         userVO userVo = userMapper.getUserById(mbr_id);
-        userVO loginMember = userMapper.getUserByVO(userVo);
-        LoginResponse loginResponse = new LoginResponse();
-
-        //userMapper.updateUser(loginMember);
-        loginResponse.setLoginMember(loginMember);
-        loginResponse.setSuccess(true);
-
-        if (false == loginResponse.isSuccess()) {
-            return 0;
-        }
         return userVo.getMbr_sn();
     }
+//    public Integer getMbrSn(String mbr_id) {
+//        userVO userVo = userMapper.getUserById(mbr_id);
+//
+//        userVO loginMember = userMapper.getUserByVO(userVo);
+//        LoginResponse loginResponse = new LoginResponse();
 
-//    public userVO getAddress(Integer mbrSn) {
-//        System.out.println("test:"+userMapper.getAddress(mbrSn));
-//        return userMapper.getAddress(mbrSn);
+//        loginResponse.setLoginMember(userVo);
+//        loginResponse.setSuccess(true);
+//
+//        if (false == loginResponse.isSuccess()) {
+//            return 0;
+//        }
+//        return userVo.getMbr_sn();
 //    }
 
     public userVO getUserBySn(Integer mbr_sn) {
@@ -42,8 +42,4 @@ public class userService {
     public void signup(userVO userVo) {
         userMapper.insertUser(userVo);
     }
-
-
-
-
 }
