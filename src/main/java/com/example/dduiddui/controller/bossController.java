@@ -138,8 +138,8 @@ public class bossController {
     }
 
     @GetMapping("/menuDelete")
-    public String deleteMenu(@RequestParam("menu_sn") int menu_sn,@RequestParam("str_sn") int str_sn) { // 회원 정보 수정
-        bossService.deleteMenuBySn(str_sn);
+    public String deleteMenu(@RequestParam("menu_sn")int sn) { // 회원 정보 수정
+        bossService.deleteMenuBySn(sn);
         return "redirect:/menu?num";
     }
 

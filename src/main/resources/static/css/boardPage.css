@@ -22,7 +22,9 @@ body{
     margin-right: 50px;
 }
 #boardCnt{
+
     width: 1500px;
     margin-left: 130px;
     margin-right: 100px;
+    margin-top: 30px;
 }
