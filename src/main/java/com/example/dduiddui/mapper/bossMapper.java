@@ -20,4 +20,8 @@ public interface bossMapper {
 
     void insertMenu(menuVO menuVo);
 
+    void deleteStore(int str_sn);
+
+    void deleteMenu(int menu_sn);
+
 }

@@ -98,18 +98,13 @@ public class bossController {
         }
 
 
-
-
-
-
-
         return "boss/bossstore";
     }
 
 
 
 
-    @GetMapping("/menu")
+    @GetMapping("/menu/{num}")
     public String toMenuPage(@RequestParam("num") int num, HttpSession session, Model model) { // 회원 정보 수정 페이지
 
 
@@ -134,6 +129,18 @@ public class bossController {
 
 
         return "boss/popup";
+    }
+
+    @GetMapping("/storeDelete")
+    public String deleteStore(@RequestParam("str_sn") int sn) { // 회원 정보 수정
+        bossService.deleteStoreBySn(sn);
+        return "redirect:/store";
+    }
+
+    @GetMapping("/menuDelete")
+    public String deleteMenu(@RequestParam("menu_sn") @RequestParam("str_sn") int sn) { // 회원 정보 수정
+        bossService.deleteMenuBySn(sn);
+        return "redirect:/menu?num";
     }
 
 }

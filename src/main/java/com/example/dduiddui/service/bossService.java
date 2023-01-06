@@ -36,4 +36,10 @@ public class bossService {
 
     public void insertMenu(menuVO menuVo){bossMapper.insertMenu(menuVo);}
 
+    public void deleteStoreBySn(int str_sn){bossMapper.deleteStore(str_sn);}
+
+    public void deleteMenuBySn(int menu_sn){bossMapper.deleteMenu(menu_sn);}
+
+
+
 }

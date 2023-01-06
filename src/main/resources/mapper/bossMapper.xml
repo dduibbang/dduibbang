@@ -60,6 +60,17 @@
 
 
 
+    <delete id="deleteStore" parameterType="com.example.dduiddui.vo.bossVO">
+        DELETE <!-- 미완성 -->
+        FROM `tb_str`
+        WHERE str_sn = #{str_sn}
+    </delete>
+
+    <delete id="deleteMenu" parameterType="com.example.dduiddui.vo.menuVO">
+        DELETE
+        FROM `tb_menu`
+        WHERE menu_sn = #{menu_sn}
+    </delete>
 
 
 

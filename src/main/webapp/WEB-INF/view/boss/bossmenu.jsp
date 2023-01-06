@@ -128,7 +128,7 @@
                                                 <td>${m.menu_pr}</td>
                                                 <td>${m.menu_op}</td>
                                                 <td>
-                                                    <button  style="top:680px" class = "btn btn-primary btn-block" onclick="location.href=''">삭제</button>
+                                                    <button  style="top:680px" class = "btn btn-primary btn-block" onclick="location.href='menuDelete?menu_sn=${m.menu_sn}'">삭제</button>
                                                 </td>
                                             </tr>
                                         </c:forEach>

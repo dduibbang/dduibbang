@@ -130,7 +130,7 @@
                                                 <td>${s.str_min}</td>
                                                 <td>${s.str_adr}</td>
                                                 <td>
-                                                    <button  style="top:680px" class = "btn btn-primary btn-block" onclick="location.href='listdelete?title=${v.title}'">삭제</button>
+                                                    <button  style="top:680px" class = "btn btn-primary btn-block" onclick="location.href='storeDelete?str_sn=${s.str_sn}'">삭제</button>
                                                 </td>
 
                                             </tr>
