@@ -73,9 +73,9 @@
                         </tr>
                         </thead>
                         <tbody>
-
+<%--                        onclick="location.href='/home/${u.brd_sn}'"--%>
                         <c:forEach items="${YboardList}" var="u">
-                            <tr>
+                            <tr style="cursor:pointer;" onclick="location.href='/board/${u.brd_sn}'">
                                 <td>${u.brd_sn}</td>
                                 <td>${u.brd_ctgr}</td>
                                 <td>${u.brd_ttl}</td>
