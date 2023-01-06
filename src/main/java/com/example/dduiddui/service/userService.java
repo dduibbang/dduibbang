@@ -42,4 +42,16 @@ public class userService {
     public void signup(userVO userVo) {
         userMapper.insertUser(userVo);
     }
+
+    //@Override
+    public void updatePW(userVO userVo) throws Exception{
+        System.out.println("암호화 전 비번 : " + userVo.getMbr_pwd());
+
+        //새로운 비번 저장
+        userVo.setMbr_pwd(userVo.getMbr_pwd());
+
+        System.out.println("암호화 후 비번 : " + userVo.getMbr_pwd());
+    }
+
+
 }

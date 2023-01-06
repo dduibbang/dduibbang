@@ -62,11 +62,53 @@ public class userController {
 
 
     @GetMapping("/memberInfo")
-    public String mbrInfoPage() {
+    public String mbrInfoPage(HttpSession session, Model model) {
+        String id = (String) session.getAttribute("id");
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+
+        if (id != null) { // 로그인된 상태
+            userVO userVo = userService.getUserById(id);
+            model.addAttribute("userInfo", userVo);
+            model.addAttribute("sn", sn);
+        }
 
         return "memberInfo";
     }
+    @GetMapping("/updatePw")
+    public String toupdatePwPage(){
 
+        return "updatePw";
+    }
+
+    //비밀번호 확인 처리 요청
+    @PostMapping("/checkPw")
+    public String checkPw(@RequestBody String pw, HttpSession session) throws Exception{
+        System.out.println("비밀번호 확인 요청");
+
+        String result = null;
+
+        userVO userVo = (userVO) session.getAttribute("login");
+        System.out.println("회원님의 기존 비밀번호 : " + userVo.getMbr_pwd());
+        System.out.println("폼에서 받아온 비밀번호 : " + pw);
+
+        if(pw == userVo.getMbr_pwd()){
+            result = "pwConfirmOK";
+        }else{
+            result = "pwConfirmNO";
+        }
+        return result;
+    }
+
+    @PostMapping("/updatePw")
+    public String updatePw(@RequestBody userVO userVo, HttpSession session) throws Exception{
+        System.out.println("비밀번호 변경 요청!!!");
+
+        //비번 변경
+        userService.updatePW(userVo);
+
+        //비번 변경 성공시
+        return "변경 성공";
+    }
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지

@@ -53,7 +53,7 @@
         // 테이블의 Row 클릭시 값 가져오기
         $("#str_table tr").click(function(){
 
-            var str = ""
+            var str = "";
 
             // 현재 클릭된 Row(<tr>)
             var tr = $(this);

@@ -37,7 +37,7 @@
             <div style="margin-right: 20px;">
                     <ul>
                         <c:if test="${mbr_sn != null}">
-                            <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">${userInfo.mbr_nm}님</a></li>
                             <li class="nav-item"><a class="nav-link" href="/memberInfo">마이페이지</a></li>
                         </c:if>
                     </ul>

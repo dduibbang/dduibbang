@@ -82,6 +82,7 @@ select::-ms-expand {
     background-color: #f8941d;
     border-radius: 18px;
     border: none;
+    font-weight: 700;
 }
 
 button:hover {

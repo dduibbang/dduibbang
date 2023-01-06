@@ -21,9 +21,9 @@ import java.util.List;
 public class boardController {
 
     @Autowired
-    private boardService boardService;
-    @Autowired
     private userService userService;
+    @Autowired
+    private boardService boardService;
 
     @Autowired
     private selectService selectService;

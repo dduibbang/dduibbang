@@ -33,5 +33,11 @@
                 #{mbr_se}
             )
     </insert>
-
+    
+    <update id="updatePW" parameterType="com.example.dduiddui.vo.userVO">
+        UPDATE tb_mbr
+        SET mbr_pwd = #{mbr_pwd}
+        WHERE #{mbr_id}
+    </update>
+    
 </mapper>

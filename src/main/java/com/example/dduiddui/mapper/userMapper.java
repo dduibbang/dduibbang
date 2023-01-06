@@ -11,5 +11,5 @@ public interface userMapper {
 
     userVO getUserBySn(Integer mbrSn);
     void insertUser(userVO userVo); // 회원가입
-
+    userVO updatePW(userVO userVo);
 }
