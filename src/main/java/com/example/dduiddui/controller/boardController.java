@@ -1,6 +1,7 @@
 package com.example.dduiddui.controller;
 
 import com.example.dduiddui.service.boardService;
+import com.example.dduiddui.service.selectService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class boardController {
     private boardService boardService;
     @Autowired
     private userService userService;
+
+    @Autowired
+    private selectService selectService;
 
 
     @GetMapping("/board")
@@ -67,9 +71,16 @@ public class boardController {
         userVO userVO = userService.getUserBySn(mbr_sn);
         model.addAttribute("userInfo",userVO);
 
+        boardVO brd = boardService.getBrd(boardSn);
+        model.addAttribute("brd", brd);
+
+        Integer strSn = brd.getStr_sn();
+        selectVO selectVO = selectService.getStrBySn(strSn);
+        model.addAttribute("strImg", selectVO.getStr_img());
+
 //        System.out.println("boardPageboardPage");
-//        System.out.println("user sn: " + mbr_sn);
-//        System.out.println("user id: " + userVO);
+//        System.out.println("strSn: " + strSn);
+//        System.out.println("selectVO: " + selectVO);
 
         return "boardPage";
     }

@@ -10,4 +10,6 @@ public class selectVO {
     private String str_ctgr;
     private int str_min;
     private String str_adr;
+
+    private String str_img;
 }

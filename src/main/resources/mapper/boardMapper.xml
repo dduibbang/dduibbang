@@ -41,5 +41,11 @@
             )
     </insert>
 
+    <!-- 게시글 클릭 -->
+    <select id="getBrd" resultType="com.example.dduiddui.vo.boardVO">
+        SELECT *
+        FROM tb_brd
+        WHERE brd_sn = #{brd_sn}
+    </select>
 
 </mapper>

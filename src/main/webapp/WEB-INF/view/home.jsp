@@ -38,6 +38,7 @@
         <a href="/map" class="basicBtn"> 주소 변경 </a>
     </div>
     </div>
+
     <input  class=input id="tab1" type="radio" name="tabs" checked> <!--디폴트 메뉴-->
     <label for="tab1">안심거래</label>
 

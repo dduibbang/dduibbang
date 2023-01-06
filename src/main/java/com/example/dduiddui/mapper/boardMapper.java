@@ -15,6 +15,6 @@ public interface boardMapper {
 
     void insertBoard(boardVO boardVo);
 
-
+    boardVO getBrd(Integer brd_sn);
 
 }

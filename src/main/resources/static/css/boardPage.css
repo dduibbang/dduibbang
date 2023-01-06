@@ -11,3 +11,18 @@ body{
     padding: 20px;
     box-shadow: 5px 5px darkgrey;
 }
+#btn-col{
+    display: flex;
+    justify-content: space-between;
+}
+#menu-btn{
+    margin-left: 50px;width:400px;background: #b5e2ef;
+}
+#small_btn_col{
+    margin-right: 50px;
+}
+#boardCnt{
+    width: 1500px;
+    margin-left: 130px;
+    margin-right: 100px;
+}

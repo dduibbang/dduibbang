@@ -7,5 +7,10 @@
         FROM tb_str
     </select>
 
+    <select id="getStrBySn" resultType="com.example.dduiddui.vo.selectVO">
+        SELECT *
+        FROM tb_str
+        WHERE str_sn = #{str_sn}
+    </select>
 
 </mapper>

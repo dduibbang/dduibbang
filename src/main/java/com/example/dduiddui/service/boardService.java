@@ -26,4 +26,8 @@ public class boardService {
 
     }
 
+    public boardVO getBrd(Integer brd_sn) {
+        return  boardMapper.getBrd(brd_sn);
+    }
+
 }
