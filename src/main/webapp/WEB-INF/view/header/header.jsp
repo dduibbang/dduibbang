@@ -36,7 +36,7 @@
         <div style="display: flex; align-items: baseline;" >
             <div style="margin-right: 20px;">
                     <ul>
-                        <c:if test="${sn != null}">
+                        <c:if test="${mbr_sn != null}">
                             <li class="nav-item"><a class="nav-link" href="#!">${userInfo.mbr_nm}님</a></li>
                             <li class="nav-item"><a class="nav-link" href="/memberInfo">마이페이지</a></li>
                         </c:if>
@@ -45,10 +45,10 @@
             <div>
                 <form class="formBtn">
                     <ul>
-                        <c:if test="${sn != null}">
+                        <c:if test="${mbr_sn != null}">
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">logout</a></li>
                         </c:if>
-                        <c:if test="${sn eq null}">
+                        <c:if test="${mbr_sn eq null}">
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">login</a></li>
                         </c:if>
                     </ul>

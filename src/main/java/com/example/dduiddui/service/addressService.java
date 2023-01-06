@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.dduiddui.mapper.addressMapper;
 
+import javax.websocket.Session;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -31,10 +32,13 @@ public class addressService {
     public String getAddress(Integer mbrSn) {
         String address = "";
 
-        address = addressMapper.getAddress(mbrSn).getAdr_cn() +
-                " " + addressMapper.getAddress(mbrSn).getAdr_st();
-        System.out.println("address" + address);
+        try {
+            address = addressMapper.getAddress(mbrSn).getAdr_cn() +
+                    " " + addressMapper.getAddress(mbrSn).getAdr_st();
+            System.out.println("address" + address);
+        }catch (Exception e){
 
+        }
         return address;
     }
 
@@ -64,16 +68,17 @@ public class addressService {
 //
 //    }
 
-
-    // 즐찾이름으로 adrVO 받기
-    public addressVO getAdrByTtl(String adrTtl) {
-        return addressMapper.getAdrByTtl(adrTtl);
-    }
+//
+//    // 즐찾이름으로 adrVO 받기
+//    public addressVO getAdrByTtl(String adrTtl) {
+//
+//        return addressMapper.getAdrByTtl(adrTtl);
+//    }
 
     // 즐찾이름으로 adr_sn받기
-    public Integer getAdrSn(String adrTtl) {
-
-        addressVO addressVO = addressMapper.getAdrByTtl(adrTtl);
+    public Integer getAdrSn(String adrTtl,Integer mbr_sn) {
+        addressVO addressVO = addressMapper.getAdrByTtl(adrTtl,mbr_sn);
+        System.out.println(addressVO);
 
         return addressVO.getAdr_sn();
     }

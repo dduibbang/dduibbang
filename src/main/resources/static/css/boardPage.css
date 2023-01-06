@@ -1,0 +1,13 @@
+@charset "UTF-8";
+body{
+    background-color: #F7C123;
+}
+.Btap{
+    width: 1800px;
+    height: 1100px;
+    margin: auto;
+    background: #f9fcf3;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 5px 5px darkgrey;
+}

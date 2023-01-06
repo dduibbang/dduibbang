@@ -3,6 +3,7 @@ package com.example.dduiddui.mapper;
 import com.example.dduiddui.vo.addressVO;
 import com.example.dduiddui.vo.userVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,6 +19,6 @@ public interface addressMapper {
 
     void updateMainAdr(Integer adrSn);
 
-    addressVO getAdrByTtl(String adrTtl);
+    addressVO getAdrByTtl(@Param("adr_ttl") String adrTtl,@Param("mbr_sn") Integer mbr_sn);
 
 }
