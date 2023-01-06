@@ -1,6 +1,7 @@
 package com.example.dduiddui.controller;
 import com.example.dduiddui.vo.*;
 import com.google.gson.Gson;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -26,13 +27,15 @@ public class addressController {
     @RequestMapping(value = "/setAddressBtn",method = RequestMethod.GET)
     public String setAddressBtn(String adr_ttl, HttpSession session){
 
+        System.out.println("adr_ttl : " + adr_ttl);
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+
         // 해당주소의 sn 얻기
-       Integer adrSn = addressService.getAdrSn(adr_ttl);
+       Integer adrSn = addressService.getAdrSn(adr_ttl,sn);
        session.setAttribute("main_adr_sn",adrSn);
        System.out.println("adrSn : " + adrSn);
 
        // 기존의 기본주소 설정 체크해제
-       Integer sn = (Integer) session.getAttribute("mbr_sn");
        addressService.updateAdr(sn);
 
        // adrvo 얻어와서 기본주소 설정
@@ -58,7 +61,7 @@ public class addressController {
 
             // 기존의 기본주소 리셋 후 해당주소 기본주소 설정
             addressService.updateAdr(sn);
-            Integer adrSn = addressService.getAdrSn(addressVO.getAdr_ttl());
+            Integer adrSn = addressService.getAdrSn(addressVO.getAdr_ttl(),sn);
             session.setAttribute("main_adr_sn",adrSn);
             //System.out.println("adrSn : " + adrSn);
             addressService.updateMainAdr(adrSn);
@@ -76,7 +79,7 @@ public class addressController {
         String userAdr = "주소를 설정해주세요.";
         String id = (String) session.getAttribute("id");
         Integer sn = (Integer) session.getAttribute("mbr_sn");
-
+        System.out.println("mbr_sn:" + sn);
         if (id != null) { // 로그인된 상태
             userAdr = addressService.getAddress(sn);
             model.addAttribute("userAdr",userAdr);

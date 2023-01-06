@@ -31,7 +31,7 @@
         SELECT A.mbr_sn,B.adr_cn,B.adr_st
         FROM tb_mbr AS A LEFT JOIN tb_adr AS B
                                    ON A.mbr_sn = B.mbr_sn
-        WHERE B.dft_yn = 'Y'
+        WHERE B.dft_yn = 'Y' AND B.mbr_sn = #{mbr_sn}
     </select>
 
     <!-- 기본주소 설정하기(기존의 기본주소를 일반주소로 변경) -->
@@ -48,9 +48,9 @@
         WHERE adr_sn = #{adr_sn}
     </update>
 
-    <select id="getAdrByTtl" resultType="com.example.dduiddui.vo.addressVO">
+    <select id="getAdrByTtl" parameterType="java.util.Map" resultType="com.example.dduiddui.vo.addressVO">
         SELECT *
         FROM tb_adr
-        WHERE adr_ttl = #{adr_ttl}
+        WHERE adr_ttl = #{adr_ttl} AND mbr_sn =#{mbr_sn}
     </select>
 </mapper>
