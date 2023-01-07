@@ -24,7 +24,6 @@ public class boardController {
     private userService userService;
     @Autowired
     private boardService boardService;
-
     @Autowired
     private selectService selectService;
 

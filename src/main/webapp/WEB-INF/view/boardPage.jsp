@@ -16,7 +16,6 @@
 
     <script>
         $(document).ready(function(){
-
         });
     </script>
 </head>
@@ -54,7 +53,7 @@
     </div>
     <br>
     <div style="display: flex; justify-content: center;margin-top: 460px;">
-        <button style="width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='#'">엔빵 참여하기</button>
+        <button style="width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 참여하기</button>
     </div>
 </div>
 </body>
