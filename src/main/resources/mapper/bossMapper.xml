@@ -60,8 +60,8 @@
 
 
 
-    <delete id="deleteStore" parameterType="com.example.dduiddui.vo.bossVO">
-        DELETE <!-- 미완성 -->
+    <delete id="deleteStore" parameterType="com.example.dduiddui.vo.bossVO"> <!--다른거 참조하고있으면 가게가 삭제가안댐-->
+        DELETE
         FROM `tb_str`
         WHERE str_sn = #{str_sn}
     </delete>
@@ -71,14 +71,6 @@
         FROM `tb_menu`
         WHERE menu_sn = #{menu_sn}
     </delete>
-
-
-
-
-
-
-
-
 
 
 </mapper>

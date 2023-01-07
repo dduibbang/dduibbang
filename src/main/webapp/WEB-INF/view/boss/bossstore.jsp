@@ -123,7 +123,7 @@
                                         <c:forEach items="${storeList}" var="s">
                                             <tr>
 
-                                                <td><a href='menu?num=${s.str_sn}'>${s.str_nm}</a></td>
+                                                <td><a href='menu/${s.str_sn}'>${s.str_nm}</a></td>
                                                 <td>${s.str_tel}</td>
                                                 <td>${s.str_bin}</td>
                                                 <td>${s.str_ctgr}</td>
