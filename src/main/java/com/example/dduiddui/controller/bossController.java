@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -105,7 +102,7 @@ public class bossController {
 
 
     @GetMapping("/menu/{num}")
-    public String toMenuPage(@RequestParam("num") int num, HttpSession session, Model model) { // 회원 정보 수정 페이지
+    public String toMenuPage(@PathVariable("num") int num, HttpSession session, Model model) { // 회원 정보 수정 페이지
 
 
         List<menuVO> menuList = bossService.getMenuListBySn(num);
@@ -138,7 +135,7 @@ public class bossController {
     }
 
     @GetMapping("/menuDelete")
-    public String deleteMenu(@RequestParam("menu_sn")int sn) { // 회원 정보 수정
+    public String deleteMenu(@RequestParam("menu_sn") int sn) { // 회원 정보 수정
         bossService.deleteMenuBySn(sn);
         return "redirect:/menu?num";
     }
