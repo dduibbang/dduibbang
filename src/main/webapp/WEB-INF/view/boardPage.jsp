@@ -32,19 +32,23 @@
         <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
 
                 <div style="display: flex;justify-content: space-between;align-items: baseline;">
-                    <h3 style="margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
+                    <div style="display: flex;justify-content: space-between;align-items: baseline;">
+                        <h3 style="margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
+                        <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
+                        <div class="basicBtn" style="background: #b5e2ef">${strNm}</div>
+                    </div>
                     <h3 class="basicBtn">${brd.brd_pri}</h3>
                 </div>
 
-                <div style="display: flex;align-items: baseline;">
-                    <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
-                    <div class="basicBtn" style="background: #b5e2ef">${strNm}</div>
-                </div>
+                <div style="margin-top: 10px;margin-bottom: 10px;">${brd.rgtr_id}</div>
                 <div style="padding: 20px;background: #f9fcf3;margin: 10px;margin-left: 0px;margin-right: 0px">${brd.brd_cn}</div>
 
                 <div style="display: flex;justify-content: space-between;align-items: baseline;">
                     <div class="basicBtn" style="background: #b5e2ef">${brd.brd_adr}</div>
-                    <div class="basicBtn" style="font-size: 20px;">1/${brd.brd_nn}명</div>
+                    <div style="display: flex;align-items: baseline;">
+                        <div class="basicBtn" style="font-size: 20px;">${brd.brd_end_dt}</div>
+                        <div class="basicBtn" style="font-size: 20px;">1/${brd.brd_nn}명</div>
+                    </div>
                 </div>
 
         </div>
