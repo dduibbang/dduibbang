@@ -77,6 +77,7 @@ public class boardController {
         Integer strSn = brd.getStr_sn();
         selectVO selectVO = selectService.getStrBySn(strSn);
         model.addAttribute("strImg", selectVO.getStr_img());
+        model.addAttribute("strNm", selectVO.getStr_nm());
 
 //        System.out.println("boardPageboardPage");
 //        System.out.println("strSn: " + strSn);
