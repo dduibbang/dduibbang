@@ -23,8 +23,8 @@ public class boardService {
 
     public void boardWrite(boardVO boardVo) {
 
-        boardMapper.insertBoard(boardVo);
         boardVo.setRgtr_dt(LocalDateTime.now());
+        boardMapper.insertBoard(boardVo);
     }
 
     public boardVO getBrd(Integer brd_sn) {
