@@ -2,6 +2,9 @@ package com.example.dduiddui.handler;
 
 import java.util.HashMap;
 
+import net.sf.json.JSONObject;
+import org.apache.tomcat.util.json.JSONParser;
+import org.apache.tomcat.util.json.ParseException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -32,6 +35,10 @@ public class SocketHandler extends TextWebSocketHandler {
         //소켓 연결
         super.afterConnectionEstablished(session);
         sessionMap.put(session.getId(), session);
+        JSONObject obj = new JSONObject();
+        obj.put("type", "getId");
+        obj.put("sessionId", session.getId());
+        session.sendMessage(new TextMessage(obj.toString()));
     }
 
     @Override
@@ -39,5 +46,15 @@ public class SocketHandler extends TextWebSocketHandler {
         //소켓 종료
         sessionMap.remove(session.getId());
         super.afterConnectionClosed(session, status);
+    }
+    private static JSONObject jsonToObjectParser(String jsonStr) {
+        JSONParser parser = new JSONParser(jsonStr);
+        JSONObject obj = null;
+        try {
+            obj = (JSONObject) parser.parse();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }
