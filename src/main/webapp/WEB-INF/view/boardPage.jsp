@@ -23,10 +23,10 @@
 <body style="background-color: #F7C123;">
 <div class="Btap" style="font-family: 'TmoneyRoundWindExtraBold';">
     <div id = boardCnt>
-        <div style="background: #fef1c6;">
+        <div id = "mainCnt "style="background: #fef1c6;">
             <div style="display: grid;padding: 40px;padding-bottom: 20px;grid-template-columns: 500px 1fr;">
                 <div id="img_div" style="margin-right: 50px;margin-left: 10px;">
-                    <img src="${strImg}" style="width: 400px;">
+                    <img src="${strImg}" style="width: 400px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
                 </div>
                 <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
 
@@ -69,7 +69,7 @@
             </div>
         </div>
         <div style="display: flex; justify-content: center;margin-top: 30px;">
-        <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='#'">엔빵 참여하기</button>
+        <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 참여하기</button>
     </div>
 </div>
 </body>
