@@ -129,7 +129,6 @@
     <div id="yourName">
         <table class="inputTable">
             <tr>
-                <th>사용자명</th>
                 <th><input type="hidden" name="userName" id="userName" value = <%=id%>></th>
                 <th><button onclick="chatName()" id="startBtn">시작</button></th>
             </tr>
