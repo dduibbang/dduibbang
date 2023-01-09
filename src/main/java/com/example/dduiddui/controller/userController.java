@@ -60,7 +60,7 @@ public class userController {
         return "map";
     }
 
-
+    //마이페이지
     @GetMapping("/memberInfo")
     public String mbrInfoPage(HttpSession session, Model model) {
         String id = (String) session.getAttribute("id");
@@ -74,6 +74,31 @@ public class userController {
 
         return "memberInfo";
     }
+
+    //마이페이지 수정
+    @PostMapping("/memberInfo")
+    public String write(HttpSession session,  userVO userVo){
+        try {
+            userService.updateInfo(userVo);
+
+
+        } catch (DuplicateKeyException e) {
+            return "redirect:/updateInfo?error_code=-1";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/updateInfo?error_code=-99";
+        }
+
+        return "redirect:/memberInfo";
+    }
+
+    //빵충전
+    @GetMapping("/kakaoPay")
+    public String kakapPayPage(){
+
+        return "kakaoPay";
+    }
+
     @GetMapping("/updatePw")
     public String toupdatePwPage(){
 
