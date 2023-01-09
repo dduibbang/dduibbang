@@ -56,9 +56,22 @@ public class boardService {
         return  boardMapper.getBrd(brd_sn);
     }
 
-    public List<boardVO> getSearchYList(boardVO boardVO){
+    // 검색 결과 게시물
+    public List<boardVO> getSearchList(){
 
-        return boardMapper.getSearchYList(boardVO);
+        return boardMapper.getSearchList();
+    }
+
+    // 검색 결과 게시물에 필요한 str_nm,str_img 겟
+    public List<selectVO> getSearchListStr(){
+
+        List<selectVO> res =new ArrayList<>();
+        List<boardVO> brdList = boardMapper.getSearchList();
+
+        for (int i=0;i<brdList.size();i++){
+            res.add(selectMapper.getBoardStr(brdList.get(i).getBrd_sn()));
+        }
+        return res;
     }
 
 }

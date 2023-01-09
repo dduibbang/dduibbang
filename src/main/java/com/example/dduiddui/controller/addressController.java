@@ -52,7 +52,6 @@ public class addressController {
         if(sn != null) {
 
             // 일단 주소목록 추가
-            addressVO.setRgtr_dt(LocalDateTime.now());
             String getTime = String.valueOf(LocalDateTime.now());
             Integer num = (Integer) session.getAttribute("adrListLength");
             num+=1;

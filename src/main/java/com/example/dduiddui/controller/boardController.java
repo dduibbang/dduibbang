@@ -87,13 +87,15 @@ public class boardController {
     }
 
     @ResponseBody
-    @RequestMapping("/getSearchYList")
-    private byte[] getSearchYList(boardVO boardVO) throws Exception{
+    @RequestMapping("/getSearchList")
+    private byte[] getSearchList() throws Exception{
 
         Map<String, Object> res = new HashMap<>();
         res.put("success", Boolean.FALSE);
-        List<boardVO> searchYList = boardService.getSearchYList(boardVO);
-        res.put("searchYList", searchYList);
+        List<boardVO> searchList = boardService.getSearchList();
+        res.put("searchList", searchList);
+        List<selectVO> searchListStr = boardService.getSearchListStr();
+        res.put("searchListStr", searchListStr);
         return new Gson().toJson(res).getBytes("UTF-8");
     }
 }

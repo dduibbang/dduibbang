@@ -60,7 +60,8 @@
                 <option value="4">주소</option>
             </select>
             <div style="display: flex;">
-                <input type="text" id="searchYWrd" name="searchWrd" placeholder="검색어를 입력하세요." style="width: 300px;height: 40px;">
+                <input type="hidden" name="safe_yn"  value="${'Y'.charAt(0)}">
+                <input type="text" id="searchYWrd" name="searchWrd" placeholder="검색어를 입력하세요." onkeyup="emptyNTab()" style="width: 300px;height: 40px;">
                 <button class="basicBtn" style="width: 80px; height: 40px;border-radius: 4px;" onclick="search()">검색</button>
             </div>
         </div>
@@ -135,7 +136,8 @@
                 <option value="2">내용</option>
             </select>
             <div style="display: flex;">
-                <input type="text" id="searchWrd" name="searchNWrd" placeholder="검색어를 입력하세요." style="width: 300px;height: 40px;">
+                <input type="hidden" name="safe_yn"  value="${'N'.charAt(0)}">
+                <input type="text" id="searchNWrd" name="searchWrd" placeholder="검색어를 입력하세요." onkeyup="emptyYTab()" style="width: 300px;height: 40px;">
                 <button class="basicBtn" style="width: 80px; height: 40px;border-radius: 4px;" onclick="search()">검색</button>
             </div>
         </div>
