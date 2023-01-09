@@ -99,11 +99,10 @@ public class userController {
 
     //빵충전
     @GetMapping("/kakaoPay")
-    public String kakapPayPage(){
+    public String toChargePayPage(){
 
         return "kakaoPay";
     }
-
     @GetMapping("/updatePw")
     public String toupdatePwPage(){
 

@@ -27,7 +27,7 @@
                 <label class="mbr-point">${userInfo.mbr_pt} 빵</label>
             </div>
             <div>
-                <button type="button" class="btn-point" onclick="kakaoPay">추가 적립</button>
+                <button type="button" class="btn-point" onclick="kakaoPay()">추가 적립</button>
             </div>
         </div>
 
@@ -100,6 +100,8 @@
         }
     </script>
 
+
+
     <script type="text/javascript">
         /*let openWin;*/
         var openWin;
@@ -127,4 +129,3 @@
 
 </body>
 </html>
-

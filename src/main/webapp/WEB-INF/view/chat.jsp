@@ -51,7 +51,7 @@
 
 
     <script type ="text/javascript">
-        window.onload = chatName //페이지 로드시 자동으로 실행
+        window.onload = chatName; //페이지 로드시 자동으로 실행
 
         function chatName(){
 
@@ -70,7 +70,8 @@
     var ws;
 
     function wsOpen(){
-        ws = new WebSocket("ws://" + location.host + "/chating");
+        //웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
+        ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
         wsEvt();
     }
 
@@ -102,6 +103,7 @@
             }
         }
 
+
         document.addEventListener("keypress", function(e){
             if(e.keyCode == 13){ //enter press
                 send();
@@ -114,6 +116,7 @@
     function send() {
         var option ={
             type: "message",
+            roomNumber: $("#roomNumber").val(),
             sessionId : $("#sessionId").val(),
             userName : $("#userName").val(),
             msg : $("#chatting").val()
@@ -122,21 +125,16 @@
         $('#chatting').val("");
     }
 </script>
+
 <body>
 <div id="container" class="container">
     <h1>채팅</h1>
     <input type="hidden" id="sessionId" value="">
-
+    <input type="hidden" id="roomNumber" value="${roomNumber}">
+    <th><input type="hidden" name="userName" id="userName" value = <%=id%>></th>
     <div id="chating" class="chating">
     </div>
 
-    <div id="yourName">
-        <table class="inputTable">
-            <tr>
-                <th><input type="hidden" name="userName" id="userName" value = <%=id%>></th>
-            </tr>
-        </table>
-    </div>
     <div id="yourMsg">
         <table class="inputTable">
             <tr>
