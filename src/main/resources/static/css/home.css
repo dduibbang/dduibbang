@@ -11,6 +11,9 @@ body{
     align-items: center;
     box-shadow: 3px 3px darkgrey;
 }
+.mainCnt{
+    border-radius:20px
+}
 a:hover{
     color:whitesmoke;
     text-decoration-line: none;
