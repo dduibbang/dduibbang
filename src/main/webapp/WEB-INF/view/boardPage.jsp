@@ -20,6 +20,7 @@
     </script>
 </head>
 
+
 <body style="background-color: #F7C123;">
 <div class="Btap" style="font-family: 'TmoneyRoundWindExtraBold';">
     <div id = boardCnt>

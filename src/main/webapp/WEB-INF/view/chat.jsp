@@ -48,6 +48,22 @@
             display: none;
         }
     </style>
+
+
+    <script type ="text/javascript">
+        window.onload = chatName //페이지 로드시 자동으로 실행
+
+        function chatName(){
+
+                wsOpen();
+                $("#yourName").hide();
+                $("#yourMsg").show();
+
+        }
+    </script>
+
+
+
 </head>
 
 <script type="text/javascript">
@@ -93,19 +109,7 @@
         });
     }
 
-    function chatName(){
-        var userName = $("#userName").val();
-        if(userName == null || userName.trim() == ""){
-            alert("사용자 이름을 입력해주세요.");
-            $("#userName").focus();
-        }else{
-            wsOpen();
-            $("#yourName").hide();
-            $("#yourMsg").show();
 
-
-        }
-    }
 
     function send() {
         var option ={
@@ -129,9 +133,7 @@
     <div id="yourName">
         <table class="inputTable">
             <tr>
-                <th>사용자명</th>
                 <th><input type="hidden" name="userName" id="userName" value = <%=id%>></th>
-                <th><button onclick="chatName()" id="startBtn">시작</button></th>
             </tr>
         </table>
     </div>
