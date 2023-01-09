@@ -24,7 +24,7 @@
         <selectKey keyProperty="str_sn" resultType="java.lang.Integer" order="BEFORE">
             SELECT str_sn
             FROM `tb_str`
-            WHERE str_nm = #{strName}
+            WHERE str_nm = #{str_nm}
         </selectKey>
         INSERT INTO `tb_brd`(brd_ctgr, str_sn, safe_yn, brd_ttl, brd_cn, brd_nn, brd_pri, brd_adr, brd_end_dt, rgtr_id, rgtr_dt)
         VALUES

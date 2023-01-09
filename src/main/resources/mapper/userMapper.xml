@@ -33,7 +33,15 @@
                 #{mbr_se}
             )
     </insert>
-    
+
+    <update id="updateUser" parameterType="com.example.dduiddui.vo.userVO">
+        UPDATE tb_mbr
+        SET mbr_nm= #{mbr_nm},
+            mbr_tel= #{mbr_tel},
+            mbr_email= #{mbr_email}
+        WHERE mbr_id= #{mbr_id}
+    </update>
+
     <update id="updatePW" parameterType="com.example.dduiddui.vo.userVO">
         UPDATE tb_mbr
         SET mbr_pwd = #{mbr_pwd}

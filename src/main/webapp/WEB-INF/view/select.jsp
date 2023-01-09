@@ -76,7 +76,7 @@
 
     <script>
         function setParentText(){
-            opener.document.getElementById("strName").value = document.getElementById("select_str").value
+            opener.document.getElementById("str_nm").value = document.getElementById("select_str").value
             window.close()
         }
     </script>
