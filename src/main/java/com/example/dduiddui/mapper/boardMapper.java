@@ -17,4 +17,6 @@ public interface boardMapper {
 
     boardVO getBrd(Integer brd_sn);
 
+    List<boardVO> getSearchYList(boardVO boardVO);
+
 }

@@ -51,7 +51,21 @@
     <section class=tabContents id="content1" style="padding-top: 50px;">
             <!-- 여기부터 board 리스트 표시 -->
 
-            <div class="table-responsive" style="height: 850px;display: flex;justify-content: center;flex-wrap: wrap;
+        <div class = "searchForm">
+            <select  style="height: 40px" name="searchCnd" id="searchYCnd" style="margin-left: 5px;margin-right: 10px">
+                <option value="0">전체</option>
+                <option value="1">게시 상태</option>
+                <option value="2">음식 종류</option>
+                <option value="3">가게명</option>
+                <option value="4">주소</option>
+            </select>
+            <div style="display: flex;">
+                <input type="text" id="searchYWrd" name="searchWrd" placeholder="검색어를 입력하세요." style="width: 300px;height: 40px;">
+                <button class="basicBtn" style="width: 80px; height: 40px;border-radius: 4px;" onclick="search()">검색</button>
+            </div>
+        </div>
+
+        <div class="table-responsive" style="height: 850px;display: flex;justify-content: center;flex-wrap: wrap;
 }">
 
                         <c:forEach items="${YboardList}" var="brd" varStatus="idx">
@@ -97,7 +111,7 @@
         <br>
         <br>
                     <div class="clearfix" style="display: flex;justify-content: center;">
-                        <ul class="pagination justify-content-center">
+                        <ul class="pagination justify-content-center" style="margin-left: 120px;">
                             <li class="page-item disabled"><a href="" class="page-link">Previous</a></li>
                             <li class="page-item active"><a href="" class="page-link">1</a></li>
                             <li class="page-item"><a href="" class="page-link">2</a></li>
@@ -114,7 +128,17 @@
 
     <section class=tabContents id="content2" style="padding-top: 50px;">
         <!-- 여기부터 board 리스트 표시 -->
-
+        <div class = "searchForm">
+            <select  style="height: 40px" name="searchCnd" id="searchNCnd" style="margin-left: 5px;margin-right: 10px">
+                <option value="0">전체</option>
+                <option value="1">제목</option>
+                <option value="2">내용</option>
+            </select>
+            <div style="display: flex;">
+                <input type="text" id="searchWrd" name="searchNWrd" placeholder="검색어를 입력하세요." style="width: 300px;height: 40px;">
+                <button class="basicBtn" style="width: 80px; height: 40px;border-radius: 4px;" onclick="search()">검색</button>
+            </div>
+        </div>
         <div class="table-responsive" style="height: 850px;display: flex;justify-content: center;flex-wrap: wrap;
 }">
 
@@ -162,7 +186,7 @@
         <br>
         <br>
         <div class="clearfix" style="display: flex;justify-content: center;">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center" style="margin-left: 120px;">
                 <li class="page-item disabled"><a href="" class="page-link">Previous</a></li>
                 <li class="page-item active"><a href="" class="page-link">1</a></li>
                 <li class="page-item"><a href="" class="page-link">2</a></li>

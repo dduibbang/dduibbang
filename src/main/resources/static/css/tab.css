@@ -1,12 +1,12 @@
 .tab{
     width: 1800px;
-    height: 1100px;
+    height: 1300px;
     margin: auto;
     background: #f9fcf3;
     border-radius: 20px;
     padding: 20px;
     padding-top: 0px;
-    box-shadow: 5px 5px darkgrey;
+    box-shadow: 8px 8px darkgrey;
 }
 .tabContents{
 

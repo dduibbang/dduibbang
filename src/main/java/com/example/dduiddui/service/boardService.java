@@ -56,4 +56,9 @@ public class boardService {
         return  boardMapper.getBrd(brd_sn);
     }
 
+    public List<boardVO> getSearchYList(boardVO boardVO){
+
+        return boardMapper.getSearchYList(boardVO);
+    }
+
 }

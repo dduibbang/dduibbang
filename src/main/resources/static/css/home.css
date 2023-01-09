@@ -18,6 +18,12 @@ a:hover{
     color:whitesmoke;
     text-decoration-line: none;
 }
+.searchForm{
+    margin-bottom: 35px;
+    margin-left: 50px;
+    display: flex;
+    align-items: baseline;
+}
 /*a:visited{*/
 /*    color:black;*/
 /*    text-decoration-line: none;*/

@@ -50,4 +50,36 @@
         WHERE brd_sn = #{brd_sn}
     </select>
 
+    <!-- 게시글 검색 -->
+    <select id="getSearchYList" resultType="com.example.dduiddui.vo.boardVO">
+        SELECT A.*,B.str_nm,B.str_img
+        FROM tb_brd AS A LEFT JOIN tb_str AS B
+        ON A.str_sn = B.str_sn
+        WHERE A.safe_yn='Y' AND A.brd_sn = #{brd_sn}
+        <if test="searchYCnd == 0">
+            AND(
+            A.brd_st LIKE CONCAT ('%', #{searchYWrd},'%')
+            OR
+            A.brd_ctgr LIKE CONCAT ('%', #{searchYWrd},'%')
+            OR
+            B.str_nm LIKE CONCAT ('%', #{searchYWrd},'%')
+            OR
+            A.brd_adr LIKE CONCAT ('%', #{searchYWrd},'%')
+            )
+        </if>
+        <if test="searchYCnd==1">
+            AND A.brd_st LIKE CONCAT ('%', #{searchYWrd},'%')
+        </if>
+        <if test="searchYCnd == 2">
+            AND A.brd_ctgr LIKE CONCAT ('%', #{searchYWrd},'%')
+        </if>
+        <if test="searchYCnd == 3">
+            AND B.str_nm LIKE CONCAT ('%', #{searchYWrd},'%')
+        </if>
+        <if test="searchYCnd == 4">
+            AND A.brd_adr LIKE CONCAT ('%', #{searchYWrd},'%')
+        </if>
+    </select>
+
+
 </mapper>

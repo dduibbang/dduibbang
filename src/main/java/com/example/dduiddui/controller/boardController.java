@@ -4,18 +4,19 @@ import com.example.dduiddui.service.boardService;
 import com.example.dduiddui.service.selectService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class boardController {
@@ -85,4 +86,14 @@ public class boardController {
         return "boardPage";
     }
 
+    @ResponseBody
+    @RequestMapping("/getSearchYList")
+    private byte[] getSearchYList(boardVO boardVO) throws Exception{
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("success", Boolean.FALSE);
+        List<boardVO> searchYList = boardService.getSearchYList(boardVO);
+        res.put("searchYList", searchYList);
+        return new Gson().toJson(res).getBytes("UTF-8");
+    }
 }
