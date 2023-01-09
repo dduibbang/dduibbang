@@ -11,4 +11,6 @@ public interface selectMapper {
     List<selectVO> getSelectList();
 
     selectVO getStrBySn(Integer str_sn);
+
+    selectVO getBoardStr(Integer brd_sn);
 }

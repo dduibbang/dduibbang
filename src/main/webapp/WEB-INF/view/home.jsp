@@ -54,17 +54,17 @@
             <div class="table-responsive" style="height: 850px;display: flex;justify-content: center;flex-wrap: wrap;
 }">
 
-                        <c:forEach items="${YboardList}" var="brd">
+                        <c:forEach items="${YboardList}" var="brd" varStatus="idx">
                             <div style="width: 1650px;cursor:pointer;" onclick="location.href='/board/${brd.brd_sn}'">
-                                <div id = "mainCnt "style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">
+                                <div class = "mainCnt" style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">
                                     <div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">
                                         <div id="img_div" style="margin-right: 50px;margin-left: 10px;">
-                                            <img src="${strImg}" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
+                                            <img src="${selectVOYList[idx.index].str_img}" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
                                         </div>
                                         <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
                                             <div style="display: flex;justify-content: space-between;align-items: stretch;">
                                                 <div style="display: flex;justify-content: space-between;align-items: baseline;">
-                                                    <h3 style="margin-top: 0px;margin-bottom: 30px;margin-right: 10px;">${brd.brd_ttl}</h3>
+                                                    <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;margin-right: 10px;">${brd.brd_ttl}</h3>
                                                     <c:if test="${brd.brd_st eq '01'}">
                                                         <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
                                                     </c:if>
@@ -72,7 +72,7 @@
                                                         <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
                                                     </c:if>
                                                     <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
-                                                    <div class="basicBtn" style="background: #b5e2ef">${strNm}</div>
+                                                    <div class="basicBtn" style="background: #b5e2ef">${selectVOYList[idx.index].str_nm}</div>
                                                 </div>
                                                 <h3 class="basicBtn" style="margin-top: inherit;">${brd.brd_pri}</h3>
                                             </div>
@@ -118,18 +118,18 @@
         <div class="table-responsive" style="height: 850px;display: flex;justify-content: center;flex-wrap: wrap;
 }">
 
-            <c:forEach items="${NboardList}" var="brd">
+            <c:forEach items="${NboardList}" var="brd" varStatus="idx">
                 <div style="width: 1650px;cursor:pointer;" onclick="location.href='/board/${brd.brd_sn}'">
-                    <div id = "mainCnt2 "style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">
+                    <div class = "mainCnt"style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">
                         <div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">
                             <div id="img_div2" style="margin-right: 50px;margin-left: 10px;">
-                                <img src="${strImg}" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
+                                <img src="${selectVONList[idx.index].str_img}" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
                             </div>
                             <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
 
                                 <div style="display: flex;justify-content: space-between;align-items: stretch;">
                                     <div style="display: flex;justify-content: space-between;align-items: baseline;">
-                                        <h3 style="margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
+                                        <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
                                         <c:if test="${brd.brd_st eq '01'}">
                                             <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
                                         </c:if>
@@ -137,7 +137,7 @@
                                             <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
                                         </c:if>
                                         <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
-                                        <div class="basicBtn" style="background: #b5e2ef">${strNm}</div>
+                                        <div class="basicBtn" style="background: #b5e2ef">${selectVONList[idx.index].str_nm}</div>
                                     </div>
                                     <h3 class="basicBtn" style="margin-top: inherit;">${brd.brd_pri}</h3>
                                 </div>

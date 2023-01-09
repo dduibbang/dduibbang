@@ -40,20 +40,24 @@ label {
     border: 1px solid transparent;
     background-color: silver;
     opacity: 40%;
+    width: 200px;
+    font-size: 15px;
+    font-family: 'TmoneyRoundWindExtraBold';
 }
 
 label:hover {
-    color: #F8941D;
+    color: #F7C123;
     cursor: pointer;}
 
 /*input 클릭시, label 스타일*/
 input:checked + label {
     color: #555;
     border: 1px solid #ddd;
-    border-top: 2px solid #F8941D;
+    border-top: 2px solid #F7C123;
     border-bottom: 1px solid #ffffff;
     background-color: white;
     opacity: 100%;
+    width: 200px;
 }
 
 #tab1:checked ~ #content1,

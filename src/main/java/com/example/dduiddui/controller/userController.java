@@ -1,7 +1,6 @@
 package com.example.dduiddui.controller;
 
 import com.example.dduiddui.service.boardService;
-import com.example.dduiddui.service.selectService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.service.addressService;
 import com.example.dduiddui.vo.*;
@@ -22,8 +21,7 @@ public class userController {
 
     @Autowired
     private boardService boardService;
-    @Autowired
-    private selectService selectService;
+
 
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
@@ -40,6 +38,12 @@ public class userController {
         System.out.println("home");
         System.out.println("user sn: " + sn);
         System.out.println("user id: " + id);
+
+        List<selectVO> selectVONList = boardService.getStrByNBrdSn();
+        model.addAttribute("selectVONList", selectVONList);
+
+        List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
+        model.addAttribute("selectVOYList", selectVOYList);
 
         if (id != null) { // 로그인된 상태
             userVO userVo = userService.getUserById(id);
@@ -61,7 +65,7 @@ public class userController {
         return "map";
     }
 
-
+    //마이페이지
     @GetMapping("/memberInfo")
     public String mbrInfoPage(HttpSession session, Model model) {
         String id = (String) session.getAttribute("id");
@@ -75,6 +79,31 @@ public class userController {
 
         return "memberInfo";
     }
+
+    //마이페이지 수정
+    @PostMapping("/memberInfo")
+    public String write(HttpSession session,  userVO userVo){
+        try {
+            userService.updateInfo(userVo);
+
+
+        } catch (DuplicateKeyException e) {
+            return "redirect:/updateInfo?error_code=-1";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/updateInfo?error_code=-99";
+        }
+
+        return "redirect:/memberInfo";
+    }
+
+    //빵충전
+    @GetMapping("/kakaoPay")
+    public String kakapPayPage(){
+
+        return "kakaoPay";
+    }
+
     @GetMapping("/updatePw")
     public String toupdatePwPage(){
 
