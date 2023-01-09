@@ -39,6 +39,11 @@ public class userController {
         System.out.println("user sn: " + sn);
         System.out.println("user id: " + id);
 
+        List<selectVO> selectVONList = boardService.getStrByNBrdSn();
+        model.addAttribute("selectVONList", selectVONList);
+
+        List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
+        model.addAttribute("selectVOYList", selectVOYList);
 
         if (id != null) { // 로그인된 상태
             userVO userVo = userService.getUserById(id);

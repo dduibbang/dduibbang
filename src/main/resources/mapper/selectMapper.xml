@@ -13,4 +13,10 @@
         WHERE str_sn = #{str_sn}
     </select>
 
+    <select id="getBoardStr" resultType="com.example.dduiddui.vo.selectVO">
+        SELECT A.str_sn,B.str_nm,B.str_img
+        FROM `tb_brd` AS A LEFT JOIN tb_str AS B
+                                     ON A.str_sn = B.str_sn
+        WHERE A.brd_sn = #{brd_sn}
+    </select>
 </mapper>
