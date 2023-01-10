@@ -64,6 +64,22 @@ public class boardService {
         return boardMapper.getSearchList(safe_yn,searchCnd,searchWrd);
     }
 
+    public List<String> getSearchListBrdSt(Character safe_yn,Integer searchCnd,String searchWrd){
+
+        List<String> res =new ArrayList<>();
+        List<boardVO> brdList = boardMapper.getSearchList(safe_yn,searchCnd,searchWrd);
+
+        for (int i=0;i<brdList.size();i++){
+
+            if(brdList.get(i).getBrd_st().equals("01"))
+                res.add("모집 중❗");
+            else
+                res.add("모집 완료");
+        }
+
+        return res;
+    }
+
     // 검색 결과 게시물에 필요한 str_nm,str_img 겟
     public List<selectVO> getSearchListStr(Character safe_yn,Integer searchCnd,String searchWrd){
 

@@ -1,3 +1,5 @@
+var tabY= false;
+var tabN= false;
 function getMyAdr(){
     $.ajax({
         type : "GET",
@@ -13,10 +15,22 @@ function getMyAdr(){
         }
     });
 }
+
 function search(){
-    var searchCnd = document.getElementById("searchYCnd").value + document.getElementById("searchNCnd").value;
-    var searchWrd = document.getElementById("searchYWrd").value + document.getElementById("searchNWrd").value;
-    var safe_yn = document.getElementById("safe_y").value; + document.getElementById("safe_n").value;
+
+    var searchCnd;
+    var searchWrd;
+    var safe_yn;
+
+    if(tabY){
+        searchCnd = document.getElementById("searchYCnd").value;
+        searchWrd = document.getElementById("searchYWrd").value;
+        safe_yn = document.getElementById("safe_y").value;
+    }else{
+        searchCnd = document.getElementById("searchNCnd").value;
+        searchWrd = document.getElementById("searchNWrd").value;
+        safe_yn = document.getElementById("safe_n").value;
+    }
 
     // if(searchWrd == "모집중" || "모집 중"){
     //     searchWrd = "01";
@@ -25,7 +39,7 @@ function search(){
     // }
 
     var dataForm = {safe_yn:safe_yn,"searchCnd" : searchCnd, searchWrd:searchWrd}
-    console.log(dataForm );
+    //console.log(dataForm );
 
     $.ajax({
         async:true,
@@ -34,29 +48,36 @@ function search(){
         data:dataForm, // 필요한 파라미터 전달!
         contentType : 'application/json; charset=UTF-8',
         success: function (res){
-            $("#brd").empty();
+
+
+
+            var riri = new Object();
+            riri = res;
+            console.log(riri);
+
+            if(tabY){
+                $("#brdY").empty();
+            }else{
+                $("#brdN").empty();
+            }
 
             res.searchList.forEach(function (item,index){
 
                 var tempHtml='';
+
+
                 tempHtml+=
-                    "<div class='row' onClick=\"location.href='/free/" + item.ntc_sn + "\'\">" +
                 '<div style="width: 1650px;cursor:pointer;" onClick="location.href=\'/board/" + item.brd_sn + "\'">'+
                     '<div class="mainCnt" style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">'+
                         '<div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">'+
                             '<div id="img_div2" style="margin-right: 50px;margin-left: 10px;">'+
-                                '<img src='+ res.searchListStr[index].str_img + 'style="width: 250px;" onError="this.src=\'https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200\';"/></div>'+
+                                '<img  id = "strImg" src='+ res.searchListStr[index].str_img +'onError="this.src=\'https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200\';"/></div>'+
                            ' <div style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">'+
 
                                 '<div style="display: flex;justify-content: space-between;align-items: stretch;">'+
                                     '<div style="display: flex;justify-content: space-between;align-items: baseline;">'+
                                         '<h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;">' + item.brd_ttl + '</h3>'+
-                                        '<c:if test='+"${brd.brd_st eq '01'}"+'>'+
-                                            '<div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>'+
-                                        '</c:if>'+
-                                        '<c:if test='+"${brd.brd_st != '01'}"+'>'+
-                                            '<div class="basicBtn" style="background: #b5e2ef">모집 완료</div>'+
-                                        '</c:if>'+
+                                            '<div class="basicBtn" style="background: #b5e2ef">' +res.searchListBrdSt[index] + '</div>'+
                                         '<div class="basicBtn" style="background: #b5e2ef">' + item.brd_ctgr + '</div>'+
                                         '<div class="basicBtn" style="background: #b5e2ef">'+ res.searchListStr[index].str_nm +'</div>'+
                                     '</div>'+
@@ -79,7 +100,12 @@ function search(){
                     '</div>'+
                 '</div>'
 
-                $("#brd").append(tempHtml);
+
+                if(tabY){
+                    $("#brdY").append(tempHtml);
+                }else{
+                    $("#brdN").append(tempHtml);
+                }
             });
 
 
@@ -90,13 +116,12 @@ function search(){
     })
 
 }
+
 function emptyYTab(){
-    $("#searchYCnd").empty();
-    $("#searchYWrd").empty();
-    $("#safe_n").val('N');
+    tabN = true;
+    tabY = false;
 }
 function emptyNTab(){
-    $("#searchNCnd").empty();
-    $("#searchNWrd").empty();
-    $("#safe_y").val('Y');
+    tabN = false;
+    tabY = true;
 }
