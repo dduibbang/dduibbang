@@ -50,9 +50,15 @@
 
     <section class=tabContents id="content1" style="padding-top: 50px;">
             <!-- 여기부터 board 리스트 표시 -->
-
+        <div style="display: flex;justify-content: center">
+            <div class = "distanceForm">
+                <h2 style="font-weight: 600;">📌현재 위치에서 </h2>
+                <input type="number" value="50" name="distanceNum" id="distanceYNum" step="50" style="margin-left: 10px;width:100px;height: 43px ">
+                <h2 style="font-weight: 600;">m 반경의 엔빵 리스트 </h2>
+            </div>
+        </div>
         <div class = "searchForm">
-            <select  style="height: 40px" name="searchCnd" id="searchYCnd" style="margin-left: 5px;margin-right: 10px">
+            <select name="searchCnd" id="searchYCnd" style="height: 40px;margin-left: 5px;margin-right: 10px">
                 <option value="0">전체</option>
                 <option value="1">게시 상태</option>
                 <option value="2">음식 종류</option>
@@ -130,8 +136,16 @@
 
     <section class=tabContents id="content2" style="padding-top: 50px;">
         <!-- 여기부터 board 리스트 표시 -->
+        <div style="display: flex;justify-content: center">
+            <div class = "distanceForm">
+                <h2 style="font-weight: 600;">📌현재 위치에서 </h2>
+                <input type="number" value="50" name="distanceNum" id="distanceNNum" step="50" style="margin-left: 10px;width:100px;height: 43px ">
+                <h2 style="font-weight: 600;">m 반경의 엔빵 리스트 </h2>
+            </div>
+        </div>
+
         <div class = "searchForm">
-            <select  style="height: 40px" name="searchCnd" id="searchNCnd" style="margin-left: 5px;margin-right: 10px">
+            <select name="searchCnd" id="searchNCnd" style="height: 40px;margin-left: 5px;margin-right: 10px">
                 <option value="0">전체</option>
                 <option value="1">게시 상태</option>
                 <option value="2">음식 종류</option>
