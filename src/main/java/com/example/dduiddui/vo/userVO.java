@@ -16,6 +16,7 @@ public class userVO {
     private String mbr_gd;
     //private 사진 넣을 vo
 
+    private int select_money;
 
 
 

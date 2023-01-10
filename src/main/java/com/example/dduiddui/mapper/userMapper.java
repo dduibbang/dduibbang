@@ -14,4 +14,5 @@ public interface userMapper {
     userVO updatePW(userVO userVo);
 
     void updateUser(userVO userVo);
+    void chargePay(userVO userVo);
 }

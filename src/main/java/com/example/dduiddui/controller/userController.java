@@ -103,6 +103,24 @@ public class userController {
 
         return "kakaoPay";
     }
+
+    @PostMapping("/kakaoPay")
+    public String ChargePay(HttpSession session,  userVO userVo){
+        try {
+            userService.ChargePay(userVo);
+
+
+        } catch (DuplicateKeyException e) {
+            return "redirect:/ChargePay?error_code=-1";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/ChargePay?error_code=-99";
+        }
+
+        return "redirect:/memberInfo";
+    }
+
+
     @GetMapping("/updatePw")
     public String toupdatePwPage(){
 

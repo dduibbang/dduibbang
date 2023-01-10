@@ -34,11 +34,19 @@
             )
     </insert>
 
+    <!--회원 정보 수정-->
     <update id="updateUser" parameterType="com.example.dduiddui.vo.userVO">
         UPDATE tb_mbr
         SET mbr_nm= #{mbr_nm},
             mbr_tel= #{mbr_tel},
             mbr_email= #{mbr_email}
+        WHERE mbr_id= #{mbr_id}
+    </update>
+
+    <!--빵 충전-->
+    <update id="chargePay" parameterType="com.example.dduiddui.vo.userVO">
+        UPDATE tb_mbr
+        SET mbr_pt= mbr_pt + #{select_money}
         WHERE mbr_id= #{mbr_id}
     </update>
 

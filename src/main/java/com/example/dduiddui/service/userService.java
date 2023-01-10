@@ -51,7 +51,9 @@ public class userService {
         userMapper.updateUser(userVo);
     }
 
-
+    public void ChargePay(userVO userVo){
+        userMapper.chargePay(userVo);
+    }
 
     //@Override
     public void updatePW(userVO userVo) throws Exception{
