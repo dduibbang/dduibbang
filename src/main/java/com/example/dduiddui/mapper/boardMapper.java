@@ -17,6 +17,6 @@ public interface boardMapper {
 
     boardVO getBrd(Integer brd_sn);
 
-    List<boardVO> getSearchList();
+    List<boardVO> getSearchList(Character safe_yn,Integer searchCnd,String searchWrd);
 
 }

@@ -6,6 +6,7 @@ import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -87,15 +88,30 @@ public class boardController {
     }
 
     @ResponseBody
-    @RequestMapping("/getSearchList")
-    private byte[] getSearchList() throws Exception{
+    @RequestMapping(value = "/getSearchList", method = RequestMethod.GET)
+    private byte[] getSearchList(HttpServletRequest request) throws Exception{
+
+        String safe_yn = request.getParameter("safe_yn");
+        Integer searchCnd = Integer.valueOf(request.getParameter("searchCnd"));
+        String searchWrd = request.getParameter("searchWrd");
+
+//        System.out.println("getSearchList request " + request.getParameter("searchCnd")
+//                + request.getParameter("searchWrd") + request.getParameter("safe_yn"));
 
         Map<String, Object> res = new HashMap<>();
         res.put("success", Boolean.FALSE);
-        List<boardVO> searchList = boardService.getSearchList();
-        res.put("searchList", searchList);
-        List<selectVO> searchListStr = boardService.getSearchListStr();
-        res.put("searchListStr", searchListStr);
+        List<boardVO> searchList = boardService.getSearchList(safe_yn.charAt(0),searchCnd,searchWrd);
+        List<selectVO> searchListStr = boardService.getSearchListStr(safe_yn.charAt(0),searchCnd,searchWrd);
+
+        if(searchList.size()!=0) {
+            res.put("searchList", searchList);
+            res.put("searchListStr", searchListStr);
+            res.put("success", Boolean.TRUE);
+            System.out.println("res:" + res);
+            return new Gson().toJson(res).getBytes("UTF-8");
+        }
+
+        System.out.println("res:" + res);
         return new Gson().toJson(res).getBytes("UTF-8");
     }
 }

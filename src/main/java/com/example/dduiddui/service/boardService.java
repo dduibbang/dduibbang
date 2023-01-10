@@ -57,16 +57,18 @@ public class boardService {
     }
 
     // 검색 결과 게시물
-    public List<boardVO> getSearchList(){
+    public List<boardVO> getSearchList(Character safe_yn,Integer searchCnd,String searchWrd){
 
-        return boardMapper.getSearchList();
+        System.out.println("getSearchList " + boardMapper.getSearchList(safe_yn,searchCnd,searchWrd));
+        System.out.println("getSearchList size" + boardMapper.getSearchList(safe_yn,searchCnd,searchWrd).size());
+        return boardMapper.getSearchList(safe_yn,searchCnd,searchWrd);
     }
 
     // 검색 결과 게시물에 필요한 str_nm,str_img 겟
-    public List<selectVO> getSearchListStr(){
+    public List<selectVO> getSearchListStr(Character safe_yn,Integer searchCnd,String searchWrd){
 
         List<selectVO> res =new ArrayList<>();
-        List<boardVO> brdList = boardMapper.getSearchList();
+        List<boardVO> brdList = boardMapper.getSearchList(safe_yn,searchCnd,searchWrd);
 
         for (int i=0;i<brdList.size();i++){
             res.add(selectMapper.getBoardStr(brdList.get(i).getBrd_sn()));

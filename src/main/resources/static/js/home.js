@@ -16,22 +16,23 @@ function getMyAdr(){
 function search(){
     var searchCnd = document.getElementById("searchYCnd").value + document.getElementById("searchNCnd").value;
     var searchWrd = document.getElementById("searchYWrd").value + document.getElementById("searchNWrd").value;
-    var safe_yn = document.getElementById("safe_yn").value;
+    var safe_yn = document.getElementById("safe_y").value; + document.getElementById("safe_n").value;
 
-    if(searchWrd == "모집중" || "모집 중"){
-        searchWrd = '01';
-    }else if(searchWrd== "모집완료" || "모집 완료"){
-        searchWrd = '02';
-    }
+    // if(searchWrd == "모집중" || "모집 중"){
+    //     searchWrd = "01";
+    // }else if(searchWrd== "모집완료" || "모집 완료"){
+    //     searchWrd = "02";
+    // }
 
-        var dataForm = {"safe_yn":safe_yn,"searchCnd" : searchCnd, "searchWrd":searchWrd};
+    var dataForm = {safe_yn:safe_yn,"searchCnd" : searchCnd, searchWrd:searchWrd}
+    console.log(dataForm );
 
     $.ajax({
         async:true,
         type: "GET",
-        url:"/getSearchList",
-        data:dataForm,
-        dataType:"json",
+        url:"getSearchList",
+        data:dataForm, // 필요한 파라미터 전달!
+        contentType : 'application/json; charset=UTF-8',
         success: function (res){
             $("#brd").empty();
 
@@ -84,7 +85,7 @@ function search(){
 
         },
         error: function(){
-            alert("통신 실패.")
+            alert("검색 결과물이 없습니다.")
         }
     })
 
@@ -92,8 +93,10 @@ function search(){
 function emptyYTab(){
     $("#searchYCnd").empty();
     $("#searchYWrd").empty();
+    $("#safe_n").val('N');
 }
 function emptyNTab(){
     $("#searchNCnd").empty();
     $("#searchNWrd").empty();
+    $("#safe_y").val('Y');
 }
