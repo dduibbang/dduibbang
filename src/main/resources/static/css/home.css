@@ -36,6 +36,7 @@ a:hover{
     margin-left: 50px;
     display: flex;
     align-items: baseline;
+    font-weight: bold;
 }
 /*a:visited{*/
 /*    color:black;*/
