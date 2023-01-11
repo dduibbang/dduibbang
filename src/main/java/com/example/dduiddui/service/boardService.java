@@ -59,6 +59,12 @@ public class boardService {
     // 검색 결과 게시물
     public List<boardVO> getSearchList(Character safe_yn,Integer searchCnd,String searchWrd){
 
+        if(searchWrd.equals("모집중") || searchWrd.equals("모집 중")){
+            searchWrd = "01";
+        }else if(searchWrd.equals("모집완료") || searchWrd.equals("모집 완료")){
+            searchWrd = "02";
+        }
+        System.out.println("safe_yn "+ safe_yn +"searchCnd "+ searchCnd +"searchWrd " +searchWrd);
         System.out.println("getSearchList " + boardMapper.getSearchList(safe_yn,searchCnd,searchWrd));
         System.out.println("getSearchList size" + boardMapper.getSearchList(safe_yn,searchCnd,searchWrd).size());
         return boardMapper.getSearchList(safe_yn,searchCnd,searchWrd);
@@ -67,6 +73,12 @@ public class boardService {
     public List<String> getSearchListBrdSt(Character safe_yn,Integer searchCnd,String searchWrd){
 
         List<String> res =new ArrayList<>();
+
+        if(searchWrd.equals("모집중") || searchWrd.equals("모집 중")){
+            searchWrd = "01";
+        }else if(searchWrd.equals("모집완료") || searchWrd.equals("모집 완료")){
+            searchWrd = "02";
+        }
         List<boardVO> brdList = boardMapper.getSearchList(safe_yn,searchCnd,searchWrd);
 
         for (int i=0;i<brdList.size();i++){

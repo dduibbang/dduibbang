@@ -58,7 +58,7 @@
         WHERE A.safe_yn= #{safe_yn}
         <if test="searchCnd == 0">
             AND(
-            A.brd_st LIKE CONCAT ('%', #{searchWrd},'%')
+            A.brd_st = #{searchWrd}
             OR
             A.brd_ctgr LIKE CONCAT ('%', #{searchWrd},'%')
             OR
@@ -68,7 +68,7 @@
             )
         </if>
         <if test="searchCnd==1">
-            AND A.brd_st LIKE CONCAT ('%', #{searchWrd},'%')
+            AND A.brd_st = #{searchWrd}
         </if>
         <if test="searchCnd == 2">
             AND A.brd_ctgr LIKE CONCAT ('%', #{searchWrd},'%')
