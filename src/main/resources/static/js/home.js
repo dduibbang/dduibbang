@@ -50,21 +50,8 @@ function search(){
                 $("#brdN").empty();
             }
 
-            if(!res.searchList.length) {
-
-                var tempHtml = '';
-
-                tempHtml+=
-                '<div>' +
-                '<div style="display: grid;padding: 30px;padding-bottom: 20px;">검색 결과물이 없습니다.</div>'+
-                    '</div>'
-
-                if (tabY) {
-                    $("#brdY").append(tempHtml);
-                } else {
-                    $("#brdN").append(tempHtml);
-                }
-
+            if(!res.searchList) {
+                emptyBrd();
             }
             else{
 
@@ -77,7 +64,7 @@ function search(){
                     var tempHtml = '';
 
                     tempHtml +=
-                        '<div style="width: 1650px;cursor:pointer;" onClick="location.href=\'/board/" + item.brd_sn + "\'">' +
+                        "<div id = 'brdSnDiv' onClick=\"location.href='/board/" + item.brd_sn + "\'\">" +
                         '<div class="mainCnt" style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">' +
                         '<div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">' +
                         '<div id="img_div2" style="margin-right: 50px;margin-left: 10px;">' +
@@ -121,9 +108,33 @@ function search(){
             }
         },
         error: function(){
-            alert("검색 결과물이 없습니다.")
+
+            emptyBrd();
+
         }
     })
+
+}
+
+function emptyBrd(){
+    if (tabY) {
+        $("#brdY").empty();
+    } else {
+        $("#brdN").empty();
+    }
+
+    var tempHtml = '';
+
+    tempHtml+=
+        '<div>' +
+        '<div style="display: grid;padding: 30px;padding-bottom: 20px;">검색 결과물이 없습니다.</div>'+
+        '</div>'
+
+    if (tabY) {
+        $("#brdY").append(tempHtml);
+    } else {
+        $("#brdN").append(tempHtml);
+    }
 
 }
 

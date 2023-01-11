@@ -116,3 +116,6 @@ button:active {
      background-color: #F8941D;
      opacity: 1;
     }
+#brdSnDiv{
+    width: 1650px;cursor:pointer;
+}
