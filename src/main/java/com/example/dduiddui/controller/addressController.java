@@ -73,18 +73,19 @@ public class addressController {
     // /home에서 로그인한 사용자가 등록한 기본주소 가져오기
     @ResponseBody
     @RequestMapping(value = "/getMyAddress",method = RequestMethod.GET)
-    public String getMyAddress(HttpSession session, Model model) {
+    public addressVO getMyAddress(HttpSession session, Model model) {
 
+        addressVO addressVO = null;
         String userAdr = "주소를 설정해주세요.";
         String id = (String) session.getAttribute("id");
         Integer sn = (Integer) session.getAttribute("mbr_sn");
         System.out.println("mbr_sn:" + sn);
         if (id != null) { // 로그인된 상태
-            userAdr = addressService.getAddress(sn);
-            model.addAttribute("userAdr",userAdr);
-            System.out.println("adr:" + userAdr);
+            addressVO = addressService.getAddress(sn);
+            model.addAttribute("addressVO",addressVO);
+            System.out.println("adr:" + addressVO);
         }
-        return userAdr;
+        return addressVO;
     }
 
 

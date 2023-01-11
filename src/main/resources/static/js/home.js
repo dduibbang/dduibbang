@@ -1,5 +1,6 @@
 var tabY= false;
 var tabN= false;
+
 function getMyAdr(){
     $.ajax({
         type : "GET",
@@ -7,13 +8,74 @@ function getMyAdr(){
         url: "/getMyAddress",
         success: function(data) {
             console.log(data);
-            $("#adr").html(data);
+            $("#adr").html(data.adr_cn+ " " + data.adr_st);
+            getMyLocation(data.adr_cn);
         },
         error : function() {
             console.log('getMyAdr error');
             $("#adr").html("주소를 설정해주세요.");
         }
     });
+}
+
+function getMyLocation(address){
+
+    var lati,longi;
+
+    $.ajax({
+        method: "GET",
+        //url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString(),
+        url: "https://dapi.kakao.com/v2/local/search/address.json",
+        data: {query: address},
+        headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
+    })
+        .done(function (msg) {
+                console.log(msg);
+                try{
+                    longi = msg.documents[0].x;
+                    lati = msg.documents[0].y;
+
+                    getNBBList(longi,lati,address);
+                } catch(error){
+                    emptyBrd();
+                }
+        });
+}
+
+function getNBBList(longi,lati){
+
+    var inputDistance;
+
+    if(tabY){
+        inputDistance = document.getElementById("distanceYNum").value;
+    }else{
+        inputDistance = document.getElementById("distanceNNum").value;
+    }
+
+    if (tabY) {
+        $("#brdY").empty();
+    } else {
+        $("#brdN").empty();
+    }
+
+    // 홈에 표시되는 게시물들 가져와서 (1차 아작스)
+    // 밑의 2차 아작스로 각 게시물의 주소를 target 할당해서 msg.document[0].distance 값이 inputDistance 의 이하이면 표시되도록 하기
+    $.ajax({
+        method: "GET",
+        url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString(),
+        data: {query: target},
+        headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
+    })
+        .done(function (msg) {
+            console.log(msg);
+            try {
+
+
+            } catch (error) {
+                emptyBrd();
+            }
+        });
+
 }
 
 function search(){
@@ -34,7 +96,7 @@ function search(){
 
 
     var dataForm = {safe_yn:safe_yn,"searchCnd" : searchCnd, searchWrd:searchWrd}
-    console.log(dataForm );
+    console.log(dataForm);
 
     $.ajax({
         async:true,

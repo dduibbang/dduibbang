@@ -27,17 +27,12 @@ public class addressService {
 
         addressMapper.insertAddr(addressVO);
     }
-    public String getAddress(Integer mbrSn) {
-        String address = "";
+    public addressVO getAddress(Integer mbrSn) {
 
-        try {
-            address = addressMapper.getAddress(mbrSn).getAdr_cn() +
-                    " " + addressMapper.getAddress(mbrSn).getAdr_st();
-            System.out.println("address" + address);
-        }catch (Exception e){
+        addressVO addressVO = addressMapper.getAddress(mbrSn);
+            System.out.println("addressVO " + addressVO);
 
-        }
-        return address;
+        return addressVO;
     }
 
     public void updateAdr(Integer mbrSn){
