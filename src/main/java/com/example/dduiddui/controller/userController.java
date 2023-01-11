@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class userController {
@@ -28,16 +31,16 @@ public class userController {
         String id = (String) session.getAttribute("id");
         System.out.println(id);
 
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        System.out.println("home");
+        System.out.println("user sn: " + sn);
+        System.out.println("user id: " + id);
+
         List<boardVO> NboardList = boardService.getNBoardList();
         model.addAttribute("NboardList", NboardList);
 
         List<boardVO> YboardList = boardService.getYBoardList();
         model.addAttribute("YboardList", YboardList);
-
-        Integer sn = (Integer) session.getAttribute("mbr_sn");
-        System.out.println("home");
-        System.out.println("user sn: " + sn);
-        System.out.println("user id: " + id);
 
         List<selectVO> selectVONList = boardService.getStrByNBrdSn();
         model.addAttribute("selectVONList", selectVONList);
@@ -51,6 +54,34 @@ public class userController {
             model.addAttribute("sn", sn);
         }
         return "home";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getListByDistance", method = RequestMethod.GET)
+    private Map<String, Object> getListByDistance(String tabY) throws Exception {
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("success", Boolean.FALSE);
+        List<boardVO> boardList = null;
+        List<selectVO> boardStrList = null;
+
+        if(tabY.equals("true")){
+            List<boardVO> YboardList = boardService.getYBoardList();
+            List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
+        }else{
+            List<boardVO> NboardList = boardService.getNBoardList();
+            List<selectVO> selectVONList = boardService.getStrByNBrdSn();
+        }
+
+        if(boardList.size()!=0) {
+            res.put("boardList", boardList);
+            res.put("boardStrList", boardStrList);
+            res.put("success", Boolean.TRUE);
+            System.out.println("res:" + res);
+        }
+
+        System.out.println("res:" + res);
+        return res;
     }
 
     @ResponseBody

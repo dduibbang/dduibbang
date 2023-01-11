@@ -1,6 +1,7 @@
 var tabY= false;
 var tabN= false;
 
+// 현재 주소 받기
 function getMyAdr(){
     $.ajax({
         type : "GET",
@@ -9,22 +10,24 @@ function getMyAdr(){
         success: function(data) {
             console.log(data);
             $("#adr").html(data.adr_cn+ " " + data.adr_st);
-            getMyLocation(data.adr_cn);
+            //getMyLocation(data.adr_cn); // 현재 주소의 위도 경도 검색
         },
         error : function() {
+            // 비회원일 때, 지금 위치를 기본주소로(추후 수정 필요)
             console.log('getMyAdr error');
-            $("#adr").html("주소를 설정해주세요.");
+            $("#adr").html("대구 동구 동내로 70");
+            //getMyLocation("대구 동구 동내로 70");
         }
     });
 }
 
+// address의 위도 경도 검색
 function getMyLocation(address){
 
     var lati,longi;
 
     $.ajax({
         method: "GET",
-        //url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString(),
         url: "https://dapi.kakao.com/v2/local/search/address.json",
         data: {query: address},
         headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
@@ -32,49 +35,87 @@ function getMyLocation(address){
         .done(function (msg) {
                 console.log(msg);
                 try{
+                    var inputDistance;
+                    if(tabY){
+                        inputDistance = document.getElementById("distanceYNum").value;
+                    }else{
+                        inputDistance = document.getElementById("distanceNNum").value;
+                    }
+
                     longi = msg.documents[0].x;
                     lati = msg.documents[0].y;
 
-                    getNBBList(longi,lati,address);
+                    getNBBList(longi,lati,inputDistance); // 현재 위경도로부터 inputDistance만큼 떨어진 게시물들 겟
+
                 } catch(error){
                     emptyBrd();
                 }
         });
 }
 
-function getNBBList(longi,lati){
+// 현재 위경도로부터 inputDistance만큼 떨어진 게시물들 겟
+function getNBBList(longi,lati,inputDistance){
 
-    var inputDistance;
-
-    if(tabY){
-        inputDistance = document.getElementById("distanceYNum").value;
-    }else{
-        inputDistance = document.getElementById("distanceNNum").value;
-    }
+    var dataForm={};
 
     if (tabY) {
         $("#brdY").empty();
+        dataForm = {"tabY" : "true"}
     } else {
         $("#brdN").empty();
+        dataForm = {"tabY" : "false"}
     }
 
     // 홈에 표시되는 게시물들 가져와서 (1차 아작스)
-    // 밑의 2차 아작스로 각 게시물의 주소를 target 할당해서 msg.document[0].distance 값이 inputDistance 의 이하이면 표시되도록 하기
     $.ajax({
-        method: "GET",
-        url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString(),
-        data: {query: target},
-        headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
-    })
-        .done(function (msg) {
-            console.log(msg);
-            try {
+        async: true,
+        type: "GET",
+        url: "getListByDistance",
+        data: dataForm, // 필요한 파라미터 전달!
+        contentType: 'application/json; charset=UTF-8',
+        success: function (res) {
 
-
-            } catch (error) {
-                emptyBrd();
+            if (tabY) {
+                $("#brdY").empty();
+            } else {
+                $("#brdN").empty();
             }
-        });
+
+            if (!res.boardList) {
+                emptyBrd();
+            } else {
+
+                var riri = new Object();
+                riri = res;
+                console.log(riri);
+
+                // 각 게시물의 주소를 할당해서 inputDistance 반경 이내이면 표시되도록 하기(2차 아작스)
+                res.boardList.forEach(function (item, index) {
+
+                    $.ajax({
+                        method: "GET",
+                        url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString()+"&radius="+inputDistance,
+                        data: {query: item.brd_adr},
+                        headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
+                    })
+                        .done(function (msg) {
+                            console.log(msg);
+                            try {
+                                    console.log(item.brd_adr + "in");
+
+                            } catch (error) {
+                                emptyBrd();
+                            }
+                        });
+                });
+
+            }
+        },
+        error: function () {
+            emptyBrd();
+        }
+
+    })
 
 }
 
