@@ -115,6 +115,7 @@ function getNBBList(longi,lati,inputDistance){
                 console.log(riri);
 
                 var tempHtml = '';
+                var valueList = new Array();
 
                 // 각 게시물의 주소를 할당해서 inputDistance 반경 이내이면 표시되도록 하기(2차 아작스)
                 res.boardList.forEach(function (item,index) {
@@ -131,7 +132,7 @@ function getNBBList(longi,lati,inputDistance){
                             try {
                                 console.log("dis : " + msg.documents[0].distance);
 
-                                if(Number(msg.documents[0].distance)<Number(inputDistance) || Number(msg.documents[0].distance)==Number(inputDistance)){
+                                if(Number(msg.documents[0].distance)<Number(inputDistance) ){
 
                                     tempHtml +=
                                         "<div id = 'brdSnDiv' onClick=\"location.href='/board/" + item.brd_sn + "\'\">" +

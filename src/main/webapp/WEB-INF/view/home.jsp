@@ -121,17 +121,6 @@
             </div>
         <br>
         <br>
-                    <div class="clearfix" style="display: flex;justify-content: center;">
-                        <ul class="pagination justify-content-center" style="margin-left: 120px;">
-                            <li class="page-item disabled"><a href="" class="page-link">Previous</a></li>
-                            <li class="page-item active"><a href="" class="page-link">1</a></li>
-                            <li class="page-item"><a href="" class="page-link">2</a></li>
-                            <li class="page-item"><a href="" class="page-link">3</a></li>
-                            <li class="page-item"><a href="" class="page-link">4</a></li>
-                            <li class="page-item"><a href="" class="page-link">5</a></li>
-                            <li class="page-item"><a href="" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
 
     </section>
 
@@ -209,17 +198,6 @@
         </div>
         <br>
         <br>
-        <div class="clearfix" style="display: flex;justify-content: center;">
-            <ul class="pagination justify-content-center" style="margin-left: 120px;">
-                <li class="page-item disabled"><a href="" class="page-link">Previous</a></li>
-                <li class="page-item active"><a href="" class="page-link">1</a></li>
-                <li class="page-item"><a href="" class="page-link">2</a></li>
-                <li class="page-item"><a href="" class="page-link">3</a></li>
-                <li class="page-item"><a href="" class="page-link">4</a></li>
-                <li class="page-item"><a href="" class="page-link">5</a></li>
-                <li class="page-item"><a href="" class="page-link">Next</a></li>
-            </ul>
-        </div>
 
     </section>
 </div>

@@ -79,6 +79,7 @@
         <if test="searchCnd == 4">
             AND A.brd_adr LIKE CONCAT ('%', #{searchWrd},'%')
         </if>
+        ORDER BY A.rgtr_dt DESC;
     </select>
 
 
