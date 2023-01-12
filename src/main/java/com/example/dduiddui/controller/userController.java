@@ -132,7 +132,7 @@ public class userController {
 
     //마이페이지 수정
     @PostMapping("/memberInfo")
-    public String write(HttpSession session,  userVO userVo){
+    public String memberInfo(HttpSession session,  userVO userVo){
         try {
             userService.updateInfo(userVo);
 
@@ -149,16 +149,25 @@ public class userController {
 
     //빵충전
     @GetMapping("/kakaoPay")
-    public String toChargePayPage(){
+    public String toChargePayPage(HttpSession session, Model model) {
+        String id = (String) session.getAttribute("id");
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
 
+        if (id != null) { // 로그인된 상태
+            userVO userVo = userService.getUserById(id);
+            model.addAttribute("userInfo", userVo);
+            model.addAttribute("sn", sn);
+        }
         return "kakaoPay";
     }
 
     @PostMapping("/kakaoPay")
-    public String ChargePay(HttpSession session,  userVO userVo){
+    public String toChargePayPage( int select_money, HttpSession session,  userVO userVo){
+        System.out.println("충전 돈 :" + select_money);
         try {
-            userService.ChargePay(userVo);
-
+            System.out.println("충전 돈 try 문 :" + select_money);
+            System.out.println("select_money 값" + userVo.getSelect_money());
+            userService.updatePoint(userVo, select_money);
 
         } catch (DuplicateKeyException e) {
             return "redirect:/ChargePay?error_code=-1";
@@ -167,9 +176,21 @@ public class userController {
             return "redirect:/ChargePay?error_code=-99";
         }
 
-        return "redirect:/memberInfo";
+        return "redirect:/kakaopayInfo";
     }
 
+    @GetMapping("/kakaopayInfo")
+    public String kakaoPayInfo(HttpSession session, Model model) {
+        String id = (String) session.getAttribute("id");
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+
+        if (id != null) { // 로그인된 상태
+            userVO userVo = userService.getUserById(id);
+            model.addAttribute("userInfo", userVo);
+            model.addAttribute("sn", sn);
+        }
+        return "kakaopayInfo";
+    }
 
     @GetMapping("/updatePw")
     public String toupdatePwPage(){
