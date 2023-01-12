@@ -70,7 +70,7 @@
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">커뮤니티</a>
                 <a href="/memberInfo" style="font-family: 'TmoneyRoundWindExtraBold';">마이페이지</a>
-                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</a>
+                <a href="/orderList" style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</a>
             </div>
             <script>
                 function openNav(){

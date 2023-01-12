@@ -29,6 +29,31 @@ public class boardController {
     @Autowired
     private selectService selectService;
 
+    @GetMapping("/orderList")
+    public String toOrderPage(HttpSession session, Model model) {
+
+        // 헤더에 필요
+        Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
+        model.addAttribute("mbr_sn",mbr_sn);
+
+        userVO userVO = userService.getUserBySn(mbr_sn);
+        model.addAttribute("userInfo",userVO);
+
+        // 추후에 주문 참여한 게시물만 가져오는 걸로 수정하기!
+        List<boardVO> NboardList = boardService.getNBoardList();
+        model.addAttribute("NboardList", NboardList);
+
+        List<boardVO> YboardList = boardService.getYBoardList();
+        model.addAttribute("YboardList", YboardList);
+
+        List<selectVO> selectVONList = boardService.getStrByNBrdSn();
+        model.addAttribute("selectVONList", selectVONList);
+
+        List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
+        model.addAttribute("selectVOYList", selectVOYList);
+
+        return "orderList";
+    }
 
     @GetMapping("/board")
     public String toWritePage(HttpSession session,  Model model) {

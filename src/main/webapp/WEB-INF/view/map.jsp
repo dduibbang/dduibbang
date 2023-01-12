@@ -55,7 +55,7 @@
                     <p><input type="hidden" name="adr_lon"  id="longiVal"  value=""></p>
                     <p><input type="hidden" name="adr_cn"  id="adr_cn_close"  value=""></p>
                     <p><input type="hidden" name="adr_st"  id="adr_st_close" value=""></p>
-                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value="" onkeyup="printAdrSt()"></p>
+                    <p><input class="input-box" type="String" name="adr_ttl" id="adr_ttl" value="" onkeyup="printAdrSt()" placeholder="즐겨찾기 할 이름"></p>
                     <input class="basicBtn" style="width: -webkit-fill-available;text-align: center;" type="submit" value="즐겨찾기 이름 지정">
                 </div>
             </form>

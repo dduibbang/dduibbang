@@ -22,8 +22,8 @@
 
 
 <body style="background-color: #F7C123;">
-<div class="Btap" style="font-family: 'TmoneyRoundWindExtraBold';">
-    <div id = boardCnt>
+<div class="Btap" >
+    <div class = boardCnt>
         <div id = "mainCnt "style="background: #fef1c6;">
             <div style="display: grid;padding: 40px;padding-bottom: 20px;grid-template-columns: 500px 1fr;">
                 <div id="img_div" style="margin-right: 50px;margin-left: 10px;">
@@ -33,7 +33,7 @@
 
                     <div style="display: flex;justify-content: space-between;align-items: stretch;">
                         <div style="display: flex;justify-content: space-between;align-items: baseline;">
-                            <h3 style="margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
+                            <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
                             <c:if test="${brd.brd_st eq '01'}">
                                 <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
                             </c:if>
@@ -72,6 +72,7 @@
         <div style="display: flex; justify-content: center;margin-top: 30px;">
         <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 참여하기</button>
     </div>
+</div>
 </div>
 </body>
 </html>

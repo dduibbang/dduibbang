@@ -1,7 +1,4 @@
 @charset "UTF-8";
-body{
-    background-color: #F7C123;
-}
 .Btap{
     width: 1800px;
     height: 1300px;
@@ -9,7 +6,7 @@ body{
     background: #f9fcf3;
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 5px 5px darkgrey;
+    box-shadow: 8px 8px darkgrey;
 }
 #btn-col{
     display: flex;
@@ -27,4 +24,11 @@ body{
     margin-left: 130px;
     margin-right: 100px;
     margin-top: 30px;
+}
+.boardList{
+
+    margin-left: 50px;margin-top: 30px;overflow: auto;height: 1100px;
+}
+.Btap h1{
+    font-size: xxx-large;margin-left: 40px;margin-bottom: 30px;font-family: 'TmoneyRoundWindExtraBold';
 }
