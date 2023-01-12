@@ -51,8 +51,11 @@ public class userService {
         userMapper.updateUser(userVo);
     }
 
-    public void ChargePay(userVO userVo){
-        userMapper.chargePay(userVo);
+    public void updatePoint(userVO userVo, int select_money ){
+        System.out.println("충전한 포인트 : " + select_money);
+        System.out.println("select_money vo wkf 들어갔니" + userVo.getSelect_money());
+        System.out.println("그지같은 포인트 : " + userVo.getMbr_pt());
+        userMapper.updatePoint(userVo);
     }
 
     //@Override

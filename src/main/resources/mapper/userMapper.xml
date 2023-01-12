@@ -44,7 +44,7 @@
     </update>
 
     <!--빵 충전-->
-    <update id="chargePay" parameterType="com.example.dduiddui.vo.userVO">
+    <update id="updatePoint" parameterType="com.example.dduiddui.vo.userVO">
         UPDATE tb_mbr
         SET mbr_pt= mbr_pt + #{select_money}
         WHERE mbr_id= #{mbr_id}
