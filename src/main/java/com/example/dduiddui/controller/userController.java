@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,26 +59,44 @@ public class userController {
 
     @ResponseBody
     @RequestMapping(value = "/getListByDistance", method = RequestMethod.GET)
-    private Map<String, Object> getListByDistance(String tabY) throws Exception {
+    private Map<String, Object> getListByDistance(String clickY) throws Exception {
 
         Map<String, Object> res = new HashMap<>();
         res.put("success", Boolean.FALSE);
         List<boardVO> boardList = null;
         List<selectVO> boardStrList = null;
 
-        if(tabY.equals("true")){
+        if(clickY.equals("true")){
             List<boardVO> YboardList = boardService.getYBoardList();
             List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
+
+            boardList = YboardList;
+            boardStrList = selectVOYList;
         }else{
             List<boardVO> NboardList = boardService.getNBoardList();
             List<selectVO> selectVONList = boardService.getStrByNBrdSn();
+
+            boardList = NboardList;
+            boardStrList = selectVONList;
         }
 
         if(boardList.size()!=0) {
+
+            List<String> boardStList =new ArrayList<>();
+
+            for (int i=0;i<boardList.size();i++){
+
+                if(boardList.get(i).getBrd_st().equals("01"))
+                    boardStList.add("모집 중❗");
+                else
+                    boardStList.add("모집 완료");
+            }
+
             res.put("boardList", boardList);
+            res.put("boardStList", boardStList);
             res.put("boardStrList", boardStrList);
             res.put("success", Boolean.TRUE);
-            System.out.println("res:" + res);
+            System.out.println("clickY: " + clickY + "res:" + res);
         }
 
         System.out.println("res:" + res);

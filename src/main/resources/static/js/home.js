@@ -1,5 +1,21 @@
 var tabY= false;
 var tabN= false;
+var clickY= false;
+var clickN= false;
+
+
+function clickYBtn(){
+    clickY = true;
+    clickN = false;
+
+    getMyLocation("대구 동구 동내로 70");
+}
+function clickNBtn(){
+    clickY = false;
+    clickN = true;
+
+    getMyLocation("대구 동구 동내로 70");
+}
 
 // 현재 주소 받기
 function getMyAdr(){
@@ -9,8 +25,13 @@ function getMyAdr(){
         url: "/getMyAddress",
         success: function(data) {
             console.log(data);
-            $("#adr").html(data.adr_cn+ " " + data.adr_st);
-            //getMyLocation(data.adr_cn); // 현재 주소의 위도 경도 검색
+
+            if(data == "")
+                $("#adr").html("대구 동구 동내로 70");
+            else{
+                $("#adr").html(data.adr_cn+ " " + data.adr_st);
+                //getMyLocation(data.adr_cn); // 현재 주소의 위도 경도 검색
+            }
         },
         error : function() {
             // 비회원일 때, 지금 위치를 기본주소로(추후 수정 필요)
@@ -33,10 +54,11 @@ function getMyLocation(address){
         headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
     })
         .done(function (msg) {
-                console.log(msg);
+            console.log("getMyLocation : ");
+            console.log(msg);
                 try{
                     var inputDistance;
-                    if(tabY){
+                    if(clickY){
                         inputDistance = document.getElementById("distanceYNum").value;
                     }else{
                         inputDistance = document.getElementById("distanceNNum").value;
@@ -44,11 +66,12 @@ function getMyLocation(address){
 
                     longi = msg.documents[0].x;
                     lati = msg.documents[0].y;
+                    console.log("longi :"+longi+"lati :"+lati+"inputDistance :"+inputDistance);
 
                     getNBBList(longi,lati,inputDistance); // 현재 위경도로부터 inputDistance만큼 떨어진 게시물들 겟
 
                 } catch(error){
-                    emptyBrd();
+                    emptyBrd(clickY);
                 }
         });
 }
@@ -58,12 +81,12 @@ function getNBBList(longi,lati,inputDistance){
 
     var dataForm={};
 
-    if (tabY) {
+    if (clickY) {
         $("#brdY").empty();
-        dataForm = {"tabY" : "true"}
+        dataForm = {"clickY" : "true"}
     } else {
         $("#brdN").empty();
-        dataForm = {"tabY" : "false"}
+        dataForm = {"clickY" : "false"}
     }
 
     // 홈에 표시되는 게시물들 가져와서 (1차 아작스)
@@ -75,36 +98,86 @@ function getNBBList(longi,lati,inputDistance){
         contentType: 'application/json; charset=UTF-8',
         success: function (res) {
 
-            if (tabY) {
+            if (clickY) {
                 $("#brdY").empty();
             } else {
                 $("#brdN").empty();
             }
 
             if (!res.boardList) {
-                emptyBrd();
+                emptyBrd(clickY);
             } else {
 
                 var riri = new Object();
                 riri = res;
+                //console.clear();
+                console.log("getNBBList : ");
                 console.log(riri);
 
+                var tempHtml = '';
+
                 // 각 게시물의 주소를 할당해서 inputDistance 반경 이내이면 표시되도록 하기(2차 아작스)
-                res.boardList.forEach(function (item, index) {
+                res.boardList.forEach(function (item,index) {
 
                     $.ajax({
                         method: "GET",
-                        url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString()+"&radius="+inputDistance,
+                        //url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString()+"&radius="+inputDistance,
+                        url: "https://dapi.kakao.com/v2/local/search/keyword.json?y=" + lati.toString() + "&x=" + longi.toString(),
                         data: {query: item.brd_adr},
                         headers: {Authorization: "KakaoAK 00b285e6c72f581d9c2f16bb7c585100"}
                     })
                         .done(function (msg) {
                             console.log(msg);
                             try {
-                                    console.log(item.brd_adr + "in");
+                                console.log("dis : " + msg.documents[0].distance);
+
+                                if(Number(msg.documents[0].distance)<Number(inputDistance) || Number(msg.documents[0].distance)==Number(inputDistance)){
+
+                                    tempHtml +=
+                                        "<div id = 'brdSnDiv' onClick=\"location.href='/board/" + item.brd_sn + "\'\">" +
+                                        '<div class="mainCnt" style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">' +
+                                        '<div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">' +
+                                        '<div id="img_div2" style="margin-right: 50px;margin-left: 10px;">' +
+                                        '<img  referrerpolicy="no-referrer" id = "strImg" src="/img/' + res.boardStrList[index].str_img + '.jpg" onError="this.src=\'https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200\';"/></div>' +
+                                        ' <div style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">' +
+
+                                        '<div style="display: flex;justify-content: space-between;align-items: stretch;">' +
+                                        '<div style="display: flex;justify-content: space-between;align-items: baseline;">' +
+                                        '<h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;">' + item.brd_ttl + '</h3>' +
+                                        '<div class="basicBtn" style="background: #b5e2ef">' + res.boardStList[index] + '</div>' +
+                                        '<div class="basicBtn" style="background: #b5e2ef">' + item.brd_ctgr + '</div>' +
+                                        '<div class="basicBtn" style="background: #b5e2ef">' + res.boardStrList[index].str_nm + '</div>' +
+                                        '</div>' +
+                                        '<h3 class="basicBtn" style="margin-top: inherit;">' + item.brd_pri + '</h3>' +
+                                        '</div>' +
+
+                                        '<div style="margin-top: 10px;margin-bottom: 10px;">' + item.rgtr_id + '</div>' +
+                                        '<div style="padding: 20px;background: #f9fcf3;margin: 10px;margin-left: 0px;margin-right: 0px">' + item.brd_cn + '</div>' +
+
+                                        ' <div style="display: flex;justify-content: space-between;align-items: baseline;">' +
+                                        ' <div class="basicBtn" style="background: #b5e2ef">' + item.brd_adr + '</div>' +
+                                        '<div style="display: flex;align-items: baseline;">' +
+                                        '<div class="basicBtn" style="font-size: 20px;">' + item.brd_end_dt + '</div>' +
+                                        '<div class="basicBtn" style="font-size: 20px;">' + item.brd_nn + '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
+
+
+                                    if (clickY) {
+                                        $("#brdY").append(tempHtml);
+                                    } else {
+                                        $("#brdN").append(tempHtml);
+                                    }
+                                }else
+                                    console.log("반경 초과");
 
                             } catch (error) {
-                                emptyBrd();
+                                emptyBrd(clickY);
                             }
                         });
                 });
@@ -112,7 +185,7 @@ function getNBBList(longi,lati,inputDistance){
             }
         },
         error: function () {
-            emptyBrd();
+            emptyBrd(clickY);
         }
 
     })
@@ -154,7 +227,7 @@ function search(){
             }
 
             if(!res.searchList) {
-                emptyBrd();
+                emptyBrd(tabY);
             }
             else{
 
@@ -212,15 +285,15 @@ function search(){
         },
         error: function(){
 
-            emptyBrd();
+            emptyBrd(tabY);
 
         }
     })
 
 }
 
-function emptyBrd(){
-    if (tabY) {
+function emptyBrd(bool){
+    if (bool) {
         $("#brdY").empty();
     } else {
         $("#brdN").empty();
@@ -233,7 +306,7 @@ function emptyBrd(){
         '<div style="display: grid;padding: 30px;padding-bottom: 20px;">검색 결과물이 없습니다.</div>'+
         '</div>'
 
-    if (tabY) {
+    if (bool) {
         $("#brdY").append(tempHtml);
     } else {
         $("#brdN").append(tempHtml);

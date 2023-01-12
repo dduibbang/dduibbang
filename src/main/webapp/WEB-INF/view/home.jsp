@@ -55,8 +55,9 @@
         <div style="display: flex;justify-content: center">
             <div class = "distanceForm">
                 <h2 style="font-weight: 600;">📌현재 위치에서 </h2>
-                <input type="number" value="50" name="distanceNum" id="distanceYNum" step="50" style="margin-left: 10px;width:100px;height: 43px ">
+                <input type="number" value="100" name="distanceNum" id="distanceYNum" step="500" style="margin-left: 10px;width:100px;height: 43px ">
                 <h2 style="font-weight: 600;">m 반경의 엔빵 리스트 </h2>
+                <div class="basicBtn" style="cursor : pointer;background:#F7C123;font-size: larger; " onclick="clickYBtn()">🔍</div>
             </div>
         </div>
         <div class = "searchForm">
@@ -82,7 +83,7 @@
                                 <div class = "mainCnt" style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">
                                     <div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">
                                         <div id="img_div" style="margin-right: 50px;margin-left: 10px;">
-                                            <img src="/img/${selectVOYList[idx.index].str_img}" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
+                                            <img src="/img/${selectVOYList[idx.index].str_img}.jpg" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
                                         </div>
                                         <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
                                             <div style="display: flex;justify-content: space-between;align-items: stretch;">
@@ -141,8 +142,9 @@
         <div style="display: flex;justify-content: center">
             <div class = "distanceForm">
                 <h2 style="font-weight: 600;">📌현재 위치에서 </h2>
-                <input type="number" value="50" name="distanceNum" id="distanceNNum" step="50" style="margin-left: 10px;width:100px;height: 43px ">
+                <input type="number" value="100" name="distanceNum" id="distanceNNum" step="500" style="margin-left: 10px;width:100px;height: 43px ">
                 <h2 style="font-weight: 600;">m 반경의 엔빵 리스트 </h2>
+                <div class="basicBtn" style="cursor : pointer;background:#F7C123;font-size: larger;" onclick="clickNBtn()">🔍</div>
             </div>
         </div>
 
@@ -168,7 +170,7 @@
                         <div class = "mainCnt"style="background: #fef1c6;border-bottom: 20px solid #f9fcf3;">
                             <div style="display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 300px 1fr;">
                                 <div id="img_div2" style="margin-right: 50px;margin-left: 10px;">
-                                    <img src="/img/${selectVONList[idx.index].str_img}" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
+                                    <img src="/img/${selectVONList[idx.index].str_img}.jpg" style="width: 250px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
                                 </div>
                                 <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
 
