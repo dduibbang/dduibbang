@@ -15,8 +15,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-        $(document).ready(function(){
-        });
+        function alertFun(){
+            alert("빵 결제가 필요합니다.");
+        }
     </script>
 </head>
 
@@ -64,13 +65,24 @@
         <br>
         <div id="btn-col">
             <button id = "menu-btn" class="basicBtn" onclick="location.href='../home'">메뉴</button>
-            <div id="small_btn_col">
-                <input type="String">
-                <button style="font-size: 20px;" class="basicBtn" onclick="">빵 결제</button>
-            </div>
+            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 -->
+                <div id="small_btn_col">
+                    <input type="String">
+                    <button style="font-size: 20px;" class="basicBtn" onclick="">빵 결제</button>
+                </div>
+            </c:if>
+            <c:if test="${brd.brd_st != '01'}">  <!-- 빵 결제 한 사람 -->
+                <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
+            </c:if>
         </div>
         <div style="display: flex; justify-content: center;margin-top: 30px;">
-        <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 참여하기</button>
+            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 -->
+                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="alertFun()">엔빵 참여하기</button>
+            </c:if>
+            <c:if test="${brd.brd_st != '01'}">  <!-- 빵 결제 한 사람 -->
+                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 들어가기</button>
+                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">주문 현황보기</button>
+            </c:if>
     </div>
 </div>
 </div>
