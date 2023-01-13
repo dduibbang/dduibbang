@@ -7,9 +7,58 @@
     <title>주문현황</title>
 
     <link rel="stylesheet" type="text/css" href="css/orderList.css">
+    <link rel="stylesheet" type="text/css" href="css/brdOrder.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
+<body style="background: #fef1c6;height: 900px;">
+<div id = "wholeCnt">
+    <div id = "topBar">
+        <h1 style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</h1>
+        <div class="basicBtn" style="font-size: x-large;margin-left: 10px;background:#b5e2ef">🔃</div>
+    </div>
+    <div id ="mainTb">
+        <div style="border-bottom: #1c1f23 3px solid;padding-bottom: 20px;padding-top: 20px;">
+        <h3 id = "tbCtgr" style="display: grid;grid-template-columns: 120px 70px 70px 150px 100px 70px">
+            <div></div>
+            <div>결제</div>
+            <div>픽업</div>
+            <div>메뉴</div>
+            <div>금액</div>
+            <div></div>
+        </h3>
+            <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 150px 100px 70px">
+                <c:forEach items="${menuVOList}" var="menu" varStatus="idx"> <!-- 빵 결제를 완료한 사람들/ 추후 수정 필요-->
+                    <div>${menuVOList[0].menu_nm}</div> <!-- 닉네임 -->
+                    <div>결제</div> <!-- 체크박스 -->
+                    <div>픽업</div>
+                    <div>메뉴</div> <!-- 팝업창으로 선택 -->
+                    <div >금액</div>
+<%--                    <c:if test="${userInfo.mbr_id != null}"> <!-- 나 자신이면 표시됨, 추후 수정 -->--%>
+                    <div id="payBtn" style="display: flex">
+                        <div>결제</div>
+                    </div>
+<%--                    </c:if>--%>
+                </c:forEach>
+            </div>
+        </div>
+        <div style="display: grid;grid-template-columns: 120px 70px 70px 150px 100px 70px">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div id = "sumPri"></div>
+            <div></div>
+        </div>
+    </div>
+    <c:if test="${userInfo.mbr_id != null}"> <!-- 방장이면 표시됨, 추후 수정 -->
+        <div class="basicBtn" style="font-size: x-large;">주문하기</div>
+    </c:if>
+</div>
+
+<%--<div>${userInfo.mbr_id}</div>--%>
+<%--<div>${menuVOList[0].menu_nm}</div>--%>
+
 <%--<c:forEach items="${menuVOList}" var="menu" varStatus="idx">--%>
 <%--    <div style="width: 570px;cursor:pointer;">--%>
 <%--        <div class = "mainCnt" style="background: #fef1c6;border-bottom: 10px solid #FFFFFF;">--%>

@@ -1,0 +1,42 @@
+#topBar{
+    display: flex;
+    align-items: baseline;
+}
+.basicBtn{
+
+    margin: 5px;
+    padding: 5px;
+    width:fit-content;
+    height: fit-content;
+    border-width: 0px;
+
+    background: #F7C123;
+    border-radius: 18px;
+    text-decoration-line: none;
+    text-decoration: black;
+    /*border:2px solid #000000;*/
+    /*font-family: 'Fredoka One', cursive; 영어 폰트*/
+    font-family: 'TmoneyRoundWindExtraBold';
+}
+#wholeCnt{
+    height: inherit;display: grid;padding: 40px;padding-bottom: 20px;grid-template-rows: 100px 1fr 130px;
+}
+#wholeCnt h1{
+    margin-top: 0px;
+}
+#mainTb{
+    /*display: grid;*/
+    /*grid-template-columns:  120px 70px 70px 150px 100px 70px;*/
+}
+#payBtn{
+    padding: 3px;
+    width:fit-content;
+    height: fit-content;
+    background: #F7C123;
+    border-radius: 18px;
+    text-decoration-line: none;
+    text-decoration: black;
+    /*border:2px solid #000000;*/
+    /*font-family: 'Fredoka One', cursive; 영어 폰트*/
+    font-family: 'TmoneyRoundWindExtraBold';
+}

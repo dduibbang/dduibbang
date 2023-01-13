@@ -32,7 +32,7 @@
 
         function openOrder() {
             window.name = "brdPageForm";
-            openWin = window.open("../brdOrder", "orderForm", "width=800, height=900, top=500px, left=50px");
+            openWin = window.open("../brdOrder", "orderForm", "width=700, height=900, top=500px, left=50px");
         }
     </script>
 </head>
@@ -42,7 +42,7 @@
 <div class="Btap" >
     <div class = boardCnt>
         <div id = "mainCnt "style="background: #fef1c6;">
-            <div style="display: grid;padding: 40px;padding-bottom: 20px;grid-template-columns: 500px 1fr;">
+            <div style="display: grid;padding: 40px;margin-right: 30px;padding-bottom: 20px;grid-template-columns: 500px 1fr;">
                 <div id="img_div" style="margin-right: 50px;margin-left: 10px;">
                     <img src="/img/${strImg}.jpg" style="width: 400px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
                 </div>
