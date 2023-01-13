@@ -1,6 +1,7 @@
 package com.example.dduiddui.controller;
 
 import com.example.dduiddui.service.boardService;
+import com.example.dduiddui.service.menuService;
 import com.example.dduiddui.service.selectService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.vo.*;
@@ -28,7 +29,30 @@ public class boardController {
     private boardService boardService;
     @Autowired
     private selectService selectService;
+    @Autowired
+    private menuService menuService;
 
+    @GetMapping("/brdOrder")
+    public String toBrdOrderPage(HttpSession session, Model model) {
+
+        Integer boardSn = (Integer) session.getAttribute("boardSn");
+        System.out.println("boardSn : " + boardSn);
+
+        Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
+        userVO userVO = userService.getUserBySn(mbr_sn);
+        model.addAttribute("userInfo",userVO);
+
+        boardVO boardVO = (boardVO) session.getAttribute("boardVO");
+        System.out.println("boardVO : " + boardVO);
+
+        Integer strSn = boardVO.getStr_sn();
+        List<menuVO> menuVOList = menuService.getMenuByStrSn(strSn);
+        model.addAttribute("menuVOList", menuVOList);
+
+        return "brdOrder";
+    }
+
+    // 네비바의 주문현황페이지(과거+현재 주문)
     @GetMapping("/orderList")
     public String toOrderPage(HttpSession session, Model model) {
 
