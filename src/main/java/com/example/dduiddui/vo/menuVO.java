@@ -13,7 +13,7 @@ public class menuVO {
     private String menu_cn;
     private int menu_pr;
     private String menu_op;
-//    private MEDIUBLOP menu_prof;//메뉴사진
+    private String menu_prof;//메뉴사진
 
 
 }

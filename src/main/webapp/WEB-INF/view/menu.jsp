@@ -4,81 +4,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>매뉴 선택</title>
+    <title>매뉴보기</title>
 
     <link rel="stylesheet" type="text/css" href="css/board.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/orderList.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="table-responsive">
-    <div class="table-wrapper">
-        <div class="table-title">
-        </div>
-        <table class="table table-bordered table-hover text-center" id="str_table">
-            <thead>
-            <tr>
-                <th>메뉴 명</th>
-                <th>메뉴 설명</th>
-                <th>가격</th>
-                <th>옵션</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${menuVOList}" var="s">
-                <tr>
-                    <td>${s.menu_nm}</td>
-                    <td>${s.menu_cn}</td>
-                    <td>${s.menu_pr}</td>
-                    <td>${s.menu_op}</td>
-                </tr>
-            </c:forEach>
+<c:forEach items="${menuVOList}" var="menu" varStatus="idx">
+<div style="width: 570px;cursor:pointer;">
+    <div class = "mainCnt" style="background: #fef1c6;border-bottom: 10px solid #FFFFFF;">
+        <div style="height: 200px;display: grid;padding: 30px;padding-bottom: 20px;grid-template-columns: 230px 1fr;">
+            <div style="margin-right: 50px;margin-left: 10px;">
+                <img src="${menu.menu_prof}" style="width: 200px;" onerror="this.src='https://post-phinf.pstatic.net/MjAyMDA0MjlfNjIg/MDAxNTg4MTQxNjU3NzQz.ZDWTjIfuekjZLxo3CHMoKl6D5yyhJaeiMo0Cb_x_JRcg.Pj0UivY3zH6VL1Z_tg9brZxQ78_kwJez5KH_IBt3gdAg.PNG/%EC%9D%8C%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8_%EB%8F%84%EB%84%9B_%EA%B7%B8%EB%A6%BC%EA%B7%B8%EB%A6%AC%EA%B8%B0.png?type=w1200';"/>
+            </div>
+            <div  style="display: grid; grid-template-rows: 0.2fr 0.1fr 1fr 0.1fr;">
+                <div style="display: flex;justify-content: space-between;align-items: stretch;">
+                    <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;margin-right: 10px;">${menu.menu_nm}</h3>
+                    <h3 class="basicBtn" style="margin-top: inherit;">${menu.menu_pr}</h3>
+                </div>
 
-            </tbody>
-        </table>
+                <div style="padding: 20px;background: #f9fcf3;margin: 10px;margin-left: 0px;margin-right: 0px">${menu.menu_cn}</div>
+
+            </div>
+        </div>
     </div>
 </div>
-
-<div class="col-lg-12" type="text" id="select_str" name="select_str"></div>
-
-
-<div>
-    <input type="button" class="btn-upload" value="선택" onclick="setParentText()">
-</div>
-
-
-<script>
-    // 테이블의 Row 클릭시 값 가져오기
-    $("#str_table tr").click(function(){
-
-        var str = "";
-
-        // 현재 클릭된 Row(<tr>)
-        var tr = $(this);
-        var td = tr.children();
-
-        // tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
-        console.log("클릭한 Row의 모든 데이터 : "+tr.text());
-
-        // td.eq(index)를 통해 값을 가져오기
-        var name = td.eq(1).text();
-
-
-        str +=	"선택한 매장 : <b>" + name + "</b>";
-
-        $("#select_str").html(str);
-        $("#select_str").val(name);
-    });
-</script>
-
-
-<script>
-    function setParentText(){
-        opener.document.getElementById("str_nm").value = document.getElementById("select_str").value
-        window.close()
-    }
-</script>
+</c:forEach>
 
 </body>
 </html>

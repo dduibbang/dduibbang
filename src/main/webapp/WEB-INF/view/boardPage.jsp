@@ -22,11 +22,11 @@
         var openWin;
 
         function openSelect() {
-            window.name = "menuForm";
+            window.name = "brdPageForm";
 
             // window.open("open할 window", "자식창 이름", "팝업창 옵션");
             // 이때 "../menu" 가 아닌 그냥 "menu"라 하면 localhost:8081/board/menu 가 되어서 세션으로 brd_sn전달 못함
-            openWin = window.open("../menu", "menuForm", "width=570, height=300, resizable = no, scrollbars = no");
+            openWin = window.open("../menu", "menuForm", "width=575, height=600, resizable = no, scrollbars = yes");
 
         }
     </script>
@@ -87,10 +87,10 @@
             </c:if>
         </div>
         <div style="display: flex; justify-content: center;margin-top: 30px;">
-            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 -->
-                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="alertFun()">엔빵 참여하기</button>
-            </c:if>
-            <c:if test="${brd.brd_st != '01'}">  <!-- 빵 결제 한 사람 -->
+<%--            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 -->--%>
+<%--                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="alertFun()">엔빵 참여하기</button>--%>
+<%--            </c:if>--%>
+            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 한 사람 -->
                 <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 들어가기</button>
                 <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">주문 현황보기</button>
             </c:if>
