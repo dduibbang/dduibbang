@@ -18,6 +18,17 @@
         function alertFun(){
             alert("빵 결제가 필요합니다.");
         }
+
+        var openWin;
+
+        function openSelect() {
+            window.name = "menuForm";
+
+            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+            // 이때 "../menu" 가 아닌 그냥 "menu"라 하면 localhost:8081/board/menu 가 되어서 세션으로 brd_sn전달 못함
+            openWin = window.open("../menu", "menuForm", "width=570, height=300, resizable = no, scrollbars = no");
+
+        }
     </script>
 </head>
 
@@ -64,8 +75,8 @@
     </div>
         <br>
         <div id="btn-col">
-            <button id = "menu-btn" class="basicBtn" onclick="location.href='../home'">메뉴</button>
-            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 -->
+            <button id = "menu-btn" class="basicBtn" onclick="openSelect()">메뉴</button>
+            <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 *********************추후 수정 필요 *******************-->
                 <div id="small_btn_col">
                     <input type="String">
                     <button style="font-size: 20px;" class="basicBtn" onclick="">빵 결제</button>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dduiddui.mapper.menuMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
+
+    <select id="getMenuByStrSn" resultType="com.example.dduiddui.vo.menuVO">
+        SELECT A.str_sn,B.*
+        FROM tb_str AS A LEFT JOIN tb_menu AS B
+                                     ON A.str_sn = B.str_sn
+        WHERE A.str_sn = #{str_sn}
+    </select>
+</mapper>

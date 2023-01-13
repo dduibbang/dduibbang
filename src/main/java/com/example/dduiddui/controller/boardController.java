@@ -88,7 +88,9 @@ public class boardController {
     // 클릭한 게시글로
     @GetMapping("/board/{sn}")
     public String toBrdPage(@PathVariable String sn, HttpSession session, Model model) {
-        int boardSn = Integer.parseInt(sn);
+
+        System.out.println("boardSn : " + sn);
+        Integer boardSn = Integer.parseInt(sn);
         session.setAttribute("boardSn", boardSn);
 
         Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
@@ -98,6 +100,7 @@ public class boardController {
         model.addAttribute("userInfo",userVO);
 
         boardVO brd = boardService.getBrd(boardSn);
+        session.setAttribute("boardVO", brd);
         model.addAttribute("brd", brd);
 
         Integer strSn = brd.getStr_sn();
