@@ -58,10 +58,6 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         매장 관리
                     </a>
-                    <a class="nav-link" href="menu">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        메뉴 관리
-                    </a>
                     <a class="nav-link" href="">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         주문 관리
@@ -181,7 +177,7 @@
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Sell Me 2022</div>
+            <div class="text-muted">Copyright &copy; NBBANG 2023</div>
 
         </div>
     </div>

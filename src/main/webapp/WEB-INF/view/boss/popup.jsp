@@ -64,19 +64,15 @@
 <script>
     function setSubmit(){
 
-        document.getElementById("regStore").submit()
-        alert("test")
+
+        var msg = '등록이 완료되었습니다.';
+        alert(msg);
+        regStore.submit();
 
     }
 
 
 
-    function setreload(){
-        opener.location.reload();
-        window.close()
-
-
-    }
 </script>
 
 </body>

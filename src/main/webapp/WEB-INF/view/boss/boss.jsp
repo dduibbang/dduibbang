@@ -15,6 +15,8 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
+
+
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
@@ -62,11 +64,7 @@
                     <div class="sb-sidenav-menu-heading">관리</div>
                     <a class="nav-link" href="store">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        가게 관리
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        메뉴 관리
+                        매장 관리
                     </a>
                     <a class="nav-link" href="">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

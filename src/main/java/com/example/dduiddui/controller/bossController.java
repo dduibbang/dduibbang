@@ -88,7 +88,8 @@ public class bossController {
             int mbr_sn = (int)sn;
             List<bossVO> storeList = bossService.getStoreById(mbr_sn);
             model.addAttribute("storeList", storeList);
-
+            int str_sn = (int) session.getAttribute("str_sn");
+            System.out.println("store sn: " + sn);
         } catch (NullPointerException e) {
             e.printStackTrace();
             return "boss/bosslogin";
@@ -104,14 +105,16 @@ public class bossController {
     @GetMapping("/menu/{num}")
     public String toMenuPage(@PathVariable("num") int num, HttpSession session, Model model) { // 회원 정보 수정 페이지
 
-
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
+        int mbr_sn = (int)sn;
+        List<bossVO> storeList = bossService.getStoreById(mbr_sn);
+        model.addAttribute("str_sn", num);
+        System.out.println(num);
         List<menuVO> menuList = bossService.getMenuListBySn(num);
         model.addAttribute("menu",menuList);
 
         return "boss/bossmenu";
     }
-
-
 
     @GetMapping("/regStore")
     public String toRegStorePage() {  //회원가입 페이지
@@ -122,10 +125,34 @@ public class bossController {
        int sn = (int) session.getAttribute("mbr_sn");
        bossService.insertStore(bossVo);
 
+        return "redirect:/regEnd";
+    }
 
 
+    @GetMapping("/menu/{num}/regMenu")
+    public String toRegMenuPage(@PathVariable("num") int num,menuVO menuVo, HttpSession session, Model model) {  //회원가입 페이지
+        Integer m_sn = (Integer) session.getAttribute("mbr_sn");
+        List<bossVO> storeList = bossService.getStoreById(m_sn);
+        model.addAttribute("storeList", storeList);
+        model.addAttribute("str_sn", num);
+        model.addAttribute("menuVo", menuVo);
+        System.out.println(menuVo);
 
-        return "boss/popup";
+        return "boss/popupmenu";
+    }
+    @PostMapping("/menu/{num}/regMenu")
+    public String toRegMenu(@PathVariable("num") int num, HttpSession session, menuVO menuVo, Model model){
+        model.addAttribute("str_sn", num);
+        model.addAttribute("menuVo", menuVo);
+        bossService.insertMenu(menuVo);
+
+        return "redirect:/regEnd";
+    }
+
+    @GetMapping("/regEnd")
+    public String popupEnd(HttpSession session, Model model) {
+
+        return "boss/popupend";
     }
 
     @GetMapping("/storeDelete")

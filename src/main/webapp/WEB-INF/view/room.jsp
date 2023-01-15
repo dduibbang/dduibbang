@@ -133,6 +133,7 @@
         });
     }
 </script>
+
 <body>
 <div class="container">
     <h1>채팅방</h1>
@@ -144,7 +145,7 @@
             <tr>
                 <th>방 제목</th>
                 <th><input type="text" name="roomName" id="roomName"></th>
-                <th><button id="createRoom">방 만들기</button></th>
+                <th>"<button id="createRoom>방 만들기</button></th>
             </tr>
         </table>
     </div>
