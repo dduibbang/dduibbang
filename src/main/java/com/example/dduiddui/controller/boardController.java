@@ -139,6 +139,52 @@ public class boardController {
         return "boardPage";
     }
 
+    //배달비 결제창
+    @GetMapping("/boardBbangPay")
+    public String toBrdPayPage(HttpSession session, Model model) {
+        Integer sn = (Integer) session.getAttribute("board_sn");
+
+        Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
+        model.addAttribute("mbr_sn",mbr_sn);
+
+        userVO userVO = userService.getUserBySn(mbr_sn);
+        model.addAttribute("userInfo",userVO);
+
+        boardVO brd = boardService.getBrd(sn);
+        session.setAttribute("boardVO", brd);
+        model.addAttribute("brd", brd);
+
+//        Integer strSn = brd.getStr_sn();
+//        selectVO selectVO = selectService.getStrBySn(strSn);
+//        model.addAttribute("strImg", selectVO.getStr_img());
+//        model.addAttribute("strNm", selectVO.getStr_nm());
+
+//        System.out.println("boardPageboardPage");
+//        System.out.println("strSn: " + strSn);
+//        System.out.println("selectVO: " + selectVO);
+
+        return "boardBbangPay";
+    }
+    @PostMapping("/boardBbangPay")
+    public String toBbangPayPage( int afterB, HttpSession session,  userVO userVo){
+        Integer money = afterB;
+        System.out.println("결제 후 포인트 :" + money);
+        try {
+            System.out.println("현재 가진 포인트" + userVo.getMbr_pt());
+            System.out.println("결제 후 포인트 try 문 :" + money);
+            userService.payPoint(userVo, money);
+
+        } catch (DuplicateKeyException e) {
+            return "redirect:/ChargePay?error_code=-1";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/ChargePay?error_code=-99";
+        }
+
+        return "boardPage";
+    }
+
+
     @ResponseBody
     @RequestMapping(value = "/getSearchList", method = RequestMethod.GET)
     private Map<String, Object> getSearchList(HttpServletRequest request) throws Exception{

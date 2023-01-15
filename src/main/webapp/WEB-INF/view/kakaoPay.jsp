@@ -3,14 +3,14 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" style="height: 100%;">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/tap.css">
     <link rel="stylesheet" type="text/css" href="css/board.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/memberInfo.css">-->
+    <link rel="stylesheet" type="text/css" href="css/memberInfo.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,17 +20,20 @@
 
 </head>
 
-<body>
-    <div class="card-body bg-white mt-0 shadow">
+<body style="background-color: white">
+    <div class="card-body bg-white mt-0 shadow" style="height:150px">
         <form action="/kakaoPay" method="post" id="updatePoint" name="updatePoint" th:th:object="${userInfo}">
             <input type="hidden" name="mbr_id" id="mbr_id" value="${userInfo.mbr_id}">
-            <p style="font-weight: bold">카카오페이로 결제하기</p>
-            <div class="form-group">
-                <label>결제 금액</label>
+            <br>
+            <label style="font-size: 20pt; padding-bottom: 140px">결제하실 금액을 입력해주세요.</label>
+
+            <div class="form-group  input-group" style="padding-bottom: 50px">
                 <!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
                 <!-- required 속성을 설정하면 필수입력 사항이된다. -->
                 <!-- pattern 속성을 이용한 정규표현식으로 데이터의 유효성 검사를 할 수 있다. -->
-                <input type="number" class="form-control" id="select_money" name="select_money" required="required">
+                <input type="number" class="form-control" id="select_money" name="select_money" required="required"
+                    style="margin-left: 100px; font-size: 40pt; width: 280px; height: 60px; -webkit-appearance: none;">
+                <label style="font-size: 30pt; padding-left: 20px">원</label>
             </div>
             <!--<label class="box-radio-input"><input type="radio" name="cp_item" id="1000" value="1000"><span>1,000원</span></label>
             <label class="box-radio-input"><input type="radio" name="cp_item" id="5000" value="5000"><span>5,000원</span></label>
@@ -43,7 +46,9 @@
             <p  style="color: #ac2925; margin-top: 30px">카카오페이의 최소 충전금액은 1,000원이며 <br/>최대 충전금액은 50,000원 입니다.</p>-->
 
             <!--<div type="text" id="select_money" name="select_money"></div>-->
-            <button type="button" class="btn btn-lg btn-block  btn-custom" id="charge_kakao">충 전 하 기</button>
+            <br>
+            <button type="button" class="btn btn-lg btn-block  btn-custom" id="charge_kakao"
+                    style="background-color: #f8941d; height: 80px; border: none; margin-top: 100px"><b>충 전 하 기</b></button>
         </form>
     </div>
 </body>
@@ -54,8 +59,7 @@
         // getter
         var IMP = window.IMP;
         IMP.init('imp12527413');
-        /*var money = $("input:radio[name='cp_item']:checked").val();
-        pt = ${userInfo.mbr_pt} + money;*/
+
         var money = $("#select_money").val();
         console.log(money);
         IMP.request_pay({

@@ -21,6 +21,7 @@ public class boardVO {
     private String rgtr_id;
     private LocalDateTime rgtr_dt;
     private LocalDateTime mdfr_dt;
+    private int pay_money;
 
 
 

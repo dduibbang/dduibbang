@@ -96,7 +96,7 @@
             window.name = "myForm";
 
             // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-            openWin = window.open("kakaoPay", "kakappayForm", "width=570, height=800, resizable = no, scrollbars = no");
+            openWin = window.open("kakaoPay", "kakappayForm", "width=530, height=550, resizable = no, scrollbars = no");
         }
     </script>
 

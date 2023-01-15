@@ -15,27 +15,31 @@
 </head>
 <body>
 <div class="table-responsive">
-    <div class="table-wrapper" style="padding-top: 20px">
-        <div class="table-title">
-        </div>
-        <div class="left-info" style="padding-left: 10%">
-            <label>현재 비밀번호 : </label>
-            <br>
-            <label style="line-height: 3;">비밀번호 : </label>
-            <br>
-            <label>비밀번호 확인 : </label>
-        </div>
-        <div class="right-info">
-            <input type="password" class="form-control" maxlength="30" style="width: 200px; line-height: 3;">
-            <input type="password" id="pwd" name="pwd" class="form-control" maxlength="30" style="width: 200px; line-height: 3;">
-            <input type="password" id="pwdcheck" name="pwdcheck" class="form-control" maxlength="30" onkeyup="passConfirm();" style="width: 200px; line-height: 3;">
-            <div class="col-lg-12" type="text" id="checkmsg" name="checkmsg"></div>
-        </div>
+    <form action="/updatePw" method="post" id="updatePw" name="updatePw">
+        <div class="table-wrapper" style="padding-top: 20px">
+            <div class="table-title">
+                <input type="hidden" name="mbr_pwd" id="mbr_pwd" value="${userInfo.mbr_pwd}">
+            </div>
+            <div class="left-info" style="padding-left: 10%">
+                <label>현재 비밀번호 : </label>
+                <br>
+                <label style="line-height: 3;">비밀번호 : </label>
+                <br>
+                <label>비밀번호 확인 : </label>
+            </div>
 
+            <div class="right-info" style="margin-bottom: 45px">
+                <input type="password" id="pw" name="pw" class="form-control" maxlength="30" style="width: 200px; line-height: 3;">
+                <input type="password" id="pwd" name="pwd" class="form-control" maxlength="30" style="width: 200px; line-height: 3;">
+                <input type="password" id="pwdcheck" name="pwdcheck" class="form-control" maxlength="30" onkeyup="passConfirm();" style="width: 200px; line-height: 3;">
+                <div class="col-lg-12" type="text" id="checkmsg" name="checkmsg"></div>
+            </div>
+
+        </div>
+    </form>
+    <div>
+        <input type="button" class="btn-upload" value="수정하기" onclick="setNewPwd()" style="margin-top: 100px">
     </div>
-<div>
-    <input type="button" class="btn-upload" value="수정하기" onclick="setNewPwd()" style="margin-top: 100px">
-</div>
 </div>
 
 <script type="text/javascript">
@@ -61,22 +65,24 @@
 </script>
 
 <script>
-    var password = document.getElementById("pwd")
-        , confirm_password = document.getElementById("pwdcheck");
-
-    function validatePassword(){
-        if(password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-        } else {
-            confirm_password.setCustomValidity(''); // 오류가 없으면 메시지를 빈 문자열로 설정해야한다. 오류 메시지가 비어 있지 않은 한 양식은 유효성 검사를 통과하지 않고 제출되지 않는다.
-        }
-    }
-</script>
-
-<script>
     function setNewPwd(){
-        opener.document.getElementById("").value = document.getElementById("").value
-        window.close()
+        var mbrPw = document.getElementById("mbr_pwd");
+        var pw = document.getElementById("pw");
+
+        var pwd = document.getElementById("pwd");					//비밀번호
+        var pwdcheck = document.getElementById("pwdcheck");	//비밀번호 확인 값
+
+        if(pwd.value == pwdcheck.value) {//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+            if (mbrPw.value == pw.value) {
+                updatePw.submit();
+            } else {
+                alert("비밀번호가 틀렸습니다.");
+            }
+        }else{
+            alert("새로운 비밀번호가 일치하지 않습니다.");
+        }
+
+        //window.close()
     }
 </script>
 

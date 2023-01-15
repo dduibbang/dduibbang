@@ -119,3 +119,8 @@ button:active {
 #brdSnDiv{
     width: 1650px;cursor:pointer;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}

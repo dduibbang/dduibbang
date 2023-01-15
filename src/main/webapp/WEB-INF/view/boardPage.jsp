@@ -35,6 +35,9 @@
             openWin = window.open("../brdOrder", "orderForm", "width=700, height=900, top=500px, left=50px");
         }
     </script>
+
+
+
 </head>
 
 
@@ -50,6 +53,7 @@
 
                     <div style="display: flex;justify-content: space-between;align-items: stretch;">
                         <div style="display: flex;justify-content: space-between;align-items: baseline;">
+                            <input type="hidden" id="board_sn" name="board_sn" value="${brd.brd_sn}">
                             <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
                             <c:if test="${brd.brd_st eq '01'}">
                                 <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
@@ -60,7 +64,8 @@
                             <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
                             <div class="basicBtn" style="background: #b5e2ef">${strNm}</div>
                         </div>
-                        <h3 class="basicBtn" style="margin-top: inherit;">${brd.brd_pri}</h3>
+                        <input type="hidden" id ="pri" value="${brd.brd_pri}">
+                        <h3 class="basicBtn" id="dlv" name="dlv" style="margin-top: inherit;">${brd.brd_pri}</h3>
                     </div>
 
                     <div style="margin-top: 10px;margin-bottom: 10px;">${brd.rgtr_id}</div>
@@ -83,8 +88,8 @@
             <button id = "menu-btn" class="basicBtn" onclick="menuSelect()">메뉴</button>
             <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 안한 사람 *********************추후 수정 필요 *******************-->
                 <div id="small_btn_col">
-                    <input type="String">
-                    <button style="font-size: 20px;" class="basicBtn" onclick="">빵 결제</button>
+                    <input type="text" id="dlvPay" name="dlvPay" readonly>
+                    <button style="font-size: 20px;" class="basicBtn" onclick="bbangPay()">빵 결제</button>
                 </div>
             </c:if>
             <c:if test="${brd.brd_st != '01'}">  <!-- 빵 결제 한 사람 -->
@@ -102,5 +107,34 @@
     </div>
 </div>
 </div>
+<script>
+    window.onload = function(){
+        var pay =$("#pri").val();
+        console.log(pay);
+        var str = parseInt(pay)/2;
+        console.log(str);
+        $("#dlvPay").val(str);
+        $("#dlvPay").html(str);
+        var sn = $("#board_sn").val();
+        console.log(sn);
+    }
+</script>
+
+<script type="text/javascript">
+    var openWin;
+
+    function bbangPay(){
+        // window.name = "부모창 이름";
+        window.name = "boardForm";
+        // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+        openWin = window.open("../boardBbangPay", "boardBbangPayForm", "width=530, height=550, resizable = no, scrollbars = no");
+        //openWin.document.getElementById("board_sn").value = document.getElementById("board_sn").value;
+        //openWin.document.getElementById("pay").value = document.getElementById("dlvPay").value;
+    }
+</script>
+
+
+
 </body>
+
 </html>

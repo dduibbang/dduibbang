@@ -4,6 +4,7 @@ import com.example.dduiddui.service.boardService;
 import com.example.dduiddui.service.userService;
 import com.example.dduiddui.service.addressService;
 import com.example.dduiddui.vo.*;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -193,11 +194,30 @@ public class userController {
     }
 
     @GetMapping("/updatePw")
-    public String toupdatePwPage(){
+    public String toupdatePwPage(userVO userVo, HttpSession session, Model model){
+        System.out.println("비밀번호 변경 요청!!!");
+        String id = (String) session.getAttribute("id");
+        Integer sn = (Integer) session.getAttribute("mbr_sn");
 
+        if (id != null) { // 로그인된 상태
+            userVo = userService.getUserById(id);
+            model.addAttribute("userInfo", userVo);
+            model.addAttribute("sn", sn);
+        }
         return "updatePw";
     }
 
+    @PostMapping("/updatePw")
+    public String updatePw(@RequestBody userVO userVo, HttpSession session, Model model) throws Exception{
+
+        System.out.println(userService);
+        //비번 변경
+        userService.updatePW(userVo);
+
+        //비번 변경 성공시
+        return "변경 성공";
+    }
+/*
     //비밀번호 확인 처리 요청
     @PostMapping("/checkPw")
     public String checkPw(@RequestBody String pw, HttpSession session) throws Exception{
@@ -216,17 +236,7 @@ public class userController {
         }
         return result;
     }
-
-    @PostMapping("/updatePw")
-    public String updatePw(@RequestBody userVO userVo, HttpSession session) throws Exception{
-        System.out.println("비밀번호 변경 요청!!!");
-
-        //비번 변경
-        userService.updatePW(userVo);
-
-        //비번 변경 성공시
-        return "변경 성공";
-    }
+*/
 
     @GetMapping("/login")
     public String toLoginPage(Model model,HttpSession session,RedirectAttributes redirect) { // 로그인 페이지

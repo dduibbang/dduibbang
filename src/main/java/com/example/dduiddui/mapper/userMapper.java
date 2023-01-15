@@ -15,4 +15,5 @@ public interface userMapper {
 
     void updateUser(userVO userVo);
     void updatePoint(userVO userVo);
+    void payPoint(userVO userVo);
 }

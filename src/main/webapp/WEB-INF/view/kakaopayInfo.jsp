@@ -3,7 +3,7 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" style="height: 100%;">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--    <link rel="stylesheet" type="text/css" href="css/home.css">
@@ -22,12 +22,12 @@
 
 <body>
     <div>
-        <label class="mbr-info">결제가 완료되었습니다!</label>
-
-        <label class="mbr-info">결제 후 포인트 : ${userInfo.mbr_pt}</label>
+        <label style="font-size: 15pt">결제가 완료되었습니다!</label>
+        <br>
+        <label class="mbr-info" style="font-size: 25pt; margin-top: 160px; margin-bottom: 170px">보유 포인트 : ${userInfo.mbr_pt}</label>
     </div>
     <div>
-        <button type="button" class="btn btn-lg btn-block  btn-custom" id="ok">확 인</button>
+        <button type="button" class="btn btn-lg btn-block  btn-custom" id="ok" style="background-color: #f8941d; height: 80px;">확 인</button>
     </div>
 
 </body>

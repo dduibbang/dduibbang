@@ -57,14 +57,18 @@ public class userService {
         System.out.println("그지같은 포인트 : " + userVo.getMbr_pt());
         userMapper.updatePoint(userVo);
     }
-
+    public void payPoint(userVO userVo, int money){
+        System.out.println("남은 포인트 : " + money);
+        System.out.println("select_money vo wkf 들어갔니" + userVo.getSelect_money());
+        userMapper.payPoint(userVo);
+    }
     //@Override
     public void updatePW(userVO userVo) throws Exception{
         System.out.println("암호화 전 비번 : " + userVo.getMbr_pwd());
 
         //새로운 비번 저장
         userVo.setMbr_pwd(userVo.getMbr_pwd());
-
+        userMapper.updatePW(userVo);
         System.out.println("암호화 후 비번 : " + userVo.getMbr_pwd());
     }
 
