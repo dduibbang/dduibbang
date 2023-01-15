@@ -165,6 +165,8 @@ public class boardController {
 
         return "boardBbangPay";
     }
+
+
     @PostMapping("/boardBbangPay")
     public String toBbangPayPage( int afterB, HttpSession session,  userVO userVo){
         Integer money = afterB;
@@ -181,7 +183,7 @@ public class boardController {
             return "redirect:/ChargePay?error_code=-99";
         }
 
-        return "boardPage";
+        return "redirect:/boardBbangPay";
     }
 
 

@@ -101,7 +101,7 @@
 <%--                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="alertFun()">엔빵 참여하기</button>--%>
 <%--            </c:if>--%>
             <c:if test="${brd.brd_st eq '01'}">  <!-- 빵 결제 한 사람 -->
-                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 들어가기</button>
+                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 채팅 들어가기</button>
                 <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="openOrder()">주문 현황보기</button>
             </c:if>
     </div>

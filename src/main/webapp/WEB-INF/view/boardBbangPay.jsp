@@ -28,18 +28,19 @@
             </div>
 
             <div class="right-info" style="margin-bottom: 45px">
+                <input type="hidden" name="mbr_id" value="${userInfo.mbr_id}">
                 <input type="number" id="pay" name="pay" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" readonly>
-                <input type="number" id="beforeB" name="beforeB" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" value="${userInfo.mbr_pt}" readonly>
+                <input type="number" id="beforeB" name="mbr_pt" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" value="${userInfo.mbr_pt}" readonly>
                 <input type="number" id="afterB" name="afterB" class="form-control" maxlength="30" onkeyup="passConfirm();" style="width: 200px; line-height: 3;" readonly>
                 <div class="col-lg-12" type="text" id="checkmsg" name="checkmsg"></div>
             </div>
 
         </div>
+        <div>
+            <input type="button" class="btn-upload" value="결제하기" onclick="PayBbang()" style="margin-top: 50px; margin-left: 150px; margin-right:20px; float: left; padding-left: 20px; padding-right: 20px">
+            <input type="button" class="btn-upload" value="충전하기" onclick="location.href='../kakaoPay'" style="margin-top: 50px; margin-left: 0px; margin-right:150px; float: right; padding-left: 20px; padding-right: 20px">
+        </div>
     </form>
-    <div>
-        <input type="button" class="btn-upload" value="결제하기" onclick="PayBbang()" style="margin-top: 50px; margin-left: 150px; margin-right:20px; float: left; padding-left: 20px; padding-right: 20px">
-        <input type="button" class="btn-upload" value="충전하기" onclick="location.href='../kakaoPay'" style="margin-top: 50px; margin-left: 0px; margin-right:150px; float: right; padding-left: 20px; padding-right: 20px">
-    </div>
 </div>
 
 

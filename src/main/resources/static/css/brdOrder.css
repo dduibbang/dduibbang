@@ -13,10 +13,14 @@
     background: #F7C123;
     border-radius: 18px;
     text-decoration-line: none;
-    text-decoration: black;
+    color: black;
     /*border:2px solid #000000;*/
     /*font-family: 'Fredoka One', cursive; 영어 폰트*/
     font-family: 'TmoneyRoundWindExtraBold';
+}
+a:visited{
+    color:black;
+    text-decoration-line: none;
 }
 #wholeCnt{
     height: inherit;display: grid;padding: 40px;padding-bottom: 20px;grid-template-rows: 100px 1fr 130px;

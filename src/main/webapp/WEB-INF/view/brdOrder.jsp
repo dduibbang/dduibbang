@@ -10,35 +10,66 @@
     <link rel="stylesheet" type="text/css" href="css/brdOrder.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            //var boolSelect = false;
+        });
+
+        function selectMenu(){
+
+            var mP = document.getElementById("selectMenu").value;
+            var mP = parseInt(mP);
+            console.log(mP);
+                $("#menuPrice").html(${menuVOList[mP].menu_pr});
+        }
+    </script>
 </head>
 <body style="background: #fef1c6;height: 900px;">
 <div id = "wholeCnt">
     <div id = "topBar">
         <h1 style="font-family: 'TmoneyRoundWindExtraBold';">주문현황</h1>
-        <div class="basicBtn" style="font-size: x-large;margin-left: 10px;background:#b5e2ef">🔃</div>
+        <div class="basicBtn" style="font-size: x-large;margin-left: 10px;background:#b5e2ef"><a href="/brdOrder">🔃</a></div>
     </div>
     <div id ="mainTb">
         <div style="border-bottom: #1c1f23 3px solid;padding-bottom: 20px;padding-top: 20px;">
-        <h3 id = "tbCtgr" style="display: grid;grid-template-columns: 120px 70px 70px 150px 100px 70px">
-            <div></div>
+        <h3 id = "tbCtgr" style="display: grid;grid-template-columns: 120px 70px 70px 170px 100px 70px">
+            <div>주문자</div>
             <div>결제</div>
             <div>픽업</div>
             <div>메뉴</div>
             <div>금액</div>
             <div></div>
         </h3>
-            <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 150px 100px 70px">
-                <c:forEach items="${menuVOList}" var="menu" varStatus="idx"> <!-- 빵 결제를 완료한 사람들/ 추후 수정 필요-->
-                    <div>${menuVOList[0].menu_nm}</div> <!-- 닉네임 -->
-                    <div>결제</div> <!-- 체크박스 -->
-                    <div>픽업</div>
-                    <div>메뉴</div> <!-- 팝업창으로 선택 -->
-                    <div >금액</div>
-<%--                    <c:if test="${userInfo.mbr_id != null}"> <!-- 나 자신이면 표시됨, 추후 수정 -->--%>
+            <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 170px 100px 70px">
+                <c:forEach items="${menuVOList}" var="user" > <!-- 빵 결제를 완료한 사람들 리스트 들고오기/ 추후 수정 필요-->
+
+                    <div>${user.menu_nm}</div> <!-- 닉네임 -->
+
+<%--                    <c:if test="${user.menu_nm != userInfo.mbr_id}"> <!-- 나말고 다른 엔빵 참여자이면 -->--%>
+<%--                    <input type="checkbox" name="payYN" value="">--%>
+<%--                    <input type="checkbox" name="pickUpYN" value="" >--%>
+<%--                    <div>${user.menu_nm}</div>--%>
+<%--                    <div id="menuPrice">${user.menu_pr}</div>--%>
+<%--                    </c:if>--%>
+<%--                    <div></div>--%>
+
+                    <c:if test="${userInfo.mbr_id != null}"> <!-- 본인이라면 -->
+                    <input type="checkbox" name="payYN" value="" >
+                    <input type="checkbox" name="pickUpYN" value="" >
+
+                    <select name="selectMenu" id="selectMenu" style="height: 40px;margin-left: 5px;margin-right: 10px"onchange="selectMenu()">
+                        <option var="-1">메뉴를 선택해주세요.</option>
+                        <c:forEach items="${menuVOList}" var="menu" varStatus="idx">
+                            <option value="${idx.index}" >${menu.menu_nm}</option>
+                        </c:forEach>
+                    </select>
+
+                    <div id="menuPrice"></div>
                     <div id="payBtn" style="display: flex">
                         <div>결제</div>
                     </div>
-<%--                    </c:if>--%>
+                    </c:if>
+
                 </c:forEach>
             </div>
         </div>
