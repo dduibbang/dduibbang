@@ -20,7 +20,6 @@
             </div>
             <div class="left-info" style="padding-left: 10%">
                 <input type="hidden" id="board_sn" name="board_sn">
-                <input type="hidden" id="mbr_sn" name="mbr_sn" value="userInfo.mbr_sn">
                 <label>결제 금액 : </label>
                 <br>
                 <label style="line-height: 3;">보유 빵 : </label>
@@ -45,46 +44,46 @@
 </div>
 
 
-    <script>
-        window.onload = function(){
-            document.getElementById("board_sn").value = opener.document.getElementById("board_sn").value;
-            document.getElementById("pay").value = opener.document.getElementById("dlvPay").value;
+<script>
+    window.onload = function(){
+        document.getElementById("board_sn").value = opener.document.getElementById("board_sn").value;
+        document.getElementById("pay").value = opener.document.getElementById("dlvPay").value;
 
-            var sn = $("#board_sn").val();
-            console.log(sn);
+        var sn = $("#board_sn").val();
+        console.log(sn);
 
-            var pay =$("#pay").val();
-            console.log(pay);
-            var beforeB = $("#beforeB").val();
-            var str = parseInt(beforeB) - parseInt(pay);
-            console.log(str);
-            var checkmsg = document.getElementById("checkmsg");
-            var wrongColor ="#ff0000";
-            $("#afterB").val(str);
-            $("#afterB").html(str);
-            if(afterB.value < 0){
-                checkmsg.style.color = wrongColor;
-                checkmsg.innerHTML = "빵 충전 후 이용해주세요.";
-            }
-
+        var pay =$("#pay").val();
+        console.log(pay);
+        var beforeB = $("#beforeB").val();
+        var str = parseInt(beforeB) - parseInt(pay);
+        console.log(str);
+        var checkmsg = document.getElementById("checkmsg");
+        var wrongColor ="#ff0000";
+        $("#afterB").val(str);
+        $("#afterB").html(str);
+        if(afterB.value < 0){
+            checkmsg.style.color = wrongColor;
+            checkmsg.innerHTML = "빵 충전 후 이용해주세요.";
         }
-    </script>
+
+    }
+</script>
 
 
-    <script>
-        function PayBbang(){
-            var afterB = $("#afterB").val();
+<script>
+    function PayBbang(){
+        var afterB = $("#afterB").val();
+        console.log(afterB);
+        //var money = parseInt(afterB);
+        if(afterB < 0) {
             console.log(afterB);
-            //var money = parseInt(afterB);
-            if(afterB < 0) {
-                console.log(afterB);
-                var str = "빵을 충전해주세요."
-                alert(str);
-                document.location.href="/kakaoPay"; //alert창 확인 후 이동할 url 설정
-            }else{
-                payBbang.submit();
-            }
+            var str = "빵을 충전해주세요."
+            alert(str);
+            document.location.href="/kakaoPay"; //alert창 확인 후 이동할 url 설정
+        }else{
+            payBbang.submit();
         }
-    </script>
+    }
+</script>
 
 </body>

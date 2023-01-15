@@ -183,7 +183,7 @@ public class boardController {
             return "redirect:/ChargePay?error_code=-99";
         }
 
-        return "redirect:/boardBbangPay";
+        return "redirect:/regEnd"; // 팝업창 사라지게하기
     }
 
 
