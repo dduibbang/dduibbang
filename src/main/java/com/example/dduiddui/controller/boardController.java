@@ -158,7 +158,7 @@ public class boardController {
         return "boardBbangPay";
     }
     @PostMapping("/boardBbangPay")
-    public String toBbangPayPage( int afterB,int board_sn, HttpSession session,  userVO userVo, Model model){
+    public String toBbangPayPage( int afterB,int board_sn, String mbr_sn, HttpSession session,  userVO userVo, Model model){
 
         Integer boardSn = board_sn;
         session.setAttribute("boardSn", boardSn);
@@ -166,6 +166,8 @@ public class boardController {
         session.setAttribute("boardVO", brd);
         model.addAttribute("brd", brd);
         Integer money = afterB;
+        //Integer mbr  (mbr_sn); Integer
+        //userVo.setMbr_sn;
         System.out.println("결제 후 포인트 :" + money);
         try {
             System.out.println("현재 가진 포인트" + userVo.getMbr_pt());

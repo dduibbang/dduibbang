@@ -20,6 +20,7 @@
             </div>
             <div class="left-info" style="padding-left: 10%">
                 <input type="hidden" id="board_sn" name="board_sn">
+                <input type="hidden" id="mbr_sn" name="mbr_sn" value="userInfo.mbr_sn">
                 <label>결제 금액 : </label>
                 <br>
                 <label style="line-height: 3;">보유 빵 : </label>
