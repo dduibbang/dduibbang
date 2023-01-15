@@ -153,20 +153,18 @@ public class boardController {
         boardVO brd = boardService.getBrd(sn);
         session.setAttribute("boardVO", brd);
         model.addAttribute("brd", brd);
-
-//        Integer strSn = brd.getStr_sn();
-//        selectVO selectVO = selectService.getStrBySn(strSn);
-//        model.addAttribute("strImg", selectVO.getStr_img());
-//        model.addAttribute("strNm", selectVO.getStr_nm());
-
-//        System.out.println("boardPageboardPage");
-//        System.out.println("strSn: " + strSn);
-//        System.out.println("selectVO: " + selectVO);
+        System.out.println("user sn: " + mbr_sn);
 
         return "boardBbangPay";
     }
     @PostMapping("/boardBbangPay")
-    public String toBbangPayPage( int afterB, HttpSession session,  userVO userVo){
+    public String toBbangPayPage( int afterB,int board_sn, HttpSession session,  userVO userVo, Model model){
+
+        Integer boardSn = board_sn;
+        session.setAttribute("boardSn", boardSn);
+        boardVO brd = boardService.getBrd(boardSn);
+        session.setAttribute("boardVO", brd);
+        model.addAttribute("brd", brd);
         Integer money = afterB;
         System.out.println("결제 후 포인트 :" + money);
         try {
