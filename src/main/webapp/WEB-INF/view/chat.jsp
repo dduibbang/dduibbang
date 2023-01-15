@@ -51,15 +51,21 @@
 
 
     <script type ="text/javascript">
-        window.onload = chatName; //페이지 로드시 자동으로 실행
+        window.onload = function(){
+
+           chatName();
+
+
+        } //페이지 로드시 자동으로 실행
 
         function chatName(){
 
                 wsOpen();
-                $("#yourName").hide();
                 $("#yourMsg").show();
 
         }
+
+
     </script>
 
 
@@ -131,7 +137,8 @@
     <h1>채팅</h1>
     <input type="hidden" id="sessionId" value="">
     <input type="hidden" id="roomNumber" value="${roomNumber}">
-    <th><input type="hidden" name="userName" id="userName" value = <%=id%>></th>
+    <input type="hidden" id="roomName" value="${brd.brd_ttl}">
+    <input type="hidden" name="userName" id="userName" value = <%=id%>>
     <div id="chating" class="chating">
     </div>
 

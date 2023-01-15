@@ -59,7 +59,9 @@ public class userService {
     }
     public void payPoint(userVO userVo, int money){
         System.out.println("남은 포인트 : " + money);
-        System.out.println("money에 들어갔니" + userVo.getSelect_money());
+        //System.out.println("select_money vo wkf 들어갔니" + userVo.getSelect_money());
+        System.out.println("id : " + userVo.getMbr_id());
+        userVo.setMbr_pt(String.valueOf(money));
         userMapper.payPoint(userVo);
     }
     //@Override

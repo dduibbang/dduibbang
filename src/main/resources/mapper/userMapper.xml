@@ -59,7 +59,7 @@
     <!--배달비 결제-->
     <update id="payPoint" parameterType="com.example.dduiddui.vo.userVO">
         UPDATE tb_mbr
-        SET mbr_pt= #{money}
+        SET mbr_pt= #{mbr_pt}
         WHERE mbr_id= #{mbr_id}
     </update>
 

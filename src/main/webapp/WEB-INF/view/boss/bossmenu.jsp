@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -60,10 +62,6 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         매장 관리
                     </a>
-                    <a class="nav-link" href="../menu">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        메뉴 관리
-                    </a>
                     <a class="nav-link" href="">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         주문 관리
@@ -72,7 +70,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                admin
+                어드민을 수정할 예정
             </div>
         </nav>
     </div>
@@ -105,8 +103,8 @@
                                         <div class="table-title">
                                             <div class="row">
                                                 <div class="col-xs-7">
-                                                    <a href="#" class="btn btn-primary btn-block mb-4"> <span>메뉴 등록</span></a>
-                                                    <a href="#" class="btn btn-primary btn-block mb-4"> <span>가게 목록</span></a>
+                                                    <a href="" class="btn btn-primary btn-block mb-4"  onclick ="openCreate()"> <span>메뉴 등록</span></a>
+                                                    <a href="../store" class="btn btn-primary btn-block mb-4"> <span>가게 목록</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,6 +154,24 @@
                 </div>
             </main>
         </div>
+
+
+
+
+
+        <script type="text/javascript">
+            /*let openWin;*/
+            var openWin;
+
+            function openCreate() {
+                // window.name = "부모창 이름";
+                window.name = "storeForm";
+
+                // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+                openWin = window.open("${str_sn}/regMenu", "createForm", "width=570, height=350, resizable = no, scrollbars = no");
+            }
+        </script>
+
     </body>
 
 
@@ -164,7 +180,7 @@
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Sell Me 2022</div>
+            <div class="text-muted">Copyright &copy; NBBANG 2023</div>
 
             </div>
         </div>

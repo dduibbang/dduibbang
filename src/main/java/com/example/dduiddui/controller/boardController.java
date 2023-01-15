@@ -157,6 +157,8 @@ public class boardController {
 
         return "boardBbangPay";
     }
+
+
     @PostMapping("/boardBbangPay")
     public String toBbangPayPage( int afterB,int board_sn, String mbr_sn, HttpSession session,  userVO userVo, Model model){
 
@@ -181,7 +183,7 @@ public class boardController {
             return "redirect:/ChargePay?error_code=-99";
         }
 
-        return "boardPage";
+        return "redirect:/boardBbangPay";
     }
 
 
