@@ -49,7 +49,7 @@
             document.getElementById("board_sn").value = opener.document.getElementById("board_sn").value;
             document.getElementById("pay").value = opener.document.getElementById("dlvPay").value;
 
-            var sn = $("#sn").val();
+            var sn = $("#board_sn").val();
             console.log(sn);
 
             var pay =$("#pay").val();
