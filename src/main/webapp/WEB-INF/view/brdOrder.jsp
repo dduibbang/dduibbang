@@ -51,8 +51,8 @@
                         <input type="checkbox" name="pickUpYN" value="" >
                         <div>${user.menu_nm}</div>
                         <div id="menuPrice">${user.menu_pr}</div>
+                        <div></div>
                     </c:if>
-                    <div></div>
 
                     <c:if test="${userInfo.mbr_nm eq authUser.mbr_nm}"> <!-- 본인이라면 -->
 
