@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,10 @@ public class boardController {
     @GetMapping("/brdOrder")
     public String toBrdOrderPage(HttpSession session, Model model) {
 
-        Integer boardSn = (Integer) session.getAttribute("boardSn");
+        authVO authBrdVO = (authVO) session.getAttribute("authBrdVO");
+        Integer boardSn = authBrdVO.getBrd_sn();
+
+        //Integer boardSn = (Integer) session.getAttribute("board");
         System.out.println("boardSn : " + boardSn);
 
         Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
@@ -44,10 +48,24 @@ public class boardController {
 
         boardVO boardVO = (boardVO) session.getAttribute("boardVO");
         System.out.println("boardVO : " + boardVO);
+        model.addAttribute("boardVO", boardVO);
 
         Integer strSn = boardVO.getStr_sn();
         List<menuVO> menuVOList = menuService.getMenuByStrSn(strSn);
         model.addAttribute("menuVOList", menuVOList);
+
+        List<authVO> authVOList = authService.getAuthList(boardSn);
+        model.addAttribute("authVOList", authVOList);
+
+        List<userVO> authUserVOList =new ArrayList<>();
+        for (int i=0;i<authVOList.size();i++){
+
+            // 해당 게시물의 배달비 엔빵에 참가한 유저 겟
+            userVO authUserVO = userService.getUserBySn(authVOList.get(i).getMbr_sn());
+            authUserVOList.add(authUserVO);
+        }
+        model.addAttribute("authUserVOList", authUserVOList);
+
 
         return "brdOrder";
     }
@@ -137,11 +155,20 @@ public class boardController {
 
         if (mbr_sn != null) { // 로그인된 상태
             authVO authVO = authService.getAuth(mbr_sn);
-
-            if(authVO.getBrd_sn() == boardSn)
-                model.addAttribute("authVO", authVO);
             System.out.println("authVO: " + authVO);
-        }
+
+            if(authVO !=null){ // 사용자가 배달비 빵 결제한 이력이 있을 때
+
+                if(authVO.getBrd_sn() == boardSn){
+                    model.addAttribute("authYN", "Y");
+                    session.setAttribute("authBrdVO", authVO);
+                }else
+                    model.addAttribute("authYN", "N");
+            }else // 사용자가 배달비 빵 결제한 이력이 없을 때
+                model.addAttribute("authYN", "N");
+
+        }else // 사용자가 배달비 빵 결제한 이력이 없을 때
+            model.addAttribute("authYN", "N");
 
 
 //        System.out.println("boardPageboardPage");

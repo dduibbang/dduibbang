@@ -19,8 +19,9 @@
 
 
         <div>
-            <input type="hidden" name="str_sn" id = value="${num}"/>
+            <input type="hidden" name="str_sn" value="${num}"/>
         </div>
+
         <div class="input-group  input-group-lg mb-3">
             <input type="text" class="form-control" id="menu_ctgr" name="menu_ctgr"
                    placeholder="메뉴카테고리">

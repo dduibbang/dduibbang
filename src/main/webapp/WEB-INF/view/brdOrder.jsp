@@ -41,33 +41,35 @@
             <div></div>
         </h3>
             <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 170px 100px 70px">
-                <c:forEach items="${menuVOList}" var="user" > <!-- 빵 결제를 완료한 사람들 리스트 들고오기/ 추후 수정 필요-->
+                <c:forEach items="${authUserVOList}" var="authUser" > <!-- 빵 결제를 완료한 사람들 리스트 -->
 
-                    <div>${user.menu_nm}</div> <!-- 닉네임 -->
+                    <div>${authUser.mbr_nm}</div> <!-- 닉네임 -->
 
-<%--                    <c:if test="${user.menu_nm != userInfo.mbr_id}"> <!-- 나말고 다른 엔빵 참여자이면 -->--%>
-<%--                    <input type="checkbox" name="payYN" value="">--%>
-<%--                    <input type="checkbox" name="pickUpYN" value="" >--%>
-<%--                    <div>${user.menu_nm}</div>--%>
-<%--                    <div id="menuPrice">${user.menu_pr}</div>--%>
-<%--                    </c:if>--%>
-<%--                    <div></div>--%>
+                    <c:if test="${userInfo.mbr_nm != authUser.mbr_nm}"> <!-- 나말고 다른 엔빵 참여자이면 -->
 
-                    <c:if test="${userInfo.mbr_id != null}"> <!-- 본인이라면 -->
-                    <input type="checkbox" name="payYN" value="" >
-                    <input type="checkbox" name="pickUpYN" value="" >
+                        <input type="checkbox" name="payYN" value="">
+                        <input type="checkbox" name="pickUpYN" value="" >
+                        <div>${user.menu_nm}</div>
+                        <div id="menuPrice">${user.menu_pr}</div>
+                    </c:if>
+                    <div></div>
 
-                    <select name="selectMenu" id="selectMenu" style="height: 40px;margin-left: 5px;margin-right: 10px"onchange="selectMenu()">
-                        <option var="-1">메뉴를 선택해주세요.</option>
-                        <c:forEach items="${menuVOList}" var="menu" varStatus="idx">
-                            <option value="${idx.index}" >${menu.menu_nm}</option>
-                        </c:forEach>
-                    </select>
+                    <c:if test="${userInfo.mbr_nm eq authUser.mbr_nm}"> <!-- 본인이라면 -->
 
-                    <div id="menuPrice"></div>
-                    <div id="payBtn" style="display: flex">
-                        <div>결제</div>
-                    </div>
+                        <input type="checkbox" name="payYN" value="" >
+                        <input type="checkbox" name="pickUpYN" value="" >
+
+                        <select name="selectMenu" id="selectMenu" style="height: 40px;margin-left: 5px;margin-right: 10px"onchange="selectMenu()">
+                            <option var="-1">메뉴를 선택해주세요.</option>
+                            <c:forEach items="${menuVOList}" var="menu" varStatus="idx">
+                                <option value="${idx.index}" >${menu.menu_nm}</option>
+                            </c:forEach>
+                        </select>
+
+                        <div id="menuPrice"></div>
+                        <div id="payBtn" style="display: flex">
+                            <div>결제</div>
+                        </div>
                     </c:if>
 
                 </c:forEach>
@@ -82,7 +84,7 @@
             <div></div>
         </div>
     </div>
-    <c:if test="${userInfo.mbr_id != null}"> <!-- 방장이면 표시됨, 추후 수정 -->
+    <c:if test="${userInfo.mbr_id eq boardVO.rgtr_id}"> <!-- 방장이면 표시됨, 추후 수정 -->
         <div class="basicBtn" style="font-size: x-large;">주문하기</div>
     </c:if>
 </div>

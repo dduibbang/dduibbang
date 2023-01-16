@@ -88,8 +88,6 @@ public class bossController {
             int mbr_sn = (int)sn;
             List<bossVO> storeList = bossService.getStoreById(mbr_sn);
             model.addAttribute("storeList", storeList);
-            int str_sn = (int) session.getAttribute("str_sn");
-            System.out.println("store sn: " + sn);
         } catch (NullPointerException e) {
             e.printStackTrace();
             return "boss/bosslogin";
