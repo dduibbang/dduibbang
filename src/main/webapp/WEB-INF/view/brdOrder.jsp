@@ -58,14 +58,14 @@
                                 <div><input type="checkbox"  name="pay_yn" value="" checked></div>
                             </c:if>
                             <c:if test="${payVO.pay_yn != 'Y'.charAt(0)}">
-                                <div>❌</div>
+                                <div><input type="checkbox"  name="pay_yn" value=""></div>
                             </c:if>
 
                             <c:if test="${payVO.div_yn eq 'Y'.charAt(0)}">
                                 <div><input type="checkbox"  name="div_yn" value="" checked></div>
                             </c:if>
                             <c:if test="${payVO.div_yn != 'Y'.charAt(0)}">
-                                <div>❌</div>
+                                <div><input type="checkbox"  name="div_yn" value="" ></div>
                             </c:if>
 
                             <div>${payVO.menu_nm}</div>
@@ -77,14 +77,14 @@
 
 
                             <c:if test="${payVO.pay_yn eq 'Y'.charAt(0)}">
-                                <div>⭕</div>
+                                <div><input type="checkbox"  name="pay_yn" value="" checked></div>
                             </c:if>
                             <c:if test="${payVO.pay_yn != 'Y'.charAt(0)}">
                                 <div><input type="checkbox" id ="pay_yn" name="pay_yn" value=""></div>
                             </c:if>
 
                             <c:if test="${payVO.div_yn eq 'Y'.charAt(0)}">
-                                <div>⭕</div>
+                                <div><input type="checkbox"  name="div_yn" value="" checked></div>
                             </c:if>
                             <c:if test="${payVO.div_yn != 'Y'.charAt(0)}">
                                 <div><input type="checkbox" id ="div_yn" name="div_yn" value="" ></div>
@@ -99,14 +99,14 @@
                                 </select>
                             </c:if>
                             <c:if test="${payVO.menu_nm != null}">
-                                <div>${payVO.menu_nm}</div>
+                                <div><input type="String" name="menu_nm" value="${payVO.menu_nm}" style="width: fit-content"></div>
                             </c:if>
 
                             <c:if test="${payVO.menu_pr eq null}">
                                 <input id="menuPrice" name="menu_pr" value="20000">
                             </c:if>
                             <c:if test="${payVO.menu_pr != null}">
-                                <div>${payVO.menu_pr}</div>
+                                <div><input name="menu_pr" type="String" value="${payVO.menu_pr}" style="width: fit-content"></div>
                             </c:if>
                         <div id="payBtn" style="margin-top: 5px;margin-left: 20px;display: flex">
                             <div>결제</div>
