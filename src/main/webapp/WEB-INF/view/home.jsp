@@ -108,7 +108,7 @@
                                                 <div class="basicBtn" style="background: #b5e2ef">${brd.brd_adr}</div>
                                                 <div style="display: flex;align-items: baseline;">
                                                     <div class="basicBtn" style="font-size: 20px;">${brd.brd_end_dt}</div>
-                                                    <div class="basicBtn" style="font-size: 20px;">1/${brd.brd_nn}명</div>
+                                                    <div class="basicBtn" style="font-size: 20px;">${authYIntegerList[idx.index]+1}/${brd.brd_nn}명</div>
                                                 </div>
                                             </div>
 
@@ -185,7 +185,7 @@
                                         <div class="basicBtn" style="background: #b5e2ef">${brd.brd_adr}</div>
                                         <div style="display: flex;align-items: baseline;">
                                             <div class="basicBtn" style="font-size: 20px;">${brd.brd_end_dt}</div>
-                                            <div class="basicBtn" style="font-size: 20px;">1/${brd.brd_nn}명</div>
+                                            <div class="basicBtn" style="font-size: 20px;">${authNIntegerList[idx.index]+1}/${brd.brd_nn}명</div>
                                         </div>
                                     </div>
 

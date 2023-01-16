@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dduiddui.mapper.authMapper">
+
+    <!-- 배달비 빵 결제이력 추가하기 -->
+    <insert id ="insertAuth" parameterType = "com.example.dduiddui.vo.authVO">
+        INSERT INTO tb_auth
+            (mbr_sn, brd_sn,auth_yn)
+        VALUES
+            (
+                #{mbr_sn},
+                #{brd_sn},
+                'Y'
+            )
+    </insert>
+
+    <!-- 사용자의 해당 게시글 배달비 결제이력  가져오기 -->
+    <select id="getAuth" resultType="com.example.dduiddui.vo.authVO">
+        SELECT *
+        FROM tb_auth
+        WHERE mbr_sn = #{mbr_sn}
+    </select>
+
+    <!-- 해당 게시글 배달비 결제 참여수 가져오기 -->
+    <select id="getAuthList" resultType="com.example.dduiddui.vo.authVO">
+        SELECT *
+        FROM tb_auth
+        WHERE brd_sn = #{brd_sn}
+    </select>
+
+</mapper>

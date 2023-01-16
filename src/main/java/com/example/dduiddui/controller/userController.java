@@ -2,7 +2,7 @@ package com.example.dduiddui.controller;
 
 import com.example.dduiddui.service.boardService;
 import com.example.dduiddui.service.userService;
-import com.example.dduiddui.service.addressService;
+import com.example.dduiddui.service.authService;
 import com.example.dduiddui.vo.*;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,8 @@ public class userController {
     @Autowired
     private boardService boardService;
 
+    @Autowired
+    private authService authService;
 
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
@@ -49,6 +51,24 @@ public class userController {
 
         List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
         model.addAttribute("selectVOYList", selectVOYList);
+
+        List<Integer> authNIntegerList =new ArrayList<>();
+        for (int i=0;i<NboardList.size();i++){
+
+            // 해당 게시물의 배달비 엔빵에 참가한 리스트 개수 겟
+            List<authVO> authVOList = authService.getAuthList(NboardList.get(i).getBrd_sn());
+            authNIntegerList.add(authVOList.size());
+        }
+        model.addAttribute("authNIntegerList", authNIntegerList);
+
+        List<Integer> authYIntegerList =new ArrayList<>();
+        for (int i=0;i<YboardList.size();i++){
+
+            // 해당 게시물의 배달비 엔빵에 참가한 리스트 개수 겟
+            List<authVO> authVOList = authService.getAuthList(YboardList.get(i).getBrd_sn());
+            authYIntegerList.add(authVOList.size());
+        }
+        model.addAttribute("authYIntegerList", authYIntegerList);
 
         if (id != null) { // 로그인된 상태
             userVO userVo = userService.getUserById(id);

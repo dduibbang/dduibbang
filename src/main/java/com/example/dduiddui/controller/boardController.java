@@ -1,9 +1,6 @@
 package com.example.dduiddui.controller;
 
-import com.example.dduiddui.service.boardService;
-import com.example.dduiddui.service.menuService;
-import com.example.dduiddui.service.selectService;
-import com.example.dduiddui.service.userService;
+import com.example.dduiddui.service.*;
 import com.example.dduiddui.vo.*;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +28,9 @@ public class boardController {
     private selectService selectService;
     @Autowired
     private menuService menuService;
+
+    @Autowired
+    private authService authService;
 
     @GetMapping("/brdOrder")
     public String toBrdOrderPage(HttpSession session, Model model) {
@@ -117,6 +117,9 @@ public class boardController {
         Integer boardSn = Integer.parseInt(sn);
         session.setAttribute("boardSn", boardSn);
 
+        List<authVO> authVOList = authService.getAuthList(boardSn);
+        model.addAttribute("authVOListSize", authVOList.size());
+
         Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
         model.addAttribute("mbr_sn",mbr_sn);
 
@@ -131,6 +134,13 @@ public class boardController {
         selectVO selectVO = selectService.getStrBySn(strSn);
         model.addAttribute("strImg", selectVO.getStr_img());
         model.addAttribute("strNm", selectVO.getStr_nm());
+
+        if (mbr_sn != null) { // 로그인된 상태
+            authVO authVO = authService.getAuth(mbr_sn);
+            model.addAttribute("authVO", authVO);
+            System.out.println("authVO: " + authVO);
+        }
+
 
 //        System.out.println("boardPageboardPage");
 //        System.out.println("strSn: " + strSn);
@@ -170,11 +180,14 @@ public class boardController {
         Integer money = afterB;
         //Integer mbr  (mbr_sn); Integer
         //userVo.setMbr_sn;
-        System.out.println("결제 후 포인트 :" + money);
+        //System.out.println("결제 후 포인트 :" + money);
         try {
             System.out.println("현재 가진 포인트" + userVo.getMbr_pt());
             System.out.println("결제 후 포인트 try 문 :" + money);
-            userService.payPoint(userVo, money);
+            userService.payPoint(userVo, money); // 빵 결제
+
+            Integer mbrSn = (Integer) session.getAttribute("mbr_sn");
+            authService.insertAuth(mbrSn,boardSn); // 배달비 빵 결제이력 추가
 
         } catch (DuplicateKeyException e) {
             return "redirect:/ChargePay?error_code=-1";
