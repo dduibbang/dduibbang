@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dduiddui.mapper.payMapper">
+
+    <!-- 음식값 빵 주문현황에 주문 저장하기 -->
+    <insert id ="insertPay" parameterType = "com.example.dduiddui.vo.payVO">
+        INSERT INTO tb_pay
+            (brd_sn,menu_nm,menu_pr,pay_ent,pay_yn,odr_yn,dlv_yn)
+        VALUES
+            (
+                #{brd_sn},
+                #{menu_nm},
+                #{menu_pr},
+                #{pay_ent},
+                #{pay_yn},
+                'N',
+                #{div_yn}
+            )
+    </insert>
+
+</mapper>

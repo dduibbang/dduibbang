@@ -33,6 +33,10 @@ public class boardController {
     @Autowired
     private authService authService;
 
+    @Autowired
+    private payService payService;
+
+
     @GetMapping("/brdOrder")
     public String toBrdOrderPage(HttpSession session, Model model) {
 
@@ -68,6 +72,21 @@ public class boardController {
 
 
         return "brdOrder";
+    }
+
+    @PostMapping("/insertPay")
+    public String insertPay(HttpSession session,payVO payVO){
+        try {
+            payService.insertPay(payVO);
+
+        } catch (DuplicateKeyException e) {
+            return "redirect:/brdOrder?error_code=-1";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/brdOrder?error_code=-99";
+        }
+
+        return "redirect:/brdOrder";
     }
 
     // 네비바의 주문현황페이지(과거+현재 주문)
@@ -147,6 +166,7 @@ public class boardController {
         boardVO brd = boardService.getBrd(boardSn);
         session.setAttribute("boardVO", brd);
         model.addAttribute("brd", brd);
+        System.out.println("boardSn : " + sn);
 
         Integer strSn = brd.getStr_sn();
         selectVO selectVO = selectService.getStrBySn(strSn);
