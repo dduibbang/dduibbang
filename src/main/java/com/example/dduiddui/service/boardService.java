@@ -104,4 +104,9 @@ public class boardService {
         return res;
     }
 
+    public List<storeVO> getStoreList(){return boardMapper.getStoreList();}
+    public storeVO getStr(Integer str_sn) {
+        return  boardMapper.getStr(str_sn);
+    }
+
 }

@@ -82,5 +82,15 @@
         ORDER BY A.rgtr_dt DESC;
     </select>
 
-
+    <!--가게 리스트-->
+    <select id="getStoreList" resultType="com.example.dduiddui.vo.storeVO">
+        SELECT *
+        FROM tb_str
+    </select>
+    <!-- 가게 클릭 -->
+    <select id="getStr" resultType="com.example.dduiddui.vo.storeVO">
+        SELECT *
+        FROM tb_str
+        WHERE str_sn = #{str_sn}
+    </select>
 </mapper>

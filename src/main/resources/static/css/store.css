@@ -1,0 +1,8 @@
+.ff{
+    position: sticky;
+    bottom: 0;
+    left:0px;
+    height:60px;
+    width:100%;
+    background:grey;
+    color: white; }

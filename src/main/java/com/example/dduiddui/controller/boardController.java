@@ -228,7 +228,45 @@ public class boardController {
         return "redirect:/regEnd"; // 팝업창 사라지게하기
     }
 
+    @GetMapping("/storePage")
+    public String toStorePage(HttpSession session,  Model model) {
+        // 헤더에 필요
+        Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
+        model.addAttribute("mbr_sn",mbr_sn);
 
+        List<storeVO> storeList = boardService.getStoreList();
+        model.addAttribute("storeList", storeList);
+
+        userVO userVO = userService.getUserBySn(mbr_sn);
+        model.addAttribute("userInfo",userVO);
+
+        return "storePage";
+    }
+
+    // 클릭한 가게로
+    @GetMapping("/store/{sn}")
+    public String toStorePage(@PathVariable String sn, HttpSession session, Model model) {
+
+        System.out.println("storeSn : " + sn);
+        Integer storeSn = Integer.parseInt(sn);
+        session.setAttribute("storeSn", storeSn);
+
+        Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
+        model.addAttribute("mbr_sn",mbr_sn);
+
+        userVO userVO = userService.getUserBySn(mbr_sn);
+        model.addAttribute("userInfo",userVO);
+
+        storeVO str = boardService.getStr(storeSn);
+        session.setAttribute("storeVO", str);
+        model.addAttribute("str", str);
+
+        List<menuVO> menuVOList = menuService.getMenuByStrSn(storeSn);
+        model.addAttribute("menuVOList", menuVOList);
+
+
+        return "store";
+    }
     @ResponseBody
     @RequestMapping(value = "/getSearchList", method = RequestMethod.GET)
     private Map<String, Object> getSearchList(HttpServletRequest request) throws Exception{

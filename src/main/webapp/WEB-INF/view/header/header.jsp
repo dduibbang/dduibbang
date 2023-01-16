@@ -64,7 +64,7 @@
                 <c:if test="${userInfo.mbr_se eq '01'}">
                     <a href="/bosslogin" style="font-family: 'TmoneyRoundWindExtraBold';">가게 관리하기</a>
                 </c:if>
-                <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">가게 모아보기</a>
+                <a href="/storePage" style="font-family: 'TmoneyRoundWindExtraBold';">가게 모아보기</a>
                 <a href="/home" style="font-family: 'TmoneyRoundWindExtraBold';">게시글 보기</a>
                 <a href="#" style="font-family: 'TmoneyRoundWindExtraBold';">그룹 엔빵</a>
                 <a href="/map" style="font-family: 'TmoneyRoundWindExtraBold';">주소 설정</a>

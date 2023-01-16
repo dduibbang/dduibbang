@@ -31,7 +31,7 @@
                         <label class="safe" style="margin-left: 5%"><input type="radio" value="Y"  name="safe_yn" /><span>안심거래</span></label>
                         <label style="margin-left: 43%">작성자 <input type="text" id="rgtr_id"
                                          name="rgtr_id"
-                                         maxlength="30" required="required" value="${userInfo.mbr_nm}"></label>
+                                         maxlength="30" required="required" value="${userInfo.mbr_nm}" readonly></label>
                     </div>
 
 
