@@ -137,7 +137,9 @@ public class boardController {
 
         if (mbr_sn != null) { // 로그인된 상태
             authVO authVO = authService.getAuth(mbr_sn);
-            model.addAttribute("authVO", authVO);
+
+            if(authVO.getBrd_sn() == boardSn)
+                model.addAttribute("authVO", authVO);
             System.out.println("authVO: " + authVO);
         }
 
