@@ -17,4 +17,8 @@ public class payService {
     public void insertPay(payVO payVO) {
         payMapper.insertPay(payVO);
     }
+
+    public List<payVO> getPayListBybrdSn(Integer brd_sn){
+        return payMapper.getPayListBybrdSn(brd_sn);
+    }
 }

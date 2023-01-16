@@ -45,41 +45,78 @@
             <div></div>
         </h3>
             <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 170px 100px 70px">
-                <c:forEach items="${authUserVOList}" var="authUser" > <!-- 빵 결제를 완료한 사람들 리스트 -->
+                <c:forEach items="${payVOList}" var="payVO" varStatus="idx"> <!-- 빵 결제를 완료한 사람들 리스트 -->
                     <form action="insertPay" method="post" id= "insertForm" name= "insertForm">
                         <p><input type="hidden" name="brd_sn" value="${boardVO.brd_sn}"></p>
-                        <p><input type="hidden" id ="pay_ent" name="pay_ent" value="${userInfo.mbr_id}"></p>
+                        <p><input type="hidden"  name="mbr_sn" value="${userInfo.mbr_sn}"></p>
                     <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 170px 100px 70px">
-                        <div>${authUser.mbr_nm}</div> <!-- 닉네임 -->
+                        <div>${mbrVOList[idx.index].mbr_nm}</div> <!-- 닉네임 -->
 
-                        <c:if test="${userInfo.mbr_nm != authUser.mbr_nm}"> <!-- 나말고 다른 엔빵 참여자이면 -->
+                        <c:if test="${userInfo.mbr_sn != payVO.mbr_sn}"> <!-- 나말고 다른 엔빵 참여자이면 -->
 
-                            <div><input type="checkbox" name="pay_yn" value=""></div>
-                            <div><input type="checkbox" name="div_yn" value="" ></div>
-                            <div>${user.menu_nm}</div>
-                            <div>${user.menu_pr}</div>
+                            <c:if test="${payVO.pay_yn eq 'Y'.charAt(0)}">
+                                <div><input type="checkbox"  name="pay_yn" value="" checked></div>
+                            </c:if>
+                            <c:if test="${payVO.pay_yn != 'Y'.charAt(0)}">
+                                <div>❌</div>
+                            </c:if>
+
+                            <c:if test="${payVO.div_yn eq 'Y'.charAt(0)}">
+                                <div><input type="checkbox"  name="div_yn" value="" checked></div>
+                            </c:if>
+                            <c:if test="${payVO.div_yn != 'Y'.charAt(0)}">
+                                <div>❌</div>
+                            </c:if>
+
+                            <div>${payVO.menu_nm}</div>
+                            <div>${payVO.menu_pr}</div>
                             <div></div>
                         </c:if>
 
-                        <c:if test="${userInfo.mbr_nm eq authUser.mbr_nm}"> <!-- 본인이라면 -->
+                        <c:if test="${userInfo.mbr_sn eq payVO.mbr_sn}"> <!-- 본인이라면 -->
 
-                            <div><input type="checkbox" id ="pay_yn" name="pay_yn" value="y" ></div>
-                                <div><input type="checkbox" id ="div_yn" name="div_yn" value="y" ></div>
 
-                            <select name="menu_nm" id="selectMenu" style="height: 40px;margin-left: 5px;margin-right: 10px"onchange="selectMenu()">
-                                <option value="-1">메뉴를 선택해주세요.</option>
-                                <c:forEach items="${menuVOList}" var="menu" varStatus="idx">
-                                    <option value="${menu.menu_nm}" >${menu.menu_nm}</option>
-                                </c:forEach>
-                            </select>
+                            <c:if test="${payVO.pay_yn eq 'Y'.charAt(0)}">
+                                <div>⭕</div>
+                            </c:if>
+                            <c:if test="${payVO.pay_yn != 'Y'.charAt(0)}">
+                                <div><input type="checkbox" id ="pay_yn" name="pay_yn" value=""></div>
+                            </c:if>
 
-                            <input id="menuPrice" name="menu_pr" value="20000">
-                            <div id="payBtn" style="margin-top: 5px;margin-left: 20px;display: flex">
-                                <div>결제</div>
-                            </div>
-                    </div>
-                        </form>
-                    </c:if>
+                            <c:if test="${payVO.div_yn eq 'Y'.charAt(0)}">
+                                <div>⭕</div>
+                            </c:if>
+                            <c:if test="${payVO.div_yn != 'Y'.charAt(0)}">
+                                <div><input type="checkbox" id ="div_yn" name="div_yn" value="" ></div>
+                            </c:if>
+
+                            <c:if test="${payVO.menu_nm eq null}">
+                                <select name="menu_nm" id="selectMenu" style="height: 40px;margin-left: 5px;margin-right: 10px"onchange="selectMenu()">
+                                    <option value="-1">메뉴를 선택해주세요.</option>
+                                    <c:forEach items="${menuVOList}" var="menu" varStatus="idx">
+                                        <option value="${menu.menu_nm}" >${menu.menu_nm}</option>
+                                    </c:forEach>
+                                </select>
+                            </c:if>
+                            <c:if test="${payVO.menu_nm != null}">
+                                <div>${payVO.menu_nm}</div>
+                            </c:if>
+
+                            <c:if test="${payVO.menu_pr eq null}">
+                                <input id="menuPrice" name="menu_pr" value="20000">
+                            </c:if>
+                            <c:if test="${payVO.menu_pr != null}">
+                                <div>${payVO.menu_pr}</div>
+                            </c:if>
+                        <div id="payBtn" style="margin-top: 5px;margin-left: 20px;display: flex">
+                            <div>결제</div>
+                        </div>
+
+
+
+                        </div>
+                            </form>
+                        </c:if>
             </div>
                 </c:forEach>
 

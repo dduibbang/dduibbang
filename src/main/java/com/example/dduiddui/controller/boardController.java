@@ -61,14 +61,26 @@ public class boardController {
         List<authVO> authVOList = authService.getAuthList(boardSn);
         model.addAttribute("authVOList", authVOList);
 
-        List<userVO> authUserVOList =new ArrayList<>();
-        for (int i=0;i<authVOList.size();i++){
+//        List<userVO> authUserVOList =new ArrayList<>();
+//        for (int i=0;i<authVOList.size();i++){
+//
+//            // 해당 게시물의 배달비 엔빵에 참가한 유저 겟
+//            userVO authUserVO = userService.getUserBySn(authVOList.get(i).getMbr_sn());
+//            authUserVOList.add(authUserVO);
+//        }
+//        model.addAttribute("authUserVOList", authUserVOList);
+
+        List<payVO> payVOList = payService.getPayListBybrdSn(boardSn);
+        model.addAttribute("payVOList", payVOList);
+
+        List<userVO> mbrVOList =new ArrayList<>();
+        for (int i=0;i<payVOList.size();i++){
 
             // 해당 게시물의 배달비 엔빵에 참가한 유저 겟
-            userVO authUserVO = userService.getUserBySn(authVOList.get(i).getMbr_sn());
-            authUserVOList.add(authUserVO);
+            userVO payUserVO = userService.getUserBySn(payVOList.get(i).getMbr_sn());
+            mbrVOList.add(payUserVO);
         }
-        model.addAttribute("authUserVOList", authUserVOList);
+        model.addAttribute("mbrVOList", mbrVOList);
 
 
         return "brdOrder";
@@ -77,6 +89,13 @@ public class boardController {
     @PostMapping("/insertPay")
     public String insertPay(HttpSession session,payVO payVO){
         try {
+            if(payVO.getPay_yn() == null)
+                payVO.setPay_yn('N');
+            if(payVO.getOdr_yn() == null)
+                payVO.setOdr_yn('N');
+            if(payVO.getDiv_yn() == null)
+                payVO.setDiv_yn('N');
+
             payService.insertPay(payVO);
 
         } catch (DuplicateKeyException e) {
@@ -237,6 +256,11 @@ public class boardController {
 
             Integer mbrSn = (Integer) session.getAttribute("mbr_sn");
             authService.insertAuth(mbrSn,boardSn); // 배달비 빵 결제이력 추가
+
+            payVO payVO = null;
+            payVO.setBrd_sn(board_sn);
+            payVO.setMbr_sn(mbrSn);
+            payService.insertPay(payVO);
 
         } catch (DuplicateKeyException e) {
             return "redirect:/ChargePay?error_code=-1";

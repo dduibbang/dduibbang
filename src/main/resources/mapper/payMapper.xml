@@ -5,17 +5,23 @@
     <!-- 음식값 빵 주문현황에 주문 저장하기 -->
     <insert id ="insertPay" parameterType = "com.example.dduiddui.vo.payVO">
         INSERT INTO tb_pay
-            (brd_sn,menu_nm,menu_pr,pay_ent,pay_yn,odr_yn,dlv_yn)
+            (brd_sn,menu_nm,mbr_sn,menu_pr,pay_yn,odr_yn,dlv_yn)
         VALUES
             (
                 #{brd_sn},
                 #{menu_nm},
+                #{mbr_sn},
                 #{menu_pr},
-                #{pay_ent},
                 #{pay_yn},
                 'N',
                 #{div_yn}
             )
     </insert>
+
+    <select id="getPayListBybrdSn" resultType="com.example.dduiddui.vo.payVO">
+        SELECT *
+        FROM tb_pay
+        WHERE brd_sn = #{brd_sn}
+    </select>
 
 </mapper>

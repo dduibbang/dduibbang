@@ -9,11 +9,10 @@ public class payVO {
 
     private Integer brd_sn;
 
+    private Integer mbr_sn;
     private String menu_nm;
 
     private String menu_pr;
-
-    private String pay_ent;
 
     private Character pay_yn;
 
