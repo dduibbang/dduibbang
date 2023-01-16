@@ -28,4 +28,11 @@
         WHERE brd_sn = #{brd_sn}
     </select>
 
+    <!-- 사용자의 배달비 결제이력  가져오기 -->
+    <select id="getOrderList" resultType="com.example.dduiddui.vo.authVO">
+        SELECT brd_sn
+        FROM tb_auth
+        WHERE mbr_sn = #{mbr_sn}
+    </select>
+
 </mapper>

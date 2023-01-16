@@ -33,4 +33,9 @@ public class authService {
 
         return authVOList;
     }
+
+    public List<authVO> getOrder(Integer mbrSn){
+        List<authVO> orderList = authMapper.getOrderList(mbrSn);
+        return orderList;
+    }
 }

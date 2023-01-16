@@ -120,6 +120,8 @@ public class boardController {
         model.addAttribute("userInfo",userVO);
 
         // 추후에 주문 참여한 게시물만 가져오는 걸로 수정하기!
+        List<boardVO>  OrderList = boardService.getOrderList(mbr_sn);
+        model.addAttribute("OrderList", OrderList);
         List<boardVO> NboardList = boardService.getNBoardList();
         model.addAttribute("NboardList", NboardList);
 

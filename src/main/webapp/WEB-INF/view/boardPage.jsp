@@ -82,10 +82,12 @@
         <div id="btn-col">
             <button id = "menu-btn" class="basicBtn" onclick="menuSelect()">메뉴</button>
             <c:if test="${authYN eq 'N'}">  <!-- 빵 결제 안한 사람 -->
-                <div id="small_btn_col">
-                    <input type="text" id="dlvPay" name="dlvPay" readonly>
-                    <button style="font-size: 20px;" class="basicBtn" onclick="bbangPay()">빵 결제</button>
-                </div>
+                <c:if test="${brd.safe_yn eq 'Y'}">
+                    <div id="small_btn_col">
+                        <input type="text" id="dlvPay" name="dlvPay" readonly>
+                        <button style="font-size: 20px;" class="basicBtn" onclick="bbangPay()">빵 결제</button>
+                    </div>
+                </c:if>
             </c:if>
             <c:if test="${authYN eq 'Y'}">  <!-- 빵 결제 한 사람 -->
                 <div class="basicBtn" style="margin-right: 67px;font-size: initial;background: #b5e2ef">결제 완료</div>

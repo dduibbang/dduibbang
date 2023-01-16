@@ -42,6 +42,8 @@ public class userService {
     public userVO getUserBySn(Integer mbr_sn) {
         return userMapper.getUserBySn(mbr_sn);
     }
+
+    public userVO getUserID(Integer mbrSn){ return userMapper.getUserID(mbrSn);}
     public void signup(userVO userVo) {
         userMapper.insertUser(userVo);
     }

@@ -29,9 +29,9 @@
                     <div class="form-group">
                         <label class="safe" ><input type="radio" value="N"  name="safe_yn" checked /><span>일반거래</span></label>
                         <label class="safe" style="margin-left: 5%"><input type="radio" value="Y"  name="safe_yn" /><span>안심거래</span></label>
-                        <label style="margin-left: 43%">작성자 <input type="text" id="rgtr_id"
+                        <label style="margin-left: 43%">작성자 ID <input type="text" id="rgtr_id"
                                          name="rgtr_id"
-                                         maxlength="30" required="required" value="${userInfo.mbr_nm}" readonly></label>
+                                         maxlength="30" required="required" value="${userInfo.mbr_id}" readonly></label>
                     </div>
 
 
@@ -55,7 +55,7 @@
                             <option value="" selected>카테고리를 선택해주세요.</option>
                             <option value="치킨">치킨</option>
                             <option value="피자">피자</option>
-                            <option value="떡볶이">떡볶이</option>
+                            <option value="패스트푸드">패스트푸드</option>
                         </select>
                     </div>
 
@@ -111,8 +111,8 @@
                     <input type="text" class="form-control" style="width:200px; text-align: center; margin-right: auto; margin-left: auto; margin-bottom: 10px" id="str_nm" name="str_nm" required="required" readonly>
                     <input type="button" class="btn-upload" value="매장선택" onclick="openSelect()">
                 </div>
-
                 <div class="form-group">
+                    <br>
                     <label for="brd_cn">내용</label>
                     <!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
                     <!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->

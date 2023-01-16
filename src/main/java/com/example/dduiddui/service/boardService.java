@@ -1,7 +1,9 @@
 package com.example.dduiddui.service;
 
 import com.example.dduiddui.mapper.boardMapper;
-import com.example.dduiddui.mapper.selectMapper;
+import com.example.dduiddui.service.authService;
+import com.example.dduiddui.service.userService;
+import com.example.dduiddui.service.*;
 import com.example.dduiddui.vo.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,5 +110,26 @@ public class boardService {
     public storeVO getStr(Integer str_sn) {
         return  boardMapper.getStr(str_sn);
     }
-
+    @Autowired
+    private userService userService;
+    @Autowired
+    private authService authService;
+    //public List<boardVO> getMywriteList(String mbr_id){
+    //    return boardMapper.getMywriteList(mbr_id);
+    //}
+    public List<boardVO> getOrderList(Integer mbr_sn){
+        List<boardVO> res =new ArrayList<>();
+        List<authVO> orderList = authService.getOrder(mbr_sn);
+        userVO mbr_id = userService.getUserID(mbr_sn);
+        System.out.println(mbr_id.getMbr_id());
+        List<boardVO> nmList = boardMapper.getMywriteList(mbr_id.getMbr_id());
+        System.out.println(nmList);
+        for (int i=0;i<orderList.size();i++){
+            res.add(boardMapper.getBrd(orderList.get(i).getBrd_sn()));
+        }
+        for (int i=0; i<nmList.size();i++){
+            res.add(boardMapper.getBrd(nmList.get(i).getBrd_sn()));
+        }
+        return res;
+    }
 }

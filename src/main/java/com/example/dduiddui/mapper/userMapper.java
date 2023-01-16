@@ -10,6 +10,9 @@ public interface userMapper {
     //userVO getUserByVO(userVO userVo);    // 회원 정보 가져오기(mbr_sn 받기 위해 필요)
 
     userVO getUserBySn(Integer mbrSn);
+
+    userVO getUserID(Integer mbrSn);
+
     void insertUser(userVO userVo); // 회원가입
     userVO updatePW(userVO userVo);
 

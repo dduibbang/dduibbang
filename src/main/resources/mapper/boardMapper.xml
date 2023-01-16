@@ -93,4 +93,10 @@
         FROM tb_str
         WHERE str_sn = #{str_sn}
     </select>
+
+    <select id="getMywriteList" resultType="com.example.dduiddui.vo.boardVO">
+        SELECT brd_sn
+        FROM tb_brd
+        WHERE rgtr_id = #{mbr_id}
+    </select>
 </mapper>

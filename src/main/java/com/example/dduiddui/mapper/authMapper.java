@@ -13,5 +13,7 @@ public interface authMapper {
 
     authVO getAuth(Integer mbrSn);
 
+    List<authVO> getOrderList(Integer mbrSn);
+
     List<authVO> getAuthList(Integer brdSn);
 }

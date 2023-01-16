@@ -23,4 +23,5 @@ public interface boardMapper {
     List<storeVO> getStoreList();
     storeVO getStr(Integer str_sn);
 
+    List<boardVO> getMywriteList(String mbr_id);
 }

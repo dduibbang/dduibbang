@@ -63,4 +63,10 @@
         WHERE mbr_id= #{mbr_id}
     </update>
 
+    <select id="getUserID" resultType="com.example.dduiddui.vo.userVO">
+        SELECT mbr_id
+        FROM tb_mbr
+        WHERE mbr_sn = #{mbr_sn}
+    </select>
+
 </mapper>
