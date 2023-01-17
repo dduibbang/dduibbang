@@ -19,7 +19,7 @@
 
         function bbangPay(){
 
-            window.name = "boardOrder";
+            window.name = "boardForm";
             // window.open("open할 window", "자식창 이름", "팝업창 옵션");
             openWin = window.open("../boardBbangPay", "boardBbangPayForm", "width=530, height=550, resizable = no, scrollbars = no");
             //openWin.document.getElementById("board_sn").value = document.getElementById("board_sn").value;
@@ -109,8 +109,8 @@
                                 <div><input name="menu_pr" id="dlvPay" type="String" value="${payVO.menu_pr}" style="width: 60px;"></div>
                             </c:if>
                         <div>
-                            <span class="basicBtn" onclick="bbangPay()" style="cursor:pointer;">결제</span>
                             <input class="basicBtn" onclick="payInsert()" type="submit" style="cursor:pointer;font-size: large;" value="주문 저장하기">
+                            <span class="basicBtn" onclick="bbangPay()" style="cursor:pointer;">결제</span>
                         </div>
 
 
@@ -133,12 +133,18 @@
         </div>
     </div>
 
-
-        <span class="basicBtn"  style="margin-left: 30px;cursor:pointer;font-size: x-large;">주문하기</span>
+        <span class="basicBtn"  style="margin-left: 30px;cursor:pointer;font-size: x-large;" onclick="orderResult()">주문하기</span>
 
 
 </div>
 </body>
+<script>
+    function orderResult(){
+        var str = "주문이 완료되었습니다."
+        alert(str);
+        window.close();
+    }
+</script>
 </html>
 
 <script>

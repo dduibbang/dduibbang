@@ -41,10 +41,10 @@
                                     <div style="display: flex;justify-content: space-between;align-items: baseline;">
                                         <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;margin-right: 10px;">${brd.brd_ttl}</h3>
                                         <c:if test="${brd.brd_st eq '01'}">
-                                            <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
+                                            <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
                                         </c:if>
                                         <c:if test="${brd.brd_st != '01'}">
-                                            <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
+                                            <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
                                         </c:if>
                                         <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
                                         <div class="basicBtn" style="background: #b5e2ef">${selectVOYList[idx.index].str_nm}</div>
@@ -73,7 +73,7 @@
                                     <div class="basicBtn" style="background: #b5e2ef">${brd.brd_adr}</div>
                                     <div style="display: flex;align-items: baseline;">
                                         <div class="basicBtn" style="font-size: 20px;">${brd.brd_end_dt}</div>
-                                        <div class="basicBtn" style="font-size: 20px;">1/${brd.brd_nn}명</div>
+                                        <div class="basicBtn" style="font-size: 20px;">${authYIntegerList[idx.index]}/${brd.brd_nn}명</div>
                                     </div>
                                 </div>
 
@@ -92,7 +92,7 @@
                                         <div style="display: flex;justify-content: space-between;align-items: baseline;">
                                             <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;margin-right: 10px;">${brd.brd_ttl}</h3>
                                             <c:if test="${brd.brd_st eq '01'}">
-                                                <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
+                                                <div class="basicBtn" id="od" name="od" style="background: #b5e2ef">모집 완료</div>
                                             </c:if>
                                             <c:if test="${brd.brd_st != '01'}">
                                                 <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
@@ -124,7 +124,7 @@
                                         <div class="basicBtn" style="background: #b5e2ef">${brd.brd_adr}</div>
                                         <div style="display: flex;align-items: baseline;">
                                             <div class="basicBtn" style="font-size: 20px;">${brd.brd_end_dt}</div>
-                                            <div class="basicBtn" style="font-size: 20px;">1/${brd.brd_nn}명</div>
+                                            <div class="basicBtn" style="font-size: 20px;">${authYIntegerList[idx.index]}/${brd.brd_nn}명</div>
                                         </div>
                                     </div>
 

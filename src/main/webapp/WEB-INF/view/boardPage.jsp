@@ -70,7 +70,7 @@
                         <div class="basicBtn" style="background: #b5e2ef">${brd.brd_adr}</div>
                         <div style="display: flex;align-items: baseline;">
                             <div class="basicBtn" style="font-size: 20px;">${brd.brd_end_dt}</div>
-                            <div class="basicBtn" style="font-size: 20px;">${authVOListSize+1}/${brd.brd_nn}명</div>
+                            <div class="basicBtn" style="font-size: 20px;">${authVOListSize}/${brd.brd_nn}명</div>
                         </div>
                     </div>
 

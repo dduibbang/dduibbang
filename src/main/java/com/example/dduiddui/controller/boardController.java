@@ -116,6 +116,7 @@ public class boardController {
         // 추후에 주문 참여한 게시물만 가져오는 걸로 수정하기!
         List<boardVO>  OrderList = boardService.getOrderList(mbr_sn);
         model.addAttribute("OrderList", OrderList);
+
         List<boardVO> NboardList = boardService.getNBoardList();
         model.addAttribute("NboardList", NboardList);
 
@@ -127,6 +128,16 @@ public class boardController {
 
         List<selectVO> selectVOYList = boardService.getStrByYBrdSn();
         model.addAttribute("selectVOYList", selectVOYList);
+
+        List<Integer> authYIntegerList =new ArrayList<>();
+        for (int i=0;i<YboardList.size();i++){
+
+            // 해당 게시물의 배달비 엔빵에 참가한 리스트 개수 겟
+            List<authVO> authVOList = authService.getAuthList(YboardList.get(i).getBrd_sn());
+            authYIntegerList.add(authVOList.size());
+        }
+        model.addAttribute("authYIntegerList", authYIntegerList);
+
 
         return "orderList";
     }

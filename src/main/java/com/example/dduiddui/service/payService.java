@@ -53,4 +53,6 @@ public class payService {
 
         payMapper.updatePayYn(mbr_sn);
     }
+
+
 }

@@ -42,4 +42,6 @@
         WHERE mbr_sn = #{mbr_sn}
     </update>
 
+
+
 </mapper>

@@ -33,7 +33,7 @@
                 <input type="hidden" name="mbr_sn" value="${mbr_sn}">
                 <input type="hidden" name="brd_sn" value="${board_sn}">
                 <input type="number" id="pay" name="pay" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" readonly>
-                <input type="number" id="beforeB" name="mbr_pt" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" value="${userInfo.mbr_pt}" readonly>
+                <input type="number" id="beforeB" name="beforeB" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" value="${userInfo.mbr_pt}" readonly>
                 <input type="number" id="afterB" name="afterB" class="form-control" maxlength="30" onkeyup="passConfirm();" style="width: 200px; line-height: 3;" readonly>
                 <div class="col-lg-12" type="text" id="checkmsg" name="checkmsg"></div>
             </div>
@@ -52,7 +52,7 @@
         document.getElementById("board_sn").value = opener.document.getElementById("board_sn").value;
         document.getElementById("pay").value = opener.document.getElementById("dlvPay").value;
 
-        var bbangPay= opener.document.getElementById("bbang").value;
+        //var bbangPay= opener.document.getElementById("bbang").value;
 
         var sn = $("#board_sn").val();
         console.log(sn);
