@@ -52,7 +52,7 @@
         document.getElementById("board_sn").value = opener.document.getElementById("board_sn").value;
         document.getElementById("pay").value = opener.document.getElementById("dlvPay").value;
 
-        var bbangPay= opener.document.getElementById("bbang").value;
+        //var bbangPay= opener.document.getElementById("bbang").value;
 
         var sn = $("#board_sn").val();
         console.log(sn);
