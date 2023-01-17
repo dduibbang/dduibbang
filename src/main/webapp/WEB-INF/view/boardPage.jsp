@@ -35,6 +35,20 @@
 
 </head>
 
+    
+    <script type="text/javascript">
+    /*let openWin;*/
+    var openWin;
+
+    function openCreate() {
+        // window.name = "부모창 이름";
+        window.name = "storeForm";
+
+        // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+        openWin = window.open("../chat", "createForm", "width=550, height=570, resizable = no, scrollbars = no");
+    }
+</script>
+    
 
 <body style="background-color: #F7C123;">
 <div class="Btap" >
@@ -99,7 +113,7 @@
                 <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="alertFun()">엔빵 참여하기</button>
             </c:if>
             <c:if test="${authYN eq 'Y'}">  <!-- 빵 결제 한 사람 -->
-                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="location.href='../chat'">엔빵 들어가기</button>
+                <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="openCreate()">엔빵 들어가기</button>
                 <button style="font-size: 20px;width: 1500px;height: 60px;" class="basicBtn" onclick="openOrder()">주문 현황보기</button>
             </c:if>
         </div>
