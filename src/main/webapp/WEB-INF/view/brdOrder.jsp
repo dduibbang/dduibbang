@@ -35,7 +35,7 @@
         <div class="basicBtn" style="font-size: x-large;margin-left: 10px;background:#b5e2ef"><a href="/brdOrder">🔃</a></div>
     </div>
     <div id ="mainTb">
-        <div style="border-bottom: #1c1f23 3px solid;padding-bottom: 20px;padding-top: 20px;">
+        <div style="padding-bottom: 20px;padding-top: 20px;">
         <h3 id = "tbCtgr" style="display: grid;grid-template-columns: 120px 70px 70px 170px 100px 70px">
             <div>주문자</div>
             <div>결제</div>
@@ -50,10 +50,10 @@
                         <p><input type="hidden" id = "board_sn" name="brd_sn" value="${boardVO.brd_sn}"></p>
                         <p><input type="hidden"  name="mbr_sn" value="${userInfo.mbr_sn}"></p>
                     <div style="display: grid;row-gap: 20px;grid-template-columns: 120px 70px 70px 170px 70px 210px">
-                        <div>${mbrVOList[idx.index].mbr_nm}</div> <!-- 닉네임 -->
+
 
                         <c:if test="${userInfo.mbr_sn != payVO.mbr_sn}"> <!-- 나말고 다른 엔빵 참여자이면 -->
-
+                            <div>${mbrVOList[idx.index].mbr_nm}</div> <!-- 닉네임 -->
                             <c:if test="${payVO.pay_yn eq 'Y'.charAt(0)}">
                                 <div><input type="checkbox"  name="pay_yn" value="" checked></div>
                             </c:if>
@@ -74,7 +74,7 @@
                         </c:if>
 
                         <c:if test="${userInfo.mbr_sn eq payVO.mbr_sn}"> <!-- 본인이라면 -->
-
+                            <div style="font-weight: bold">${mbrVOList[idx.index].mbr_nm}</div> <!-- 닉네임 -->
 
                             <c:if test="${payVO.pay_yn eq 'Y'.charAt(0)}">
                                 <div><input type="checkbox"  id ="pay_yn" name="pay_yn" value="" checked></div>

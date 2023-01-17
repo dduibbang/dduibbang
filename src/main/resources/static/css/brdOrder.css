@@ -23,7 +23,7 @@ a:visited{
     text-decoration-line: none;
 }
 #wholeCnt{
-    display: grid;padding: 40px;padding-bottom: 20px;grid-template-rows: 100px 1fr 130px;
+    display: grid;padding: 40px;padding-bottom: 20px;grid-template-rows: 100px 400px 130px;
 }
 #wholeCnt h1{
     margin-top: 0px;
