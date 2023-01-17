@@ -14,10 +14,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<style>
+    #btnSubmit{
+        width:100px;
+        margin:auto;
+        display:block;
+    }
 
 
-<form name="regStore" action="/regStore" method="post" class="uf-form-signin h-75">
-        <form class="mt-4">
+</style>
+
+
+
+
+
+<form name="regStore" action="/regStore" method="post" class="uf-form-signin h-75 card mb-3 align-items-center">
+        <form class="mt-4 align-items-center">
 
             <div>
                 <input type="hidden" name="mbr_sn" value="<%=sn%>"/>
@@ -49,8 +61,11 @@
                 <input type="text" class="form-control" id="str_adr" name="str_adr"
                        placeholder="매장 주소">
             </div>
+            <div>
+                <br>
+            </div>
             <div class="d-grid mb-4">
-                <button onclick="setSubmit()" class="btn uf-btn-primary btn-lg">가게등록</button>
+                <button onclick="setSubmit()" class="btn uf-btn-primary btn-lg " id = "btnSubmit">가게등록</button>
             </div>
         </form>
 

@@ -48,36 +48,19 @@
             display: none;
         }
     </style>
-
-
-    <script type ="text/javascript">
-        window.onload = function(){
-
-           chatName();
-
-
-        } //페이지 로드시 자동으로 실행
-
-        function chatName(){
-
-                wsOpen();
-                $("#yourMsg").show();
-
-        }
-
-
-    </script>
-
-
-
 </head>
 
 <script type="text/javascript">
+
+    window.onload = function(){
+
+        chatName()
+    }
+
     var ws;
 
     function wsOpen(){
-        //웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-        ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+        ws = new WebSocket("ws://" + location.host + "/chating");
         wsEvt();
     }
 
@@ -109,7 +92,6 @@
             }
         }
 
-
         document.addEventListener("keypress", function(e){
             if(e.keyCode == 13){ //enter press
                 send();
@@ -117,12 +99,21 @@
         });
     }
 
-
+    function chatName(){
+        var userName = $("#userName").val();
+        if(userName == null || userName.trim() == ""){
+            alert("사용자 이름을 입력해주세요.");
+            $("#userName").focus();
+        }else{
+            wsOpen();
+            $("#yourName").hide();
+            $("#yourMsg").show();
+        }
+    }
 
     function send() {
         var option ={
             type: "message",
-            roomNumber: $("#roomNumber").val(),
             sessionId : $("#sessionId").val(),
             userName : $("#userName").val(),
             msg : $("#chatting").val()
@@ -131,28 +122,38 @@
         $('#chatting').val("");
     }
 </script>
-
 <body>
 <div id="container" class="container">
-    <h1>채팅</h1>
     <input type="hidden" id="sessionId" value="">
-    <input type="hidden" id="roomNumber" value="${roomNumber}">
-    <input type="hidden" id="roomName" value="${brd.brd_ttl}">
-    <input type="hidden" name="userName" id="userName" value = <%=id%>>
+
     <div id="chating" class="chating">
     </div>
 
+    <div id="yourName">
+        <table class="inputTable">
+            <tr>
+                <th><input type="hidden" name="userName" id="userName" value=" <%=id%>"></th>
+            </tr>
+        </table>
+    </div>
     <div id="yourMsg">
         <table class="inputTable">
             <tr>
                 <th>메시지</th>
                 <th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
                 <th><button onclick="send()" id="sendBtn">보내기</button></th>
+                <th><button onclick="openOrder()" >주문 현황</button></th>
             </tr>
         </table>
     </div>
 </div>
 </body>
-</html>
 
-<!-- 입장 메세지 띄우기 css고치기 방 목록만들기? -> 서버를 만들어야함 -->
+<script>
+    function openOrder() {
+        window.name = "brdPageForm";
+        openWin = window.open("../brdOrder", "orderForm", "width=800, height=600, top=500px, left=50px");
+    }
+
+</script>
+</html>

@@ -113,9 +113,19 @@ public class userController {
                     boardStList.add("모집 완료");
             }
 
+            List<Integer> searchListBrdAuth = new ArrayList<>();
+
+            for (int i=0;i<boardList.size();i++){
+
+                // 해당 게시물의 배달비 엔빵에 참가한 리스트 개수 겟
+                List<authVO> authVOList = authService.getAuthList(boardList.get(i).getBrd_sn());
+                searchListBrdAuth.add(authVOList.size()+1);
+            }
+
             res.put("boardList", boardList);
             res.put("boardStList", boardStList);
             res.put("boardStrList", boardStrList);
+            res.put("searchListBrdAuth", searchListBrdAuth);
             res.put("success", Boolean.TRUE);
             System.out.println("clickY: " + clickY + "res:" + res);
         }

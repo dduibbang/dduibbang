@@ -20,7 +20,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="boss">nBBang for boss</a>
+    <a class="navbar-brand ps-3" href="boss">NBBANG for boss</a>
     <!-- Sidebar Toggle-->
 
     <!-- Navbar Search-->
@@ -48,7 +48,7 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <div class="sb-sidenav-menu-heading">홈</div>
                     <a class="nav-link" href="boss">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Home
@@ -74,7 +74,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                Admin
+                king
             </div>
         </nav>
     </div>
@@ -85,6 +85,10 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">HOME</li>
                 </ol>
+                <div>
+
+                    <br><br>
+                </div>
                 <main class="row">
                     <div class="col-lg-8">
                         <div class="row">
@@ -102,7 +106,7 @@
                                                 <i class="bi bi-calendar3"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>174</h6>
+                                                <h6>11</h6>
                                                 <span class="text-danger small pt-1 fw-bold">19%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
                                             </div>
                                         </div>
@@ -123,7 +127,7 @@
                                                 <i class="bi bi-calendar3-week"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>972</h6>
+                                                <h6>224</h6>
                                                 <span class="text-success small pt-1 fw-bold">270%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                             </div>
@@ -145,8 +149,8 @@
                                                 <i class="bi bi-calendar3-event"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>174</h6>
-                                                <span class="text-success small pt-1 fw-bold">N/A</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                                <h6>870</h6>
+                                                <span class="text-success small pt-1 fw-bold">11%</span> <span class="text-muted small pt-2 ps-1">increase</span>
                                             </div>
                                         </div>
                                     </div>
@@ -154,6 +158,10 @@
                                 </div>
                             </div><!-- End Today Card -->
 
+                            <div>
+                                <br><br><br><br>
+
+                            </div>
 
                         </div>
                         <div class="row">
@@ -161,7 +169,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        방문자 통계
+                                        일일 검색 횟수
                                     </div>
                                     <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -170,7 +178,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        등록된 이력서의 수
+                                        주문현황
 
                                     </div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
@@ -182,14 +190,7 @@
                     </div>
                 </main>
             </div>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; nBBang 2023</div>
 
-                    </div>
-                </div>
-            </footer>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -199,6 +200,14 @@
 <script src="assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="js/datatables-simple-demo.js"></script>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; nBBang 2023</div>
+
+        </div>
+    </div>
+</footer>
 </body>
 </html>
 </html>

@@ -159,7 +159,7 @@ function getNBBList(longi,lati,inputDistance){
                                         ' <div class="basicBtn" style="background: #b5e2ef">' + item.brd_adr + '</div>' +
                                         '<div style="display: flex;align-items: baseline;">' +
                                         '<div class="basicBtn" style="font-size: 20px;">' + item.brd_end_dt + '</div>' +
-                                        '<div class="basicBtn" style="font-size: 20px;">' + item.brd_nn + '</div>' +
+                                        '<div class="basicBtn" style="font-size: 20px;">'+res.searchListBrdAuth[index]+'/'+ item.brd_nn + '명</div>' +
                                         '</div>' +
                                         '</div>' +
 
@@ -234,6 +234,7 @@ function search(){
 
                 var riri = new Object();
                 riri = res;
+                console.log("riririri");
                 console.log(riri);
 
                 res.searchList.forEach(function (item, index) {
@@ -265,7 +266,7 @@ function search(){
                         ' <div class="basicBtn" style="background: #b5e2ef">' + item.brd_adr + '</div>' +
                         '<div style="display: flex;align-items: baseline;">' +
                         '<div class="basicBtn" style="font-size: 20px;">' + item.brd_end_dt + '</div>' +
-                        '<div class="basicBtn" style="font-size: 20px;">' + item.brd_nn + '</div>' +
+                        '<div class="basicBtn" style="font-size: 20px;">' +res.searchListBrdAuth[index]+'/'+ item.brd_nn + '명</div>' +
                         '</div>' +
                         '</div>' +
 

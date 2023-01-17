@@ -35,20 +35,19 @@ public class ChatController {
 
     @RequestMapping("/chat")
     public ModelAndView chat(HttpSession session, Model model) {
+
         String id = (String) session.getAttribute("id");
         int boardSn = (int) session.getAttribute("boardSn");
         System.out.println(id);
         model.addAttribute("id",id);  //채팅창에 id 자동으로 설정하기 위함
 
-        boardVO brd = boardService.getBrd(boardSn);
-        System.out.println(boardSn);
-        model.addAttribute("brd", brd);// 채팅창에 게싯글 제목을 받기 위함
-
-
         ModelAndView mv = new ModelAndView();
         mv.setViewName("chat");
         return mv;
     }
+
+
+
 
     @RequestMapping("/room")
     public ModelAndView room() {

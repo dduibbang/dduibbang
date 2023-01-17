@@ -20,7 +20,7 @@
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="boss">nBBang</a>
+    <a class="navbar-brand ps-3" href="boss">NBBANG</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -48,7 +48,7 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <div class="sb-sidenav-menu-heading">홈</div>
                     <a class="nav-link" href="boss">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Home
@@ -66,7 +66,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                admin
+                king
             </div>
         </nav>
     </div>
@@ -74,13 +74,13 @@
     <nav id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">가게현황 </h1>
+                <h1 class="mt-4">매장 현황 </h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Tables</li>
+                    <li class="breadcrumb-item active">Store</li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        현재 등록된 가게의 현황입니다
+                        현재 등록된 매장의 현황입니다
 
                     </div>
                 </div>
@@ -89,7 +89,6 @@
                 <section class="section area">
                     <div class="row">
                         <div class="col-lg-12">
-
 
                             <!-- General Form Elements -->
 
@@ -106,12 +105,12 @@
                                         <thead>
                                         <tr>
 
-                                            <th style = "width : 12%">매장이름</th>
-                                            <th style = "width : 10%">매장 전화번호</th>
+                                            <th style = "width : 13%">매장이름</th>
+                                            <th style = "width : 12%">매장 전화번호</th>
                                             <th style = "width : 10%">사업자 번호</th>
-                                            <th style = "width : 50%">매장 카테고리</th>
-                                            <th style = "width : 3%">최소 주문금액</th>
-                                            <th style = "width : 10%">매장 주소</th>
+                                            <th style = "width : 20%">매장 카테고리</th>
+                                            <th style = "width : 10%">최소 주문금액</th>
+                                            <th style = "width : 30%">매장 주소</th>
                                             <th style = "width : 5%">삭제</th>
                                         </tr>
                                         </thead>
@@ -128,7 +127,6 @@
                                                 <td>
                                                     <button  style="top:680px" class = "btn btn-primary btn-block" onclick="location.href='storeDelete?str_sn=${s.str_sn}'">삭제</button>
                                                 </td>
-
                                             </tr>
 
                                         </c:forEach>
@@ -166,7 +164,7 @@
         window.name = "storeForm";
 
         // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-        openWin = window.open("regStore", "createForm", "width=570, height=350, resizable = no, scrollbars = no");
+        openWin = window.open("regStore", "createForm", "width=255, height=320, resizable = no, scrollbars = no");
     }
 </script>
 
