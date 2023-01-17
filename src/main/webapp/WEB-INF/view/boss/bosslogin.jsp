@@ -14,7 +14,20 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="/bosslogin" method="post" class="uf-form-signin h-75">
+<style>
+
+    img.absolute {
+        position: absolute;
+        left: 720px;
+        top: 50px;
+    }
+
+</style>
+<div >
+    <img src="photo/logo.png" style ="display: block; margin: 0 auto; width:1117px; height:367px;" class ="absolute"></a>
+</div>
+
+    <form action="/bosslogin" method="post" class="uf-form-signin h-25">
 
     <form class="mt-4">
         <div class="input-group  input-group-lg mb-3">
