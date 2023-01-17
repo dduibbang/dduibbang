@@ -16,13 +16,13 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
 </head>
+
 <body class="sb-nav-fixed">
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="boss">nBBang</a>
+        <a class="navbar-brand ps-3" href="boss">NBBANG</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -52,7 +52,7 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <div class="sb-sidenav-menu-heading">홈</div>
                     <a class="nav-link" href="../boss">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Home
@@ -70,7 +70,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                어드민을 수정할 예정
+                king
             </div>
         </nav>
     </div>
@@ -81,7 +81,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4"> <br>메뉴현황 </h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Tables</li>
+                        <li class="breadcrumb-item active">Menu</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
@@ -112,11 +112,11 @@
                                             <thead>
                                             <tr>
 
-                                                <th style = "width : 12%">메뉴 카테고리</th>
+                                                <th style = "width : 15%">메뉴 카테고리</th>
                                                 <th style = "width : 20%">메뉴 이름</th>
-                                                <th style = "width : 50%">메뉴 설명</th>
+                                                <th style = "width : 30%">메뉴 설명</th>
                                                 <th style = "width : 10%">메뉴 가격</th>
-                                                <th style = "width : 3%">메뉴 옵션</th>
+                                                <th style = "width : 20%">메뉴 옵션</th>
                                                 <th style = "width : 5%">삭제</th>
                                             </tr>
                                             </thead>
@@ -168,7 +168,7 @@
                 window.name = "storeForm";
 
                 // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-                openWin = window.open("${str_sn}/regMenu", "createForm", "width=570, height=350, resizable = no, scrollbars = no");
+                openWin = window.open("${str_sn}/regMenu", "createForm", "width=250, height=320, resizable = no, scrollbars = no");
             }
         </script>
 
