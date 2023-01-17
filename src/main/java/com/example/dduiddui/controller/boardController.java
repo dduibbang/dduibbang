@@ -326,6 +326,13 @@ public class boardController {
         List<String> searchListBrdSt = boardService.getSearchListBrdSt(safe_yn.charAt(0),searchCnd,searchWrd);
         List<Integer> searchListBrdAuth = new ArrayList<>();
 
+        for (int i=0;i<searchList.size();i++){
+
+            // 해당 게시물의 배달비 엔빵에 참가한 리스트 개수 겟
+            List<authVO> authVOList = authService.getAuthList(searchList.get(i).getBrd_sn());
+            searchListBrdAuth.add(authVOList.size()+1);
+        }
+
 
         if(searchList.size()!=0) {
             res.put("searchList", searchList);
