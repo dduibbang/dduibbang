@@ -27,7 +27,7 @@
         }
         function openOrder() {
             window.name = "brdPageForm";
-            openWin = window.open("../brdOrder", "orderForm", "width=700, height=900, top=500px, left=50px");
+            openWin = window.open("../brdOrder", "orderForm", "width=800, height=600, top=500px, left=50px");
         }
     </script>
 
@@ -84,7 +84,8 @@
             <c:if test="${authYN eq 'N'}">  <!-- 빵 결제 안한 사람 -->
                 <c:if test="${brd.safe_yn eq 'Y'}">
                     <div id="small_btn_col">
-                        <input type="text" id="dlvPay" name="dlvPay" readonly>
+                        <input type="text" id="dlvPay" name="dlvPay" readonly style = "border : none ; background: transparent;font-size: x-large;text-align: right">
+                        <input type="hidden" id="bbang" value="Y" name="dlvPay" readonly>
                         <button style="font-size: 20px;" class="basicBtn" onclick="bbangPay()">빵 결제</button>
                     </div>
                 </c:if>

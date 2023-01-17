@@ -14,6 +14,7 @@
 
 <body>
 <div class="table-responsive">
+
     <form action="/boardBbangPay" method="post" id="payBbang" name="payBbang">
         <div class="table-wrapper" style="padding-top: 20px">
             <div class="table-title">
@@ -29,6 +30,8 @@
 
             <div class="right-info" style="margin-bottom: 45px">
                 <input type="hidden" name="mbr_id" value="${userInfo.mbr_id}">
+                <input type="hidden" name="mbr_sn" value="${mbr_sn}">
+                <input type="hidden" name="brd_sn" value="${board_sn}">
                 <input type="number" id="pay" name="pay" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" readonly>
                 <input type="number" id="beforeB" name="mbr_pt" class="form-control" maxlength="30" style="width: 200px; line-height: 3;" value="${userInfo.mbr_pt}" readonly>
                 <input type="number" id="afterB" name="afterB" class="form-control" maxlength="30" onkeyup="passConfirm();" style="width: 200px; line-height: 3;" readonly>
@@ -48,6 +51,8 @@
     window.onload = function(){
         document.getElementById("board_sn").value = opener.document.getElementById("board_sn").value;
         document.getElementById("pay").value = opener.document.getElementById("dlvPay").value;
+
+        var bbangPay= opener.document.getElementById("bbang").value;
 
         var sn = $("#board_sn").val();
         console.log(sn);

@@ -9,12 +9,12 @@
         VALUES
             (
                 #{brd_sn},
-                #{menu_nm},
+                "",
                 #{mbr_sn},
-                #{menu_pr},
-                #{pay_yn},
+                "",
                 'N',
-                #{div_yn}
+                'N',
+                'N'
             )
     </insert>
 
@@ -23,5 +23,23 @@
         FROM tb_pay
         WHERE brd_sn = #{brd_sn}
     </select>
+
+    <!-- 주문 현황 수정사항 저장하기 -->
+    <update id="updatePay" parameterType="com.example.dduiddui.vo.payVO">
+        UPDATE tb_pay
+        SET menu_nm = #{menu_nm} ,
+            menu_pr = #{menu_pr} ,
+            pay_yn = #{pay_yn} ,
+            dlv_yn = #{div_yn}
+        WHERE mbr_sn = #{mbr_sn}
+    </update>
+
+    <update id="updatePayYn" parameterType="com.example.dduiddui.vo.payVO">
+
+        UPDATE tb_pay
+        SET
+            pay_yn = 'Y'
+        WHERE mbr_sn = #{mbr_sn}
+    </update>
 
 </mapper>

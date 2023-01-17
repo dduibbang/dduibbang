@@ -71,6 +71,7 @@ public class boardController {
 //        model.addAttribute("authUserVOList", authUserVOList);
 
         List<payVO> payVOList = payService.getPayListBybrdSn(boardSn);
+        System.out.println("payVOList : " + payVOList);
         model.addAttribute("payVOList", payVOList);
 
         List<userVO> mbrVOList =new ArrayList<>();
@@ -86,17 +87,10 @@ public class boardController {
         return "brdOrder";
     }
 
-    @PostMapping("/insertPay")
-    public String insertPay(HttpSession session,payVO payVO){
+    @PostMapping("/updatePay")
+    public String updatePay(payVO payVO){
         try {
-            if(payVO.getPay_yn() == null)
-                payVO.setPay_yn('N');
-            if(payVO.getOdr_yn() == null)
-                payVO.setOdr_yn('N');
-            if(payVO.getDiv_yn() == null)
-                payVO.setDiv_yn('N');
-
-            payService.insertPay(payVO);
+            payService.updatePay(payVO);
 
         } catch (DuplicateKeyException e) {
             return "redirect:/brdOrder?error_code=-1";
@@ -222,8 +216,8 @@ public class boardController {
     //배달비 결제창
     @GetMapping("/boardBbangPay")
     public String toBrdPayPage(HttpSession session, Model model) {
-        Integer sn = (Integer) session.getAttribute("board_sn");
-
+        Integer sn = (Integer) session.getAttribute("boardSn");
+        model.addAttribute("board_sn",sn);
         Integer mbr_sn = (Integer) session.getAttribute("mbr_sn");
         model.addAttribute("mbr_sn",mbr_sn);
 
@@ -233,6 +227,7 @@ public class boardController {
         boardVO brd = boardService.getBrd(sn);
         session.setAttribute("boardVO", brd);
         model.addAttribute("brd", brd);
+        System.out.println("brd brd: " + sn);
         System.out.println("user sn: " + mbr_sn);
 
         return "boardBbangPay";
@@ -240,7 +235,7 @@ public class boardController {
 
 
     @PostMapping("/boardBbangPay")
-    public String toBbangPayPage( int afterB,int board_sn, String mbr_sn, HttpSession session,  userVO userVo, Model model){
+    public String toBbangPayPage( int afterB,int board_sn, String mbr_sn, HttpSession session,  userVO userVo, payVO payVO, Model model){
 
         Integer boardSn = board_sn;
         session.setAttribute("boardSn", boardSn);
@@ -251,25 +246,25 @@ public class boardController {
         //Integer mbr  (mbr_sn); Integer
         //userVo.setMbr_sn;
         //System.out.println("결제 후 포인트 :" + money);
-        try {
+
             System.out.println("현재 가진 포인트" + userVo.getMbr_pt());
             System.out.println("결제 후 포인트 try 문 :" + money);
             userService.payPoint(userVo, money); // 빵 결제
 
             Integer mbrSn = (Integer) session.getAttribute("mbr_sn");
-            authService.insertAuth(mbrSn,boardSn); // 배달비 빵 결제이력 추가
+            authVO authVO = authService.getAuth(mbrSn);
 
-            payVO payVO = null;
-            payVO.setBrd_sn(board_sn);
-            payVO.setMbr_sn(mbrSn);
-            payService.insertPay(payVO);
+            if(authVO == null){
+                authService.insertAuth(mbrSn,boardSn); // 배달비 빵 결제이력 추가
+                System.out.println("결제 후 포인트 try 문 :" + money);
 
-        } catch (DuplicateKeyException e) {
-            return "redirect:/ChargePay?error_code=-1";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/ChargePay?error_code=-99";
-        }
+//                payVO payVO = null;
+//                payVO.setBrd_sn(brd.getBrd_sn());
+//                payVO.setMbr_sn(mbrSn);
+                payService.insertPay(payVO);
+            }else{
+                payService.updatePayYn(mbrSn);
+            }
 
         return "redirect:/regEnd"; // 팝업창 사라지게하기
     }
@@ -329,11 +324,14 @@ public class boardController {
         List<boardVO> searchList = boardService.getSearchList(safe_yn.charAt(0),searchCnd,searchWrd);
         List<selectVO> searchListStr = boardService.getSearchListStr(safe_yn.charAt(0),searchCnd,searchWrd);
         List<String> searchListBrdSt = boardService.getSearchListBrdSt(safe_yn.charAt(0),searchCnd,searchWrd);
+        List<Integer> searchListBrdAuth = new ArrayList<>();
+
 
         if(searchList.size()!=0) {
             res.put("searchList", searchList);
             res.put("searchListStr", searchListStr);
             res.put("searchListBrdSt", searchListBrdSt);
+            res.put("searchListBrdAuth", searchListBrdAuth);
             res.put("success", Boolean.TRUE);
             System.out.println("res:" + res);
 

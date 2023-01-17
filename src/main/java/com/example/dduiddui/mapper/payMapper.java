@@ -12,4 +12,8 @@ public interface payMapper {
     void insertPay(payVO payVO); // 즐찾 추가
 
     List<payVO> getPayListBybrdSn(Integer brd_sn);
+
+    void updatePay(payVO payVO);
+
+    void updatePayYn(Integer mbr_sn);
 }
