@@ -12,6 +12,15 @@
 </head>
 <body>
 
+<style>
+    #btnSubmit{
+        width:100px;
+        margin:auto;
+        display:block;
+    }
+
+
+</style>
 
 <form name="regMenu" action="/menu/${num}/regMenu" method="post" class="uf-form-signin h-75">
     <form class="mt-4">
@@ -43,8 +52,12 @@
                    placeholder="메뉴 옵션">
         </div>
 
+        <div>
+            <br>
+        </div>
+
         <div class="d-grid mb-4">
-            <button type = "submit"  class="btn uf-btn-primary btn-lg">메뉴등록</button>
+            <button type = "submit"  class="btn uf-btn-primary btn-lg" id = "btnSubmit">메뉴등록</button>
         </div>
     </form>
 
