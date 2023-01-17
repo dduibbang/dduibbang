@@ -15,10 +15,7 @@
 </head>
 <body>
     <form action="/bosslogin" method="post" class="uf-form-signin h-75">
-    <div class="text-center ">
-        <img src="photo/logo.png" alt="" width="300" height="300"></a>
 
-    </div>
     <form class="mt-4">
         <div class="input-group  input-group-lg mb-3">
             <input type="text" class="form-control" id="boss_id" name="boss_id"
