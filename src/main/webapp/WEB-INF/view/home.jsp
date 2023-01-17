@@ -92,10 +92,10 @@
                                                 <div style="display: flex;justify-content: space-between;align-items: stretch;">
                                                     <div style="display: flex;justify-content: space-between;align-items: baseline;">
                                                         <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;margin-right: 10px;">${brd.brd_ttl}</h3>
-                                                        <c:if test="${brd.brd_st eq '01'}">
+                                                        <c:if test="${brd.brd_st eq '01'&& authYIntegerList[idx.index]!=brd.brd_nn}">
                                                             <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
                                                         </c:if>
-                                                        <c:if test="${brd.brd_st != '01'}">
+                                                        <c:if test="${brd.brd_st != '01'||authYIntegerList[idx.index]==brd.brd_nn}">
                                                             <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
                                                         </c:if>
                                                         <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
@@ -173,10 +173,10 @@
                                         <div style="display: flex;justify-content: space-between;align-items: stretch;">
                                             <div style="display: flex;justify-content: space-between;align-items: baseline;">
                                                 <h3 style="font-weight:bold;margin-top: 0px;margin-bottom: 30px;">${brd.brd_ttl}</h3>
-                                                <c:if test="${brd.brd_st eq '01'}">
+                                                <c:if test="${brd.brd_st eq '01' && authNIntegerList[idx.index]!=brd.brd_nn}">
                                                     <div class="basicBtn" style="background: #b5e2ef">모집 중❗</div>
                                                 </c:if>
-                                                <c:if test="${brd.brd_st != '01'}">
+                                                <c:if test="${brd.brd_st != '01'||authNIntegerList[idx.index]==brd.brd_nn}">
                                                     <div class="basicBtn" style="background: #b5e2ef">모집 완료</div>
                                                 </c:if>
                                                 <div class="basicBtn" style="background: #b5e2ef">${brd.brd_ctgr}</div>
